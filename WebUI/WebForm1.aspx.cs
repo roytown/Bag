@@ -12,10 +12,7 @@ namespace WebUI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ValidateConfig c = ConfigBase.GetInstance(typeof(ValidateConfig)) as ValidateConfig;
-            c.Messages.Add("email", "fsdf");
-
-            c.Update(c);
+            
         }
     }
 }

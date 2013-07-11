@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace Web
 {
-    public class WebConfig:ConfigBase
+    public class WebConfig : ConfigBase
     {
-        public int PasswordRetryCount
-        {
-            get;
-            set;
-        }
+        public string Title { get; set; }
+        public string Copyright { get; set; }
+        public int TicketTime { get; set; }
+        public bool EnableSystemErrorLog { get; set; }
+        public bool EnableUserLogOnLog { get; set; }
+        public bool EnableOperationLog { get; set; }
+
     }
 }

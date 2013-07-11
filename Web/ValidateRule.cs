@@ -8,7 +8,7 @@ namespace Web
 {
     public class ValidateRule
     {
-        public string Rule { get; set; }
+        public string ID { get; set; }
         public string Message { get; set; }
     }
 }

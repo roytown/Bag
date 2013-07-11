@@ -35,14 +35,18 @@ namespace Web
             {
                 this.ClientScript.RegisterClientScriptBlock(typeof(Page), "jquery", "<script src=\"" + this.ResolveClientUrl("~/Scripts/jquery-1.8.2.min.js") + "\" type=\"text/javascript\"></script>");
             }
-            if (!this.ClientScript.IsClientScriptBlockRegistered("form-validator"))
-            {
-                this.ClientScript.RegisterStartupScript(typeof(Page), "form-validator", GetValidtorJs());
-            }
             
             base.OnLoad(e);
         }
 
+        protected override void OnLoadComplete(EventArgs e)
+        {
+            if (!this.ClientScript.IsClientScriptBlockRegistered("form-validator"))
+            {
+                this.ClientScript.RegisterStartupScript(typeof(Page), "form-validator", GetValidtorJs());
+            }
+            base.OnLoadComplete(e);
+        }
 
         private string GetValidtorJs()
         {
@@ -83,22 +87,23 @@ namespace Web
             }
 
             //消息设置
-            if (config.Messages != null && config.Messages.Count > 0)
-            {
-
-                builder.Append("jQuery.extend(jQuery.validator.messages, {");
-                foreach (var key in config.Messages.Keys)
-                {
-                    builder.AppendFormat("{0}:'{1}',", key, config.Messages[key]);
-                }
-                builder.Remove(builder.Length - 1, 1);
-                builder.Append("});");
-            }
+           
             builder.Append("$('#" + this.Form.ClientID + "').validate(");
             if (!string.IsNullOrEmpty(config.SuccessCss))
             {
                 builder.Append("{");
                 builder.AppendFormat("success:'{0}'", config.SuccessCss);
+                if (_rules.Count>0)
+                {
+                    builder.Append(",messages:{");
+                    foreach (ValidateRule o in _rules)
+                    {
+                        builder.Append(o.ID);
+                        builder.Append(":{" + o.Message + "},");
+                    }
+                    builder.Remove(builder.Length - 1, 1);
+                    builder.Append("}");
+                }
                 builder.Append("}");
             }
             builder.Append(");");

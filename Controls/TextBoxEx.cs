@@ -22,23 +22,85 @@ namespace Controls
                 this.Page.ClientScript.RegisterClientScriptBlock(typeof(Page), "jquery-validator", "<script src=\"" + this.ResolveClientUrl("~/Scripts/jquery.validate.js") + "\" type=\"text/javascript\"></script>");
             }
 
+            if (this.Page is SecurityPage)
+            {
+                SecurityPage p = this.Page as SecurityPage;
+                string message = "";
+                if (IsRequired && !string.IsNullOrEmpty(RequiredErrorMessage))
+                {
+                    message += ",required:'" + RequiredErrorMessage + "'";
+                }
+                if (!string.IsNullOrEmpty(EqualTo))
+                {
+                    message += ",equalTo:'" + ValueErrorMessage + "'";
+                }
+
+                switch (Type)
+                {
+                    case TextType.Normal:
+                        if (!string.IsNullOrEmpty(FormatErrorMessage))
+                        {
+                            message += ",minlength:'" + FormatErrorMessage + "'";
+                            message += ",maxlength:'" + FormatErrorMessage + "'";
+                        }
+                        break;
+                    case TextType.Email:
+                        if (!string.IsNullOrEmpty(FormatErrorMessage))
+                        {
+                            message += ",email:'" + FormatErrorMessage + "'";
+                        }
+                        break;
+                    case TextType.Url:
+                        if (!string.IsNullOrEmpty(FormatErrorMessage))
+                        {
+                            message += ",url:'" + FormatErrorMessage + "'";
+                        }
+                        break;
+                    case TextType.Int:
+                        if (!string.IsNullOrEmpty(FormatErrorMessage))
+                        {
+                            message += ",digits:'" + FormatErrorMessage + "'";
+                        }
+                        if (!string.IsNullOrEmpty(ValueErrorMessage))
+                        {
+                            message += ",min:'" + ValueErrorMessage + "'";
+                            message += ",max:'" + ValueErrorMessage + "'";
+                        }
+                       
+                        break;
+                    case TextType.Number:
+                        if (!string.IsNullOrEmpty(FormatErrorMessage))
+                        {
+                            message += ",number:'" + FormatErrorMessage + "'";
+                        }
+                        
+                        break;
+
+                }
+
+                if (!string.IsNullOrEmpty(message))
+                {
+                    message = message.Remove(0, 1);
+
+                    p.ValidateRules.Add(new ValidateRule { ID = this.UniqueID, Message = message });
+                }
+            }
             base.OnLoad(e);
         }
 
         protected override void AddAttributesToRender(HtmlTextWriter writer)
         {
             base.AddAttributesToRender(writer);
+            if (!string.IsNullOrEmpty(EqualTo))
+            {
+                writer.AddAttribute("equalTo", EqualTo);
+                return;
+            }
 
             if (IsRequired)
             {
                 writer.AddAttribute("required", "true");
             }
-
-            if (!string.IsNullOrEmpty(EqualTo))
-            {
-                writer.AddAttribute("equalTo", EqualTo);
-            }
-
             switch (Type)
             {
                 case TextType.Normal:
@@ -100,5 +162,6 @@ namespace Controls
             get;
             set;
         }
+        public string ValueErrorMessage { get; set; }
     }
 }

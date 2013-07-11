@@ -17,24 +17,6 @@ namespace Web
         public string ErrorContainer { get; set; }
         public string ErrorLabelContainer { get; set; }
         public string ErrorWrapper { get; set; }
-
-        //message
-        private SerializableDictionary<string, string> _msg;
-        public SerializableDictionary<string, string> Messages
-        {
-            get
-            {
-                if (_msg==null)
-                {
-                    _msg = new SerializableDictionary<string, string>();
-                }
-                return _msg;
-            }
-            set
-            {
-                _msg = value;
-            }
-        }
       
     }
 }
