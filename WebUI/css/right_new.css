@@ -1,0 +1,118 @@
+.right {
+	width: 90%;
+	background-color: #f7f7f7;
+	height: 100%;
+	margin-left:28px;
+	margin-top:21px;
+	_margin-left:14px;
+	_margin-top:10px;
+}
+/*loc*/
+.td1 {
+	background:url(../images/loc_bg_left.png) no-repeat;
+	width:6px;
+	}
+.td2 {
+	background:url(../images/loc_bg_middle.png) repeat-x;
+	padding:4px 4px 9px;
+	color:#fff;
+	font-weight:bold;
+	font-size:14px;
+	width:100px;
+	}
+.td3 {
+	background:url(../images/loc_bg_center.png) no-repeat;
+	width:6px;
+	}
+.td4 {
+	background:url(../images/loc_bg.png) repeat-x;
+	padding:6px 4px 9px;
+	color:#747c80;
+	font-size:12px;
+	}
+.td5 {
+	background:url(../images/loc_bg_right.png) no-repeat;
+	width:5px;
+	}
+
+/*table2*/
+.table2 {
+	border-left:1px solid #aed0ea;
+	border-top:1px solid #aed0ea;
+	font-size:12px;
+	color:#333;
+	background:#fff;
+	margin-top:12px;
+	_margin-top:6px;
+	}
+.table2 td {
+	border-right:1px solid #aed0ea;
+	border-bottom:1px solid #aed0ea;
+	padding-top:8px;
+	padding-left:6px;
+	padding-bottom:4px;
+	}
+.table2 .td2_1 {
+	width:125px;
+	background:#e6f2f9;
+	padding:16px 6px 8px 0px;
+	text-align:right
+	}
+.input {
+	width:278px;
+	height:16px;
+	border:1px solid #dedede;
+	padding-left: 4px;
+	float: left;
+	padding-top: 4px;
+	}
+.input:hover,.table2 textarea:hover {
+	border:1px solid #aed0ea;
+	}
+.table2 textarea {
+	width:368px;
+	height:128px;
+	border:1px solid #dedede;
+	padding-top: 4px;
+	padding-left: 4px;
+	}
+.wrong {
+	float:left;
+	border:1px solid #cd0a0a;
+	background:url(../images/span.png) #fff7f5 no-repeat 6px 4px;
+	color:#cd0a0a;
+	font-size:12px;
+	padding:2px 10px 0px 25px;
+	margin-left:10px;
+	_margin-left:5px;
+	}
+.warn {
+	float:left;
+	border:1px solid #fad42e;
+	background:url(../images/span.png) #fbec88 no-repeat 6px -26px;
+	color:#686868;
+	font-size:12px;
+	padding:2px 10px 0px 25px;
+	margin-left:10px;
+	_margin-left:5px;
+	}
+.button {
+	background:url(../images/button.png) no-repeat left top;
+	width:67px;
+	height:24px;
+	border:0px none;
+	float:left;
+	color:#fff;
+	font-size:12px;
+	text-align:center;
+	cursor:pointer;
+	margin-right:40px;
+	_margin-right:20px;
+	}
+.button:hover {
+	background:url(../images/button.png) no-repeat left bottom;
+	color:#31728a;
+	}
+
+
+

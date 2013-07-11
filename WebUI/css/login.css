@@ -1,0 +1,91 @@
+body {
+	background: url(../images/login_bg.gif) #cce5ee repeat-x ;
+}
+.w103 {
+	width: 103px;
+}
+.w233 {
+	width:233px;
+}
+.mr30 {
+	margin-right: 30px;
+	_margin-right: 15px;
+
+}
+.bg {
+	background: url(../images/login_bg.png) no-repeat center 50%;
+	width: 743px;
+	height: 340px;
+	margin:170px auto 0px;
+}
+.login {
+	float: left;
+}
+.login .left {
+	float: left;
+	background: url(../images/left_border.png) no-repeat right 45px;
+	width: 308px;
+	height: 340px;
+}
+.login .right {
+	color:#333;
+	font-size: 14px;
+	float: left;
+	margin-top: 77px;
+	_margin-top: 33px;
+}
+.login table td {
+	padding-left:10px;
+	padding-bottom: 17px;
+}
+.login input {
+	height: 20px;
+	background: #fff;
+	border:1px solid #ccc;
+	padding-left: 4px;
+	float: left;
+	padding-top: 4px;
+}
+.login input:hover {
+	border: 1px solid #52aecc;
+}
+.login .pswd {
+	font-size: 12px;
+	color: #6a6a6a;
+	text-decoration: underline;
+}
+.login .pswd:hover {
+	color: #0f8cc2;
+}
+.login span
+{
+    display:block;
+    width:100%;
+    float:left;
+    }
+.login .submit {
+	background: url(../images/login_button.png) no-repeat top left;
+	width: 96px;
+	height: 36px;
+	color: #fff;
+	border: 0px none;
+	font-size: 16px;
+	font-family: "Microsoft YaHei",微软雅黑;
+	cursor:pointer;
+}
+.login .submit:hover {
+	background: url(../images/login_button.png) no-repeat 0px -39px;
+	border: 0px none;
+}
+.bottom {
+	width: 743px;
+	margin: 0 auto;
+}
+.bottom p {
+	width: 743px;
+	text-align: center;
+	font-size: 12px;
+	color: #666;
+	margin-top: 20px;
+	_margin-top: 10px;
+}

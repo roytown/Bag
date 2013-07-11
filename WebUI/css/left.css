@@ -1,0 +1,38 @@
+body {
+	background:url(../images/left_bg.gif) repeat-y;	
+}
+.left {
+	width:194px;
+	height: 100%;
+}
+.left ul {
+	float:left;
+	width:169px;
+	border:1px solid #8fc5ee;
+	margin-top:23px;
+	margin-left:17px;
+	_margin-top:11px;
+	_margin-left:8px;
+	}
+.left ul li {
+	float:left;
+	border-bottom:1px solid #dfdede;
+	}
+.left ul li:hover {
+	}
+.left ul li a {
+	font-size:12px;
+	color:#474646;
+	display:block;
+	padding-left:34px;
+	width:135px;
+	height:24px;
+	padding-top:5px;
+	background:url(../images/left_ul.gif) no-repeat left top;
+	}
+.left ul li a:hover, .left ul li a.act {
+	color:#fff;
+	_color:#474646;
+	_font-weight:bold;
+	background:url(../images/left_ul_hover.gif) no-repeat;
+	}
