@@ -4,26 +4,33 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title><%=Title %></title>
     <link href="<%=ResolveClientUrl("~/css/reset.css") %>" rel="stylesheet" type="text/css" />
-    <link href="<%=ResolveClientUrl("~/css/login.css")%>" rel="stylesheet" type="text/css" />
+    <link href="<%=ResolveClientUrl("~/css/style.css")%>" rel="stylesheet" type="text/css" />
+     <style>
+    body {
+	    background: url(<%=ResolveClientUrl("~/images/login_bg.gif")%>) #cce5ee repeat-x ;
+    }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="bg">
-		<div class="login">
-			<div class="left"></div>
-			<div class="right">
-				
+        	<div class="bg">
+		<div class="login_index">
+			<div class="left_index"></div>
+			<div class="right_index">
+				<form>
 					<table border="0" cellspacing="0" cellpadding="0">
 						<tr>
 							<td align="right" width="67">用户名:</td>
-							<td width="235"> <asp:TextBox ID="TbUserName" runat="server"></asp:TextBox></td>
+							<td width="235">
+                                <asp:TextBox ID="TbUserName" runat="server" CssClass="w233"></asp:TextBox>
+                              </td>
 							<td></td>
 						</tr>
 						<tr>
 							<td align="right">密码:</td>
-							<td><asp:TextBox ID="TbPassword" runat="server" TextMode="Password"></asp:TextBox></td>
+							<td><asp:TextBox ID="TbPassword" runat="server" TextMode="Password" CssClass="w233"></asp:TextBox></td>
 							<td></td>
 						</tr>
 						<tr>
@@ -35,16 +42,24 @@
 							</td>
 							<td></td>
 						</tr>
-        
 						<tr>
 							<td></td>
 							<td rowspan="2">
-                                 <asp:Button ID="Button1" runat="server" CssClass="submit mr30" Text="登录" OnClick="Button1_Click" />
-                                <input type="button" value="重  置" class="submit" onclick="javascript: reset();" /></td>
+                                  <asp:Button ID="Button1" runat="server" CssClass="submit mr30" Text="登录" OnClick="Button1_Click" />
+                                <input type="button" value="重  置" class="submit" onclick="javascript: reset();" />
+
+							</td>
 						</tr>
-                        
 					</table>
-			<script type="text/javascript">
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="login_bottom">
+		<p><%=Copyright %></p>
+	</div>
+    
+   <script type="text/javascript">
             <!--
                 function RefreshCheckCode() {
                     document.getElementById("CheckCodeImg").src = "<%=ResolveClientUrl("~/checkcode.aspx")%>?r=" + Math.random();
@@ -56,15 +71,8 @@
 			        document.getElementById("<%=TbPassword.ClientID%>").value = "";
 			        document.getElementById("<%=TbCheckCode.ClientID%>").value = "";
 			    }
-                //-->
+			    //-->
             </script>
-			</div>
-		</div>
-	</div>
-	<div class="bottom">
-		<p>苏州轻舟箱包服饰有限公司</p>
-	</div>
-   
     </form>
 </body>
 </html>

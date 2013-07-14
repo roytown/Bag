@@ -280,18 +280,24 @@ namespace Web
         {
             LinkCollection links = new LinkCollection();
             links.Add("~/login.aspx","点此登录");
-            WriteMessage(message, links);
+            WriteMessage(message, links,false);
         }
 
         public static void WriteMessage(string message)
         {
-            LinkCollection links = new LinkCollection();
-            links.Add("javascript:history.back();","返回");
-            WriteMessage(message, links);
+            WriteMessage(message, false);
         }
 
-        public static void WriteMessage(string message, LinkCollection links)
+        public static void WriteMessage(string message,bool isSuccess)
         {
+            LinkCollection links = new LinkCollection();
+            links.Add("javascript:history.back();","返回");
+            WriteMessage(message, links, isSuccess);
+        }
+
+        public static void WriteMessage(string message, LinkCollection links,bool isSuccess)
+        {
+            HttpContext.Current.Items["IsSuccess"] = isSuccess;
             HttpContext.Current.Items["Message"] = message;
             HttpContext.Current.Items["Links"] = links;
             HttpContext.Current.Server.Transfer("~/message.aspx");

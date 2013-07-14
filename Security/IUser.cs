@@ -10,13 +10,14 @@ namespace Security
     public interface IUser
     {
         bool Add(User u);
-        bool Delete(string userName);
+        bool Delete(int userId);
         bool Update(User u);
         bool ChangePassword(string userName, string password);
         User Get(string userName);
         User Get(string userName, string password);
         List<User> GetList(int page, int pageSize, out int count);
         bool ValidateUser(string userName, string password);
+        int GetCount();
        
     }
 }

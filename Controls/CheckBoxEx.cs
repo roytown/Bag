@@ -29,13 +29,33 @@ namespace Controls
         }
         public bool IsRequired
         {
-            get;
-            set;
+            get
+            {
+                if (this.ViewState["IsRequired"] != null)
+                {
+                    return (bool)this.ViewState["IsRequired"];
+                }
+                return false;
+            }
+            set
+            {
+                this.ViewState["IsRequired"] = value;
+            }
         }
         public string RequiredErrorMessage
         {
-            get;
-            set;
+            get
+            {
+                if (this.ViewState["RequiredErrorMessage"] != null)
+                {
+                    return (string)this.ViewState["RequiredErrorMessage"];
+                }
+                return string.Empty;
+            }
+            set
+            {
+                this.ViewState["RequiredErrorMessage"] = value;
+            }
         }
     }
 }

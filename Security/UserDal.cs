@@ -23,14 +23,18 @@ namespace Security
             return _context.SaveChanges() > 0;
         }
 
-        public bool Delete(string userName)
+        public bool Delete(int userId)
         {
-            User u = new User { UserName = userName };
+            User u = new User { UserId = userId };
             _context.Users.Attach(u);
             _context.Users.Remove(u);
             return _context.SaveChanges()>0;
         }
 
+        public int GetCount()
+        {
+            return _context.Users.Count();
+        }
 
         public bool Update(User u)
         {
@@ -57,7 +61,8 @@ namespace Security
 
         public List<User> GetList(int page, int pageSize,out int count)
         {
-            throw new NotImplementedException();
+            count=_context.Users.Count();
+            return _context.Users.OrderBy(u=>u.UserId).Skip((page - 1) * pageSize).Take(pageSize).ToList();
         }
 
         public bool ValidateUser(string userName, string password)

@@ -59,6 +59,10 @@
     <Compile Include="Migrations\201307070346209_setuserlength.Designer.cs">
       <DependentUpon>201307070346209_setuserlength.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201307141021406_userupdate.cs" />
+    <Compile Include="Migrations\201307141021406_userupdate.Designer.cs">
+      <DependentUpon>201307141021406_userupdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -78,6 +82,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201307070346209_setuserlength.resx">
       <DependentUpon>201307070346209_setuserlength.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307141021406_userupdate.resx">
+      <DependentUpon>201307141021406_userupdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

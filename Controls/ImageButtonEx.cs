@@ -23,8 +23,18 @@ namespace Controls
 
         public string Purview
         {
-            get;
-            set;
+            get
+            {
+                if (this.ViewState["Purview"] != null)
+                {
+                    return (string)this.ViewState["Purview"];
+                }
+                return string.Empty;
+            }
+            set
+            {
+                this.ViewState["Purview"] = value;
+            }
         }
     }
 }

@@ -144,24 +144,142 @@ namespace Controls
             set;
         }
 
-        public int MinTextLength { get; set; }
-        public int MaxTextLength { get; set; }
-        public int MinValue { get; set; }
-        public int MaxValue { get; set; }
-        public string EqualTo { get; set; }
+        public int MinTextLength 
+        {
+            get
+            {
+                if (this.ViewState["MinTextLength"] != null)
+                {
+                    return (int)this.ViewState["MinTextLength"];
+                }
+                return 0;
+            }
+            set
+            {
+                this.ViewState["MinTextLength"] = value;
+            }
+        }
+        public int MaxTextLength 
+        {
+            get
+            {
+                if (this.ViewState["MaxTextLength"] != null)
+                {
+                    return (int)this.ViewState["MaxTextLength"];
+                }
+                return 0;
+            }
+            set
+            {
+                this.ViewState["MaxTextLength"] = value;
+            }
+        }
+        public int MinValue 
+        {
+            get
+            {
+                if (this.ViewState["MinValue"] != null)
+                {
+                    return (int)this.ViewState["MinValue"];
+                }
+                return 0;
+            }
+            set
+            {
+                this.ViewState["MinValue"] = value;
+            }
+        }
+        public int MaxValue
+        {
+            get
+            {
+                if (this.ViewState["MaxValue"] != null)
+                {
+                    return (int)this.ViewState["MaxValue"];
+                }
+                return 0;
+            }
+            set
+            {
+                this.ViewState["MaxValue"] = value;
+            }
+        }
+        public string EqualTo 
+        {
+            get
+            {
+                if (this.ViewState["EqualTo"] != null)
+                {
+                    return (string)this.ViewState["EqualTo"];
+                }
+                return string.Empty;
+            }
+            set
+            {
+                this.ViewState["EqualTo"] = value;
+            }
+        }
 
-        public bool IsRequired { get; set; }
+        public bool IsRequired 
+        {
+            get
+            {
+                if (this.ViewState["IsRequired"] != null)
+                {
+                    return (bool)this.ViewState["IsRequired"];
+                }
+                return false;
+            }
+            set
+            {
+                this.ViewState["IsRequired"] = value;
+            }
+        }
 
         public string RequiredErrorMessage
         {
-            get;
-            set;
+            get
+            {
+                if (this.ViewState["RequiredErrorMessage"] != null)
+                {
+                    return (string)this.ViewState["RequiredErrorMessage"];
+                }
+                return string.Empty;
+            }
+            set
+            {
+                this.ViewState["RequiredErrorMessage"] = value;
+            }
         }
         public string FormatErrorMessage
         {
-            get;
-            set;
+            get
+            {
+                if (this.ViewState["FormatErrorMessage"] != null)
+                {
+                    return (string)this.ViewState["FormatErrorMessage"];
+                }
+                return string.Empty;
+            }
+            set
+            {
+                this.ViewState["FormatErrorMessage"] = value;
+            }
         }
-        public string ValueErrorMessage { get; set; }
+        public string ValueErrorMessage
+        {
+            get
+            {
+                if (this.ViewState["ValueErrorMessage"] != null)
+                {
+                    return (string)this.ViewState["ValueErrorMessage"];
+                }
+                return string.Empty;
+            }
+            set
+            {
+                this.ViewState["ValueErrorMessage"] = value;
+            }
+        }
     }
 }

@@ -47,6 +47,7 @@
     <Compile Include="CheckPurviewPageCollection.cs" />
     <Compile Include="CheckPurviewPageElement.cs" />
     <Compile Include="ConfigBase.cs" />
+    <Compile Include="ConfigFactory.cs" />
     <Compile Include="ExceptionHttpModule.cs" />
     <Compile Include="LinkCollection.cs" />
     <Compile Include="LinkItem.cs" />

@@ -14,6 +14,7 @@ namespace Security
         Role Get(int id);
         List<Role> GetAll();
         List<Role> GetForUser(int userId);
-        bool UpdatePurview(int roleId, string purview);
+        bool EnabelDelete(int id);
+        bool Delete(int id);
     }
 }

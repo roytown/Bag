@@ -10,9 +10,14 @@ namespace WebUI
 {
     public partial class Index : SecurityPage
     {
+        protected string Title;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            WebConfig config = ConfigFactory.GetWebConfig();
+            if (config!=null)
+            {
+                Title = config.Title;
+            }
         }
     }
 }

@@ -8,7 +8,6 @@ namespace Controls
 {
     public enum TextType
     {
-        None,
         Normal,
         Email,
         Url,

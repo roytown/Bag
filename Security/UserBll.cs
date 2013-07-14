@@ -25,6 +25,16 @@ namespace Security
             return userProvider.Get(userName);
         }
 
+        public static List<User> GetUsers(int page, int pageSize, out int count)
+        {
+            IUser userProvider = new UserDal(EFContext.Instance);
+            if (page<=0)
+            {
+                page = 1;
+            }
+            return userProvider.GetList(page, pageSize, out count);
+        }
+
         public static UserStatus ValidateUser(User user)
         {
             IUser userProvider = new UserDal(EFContext.Instance);
@@ -71,6 +81,8 @@ namespace Security
                 u.FailedPasswordAttemptCount = 0;
             }
             u.RndPassword = user.RndPassword = Util.StringHelper.GetRadomString(8);
+            u.LastLoginIP = user.LastLoginIP;
+            u.LastLoginTime = DateTime.Now;
             userProvider.Update(u);
 
             return UserStatus.Valid;
@@ -125,6 +137,25 @@ namespace Security
             userProvider.Update(u);
 
             return UserStatus.Valid;
+
+        }
+
+        public static bool ChangePassword(string userName, string old, string newPwd)
+        {
+            User u = GetUser(userName);
+            if (u==null)
+            {
+                return false;
+            }
+
+            if (u.Password!=Util.StringHelper.MD5(old))
+            {
+                return false;
+            }
+
+            u.Password = Util.StringHelper.MD5(newPwd);
+            IUser userProvider = new UserDal(EFContext.Instance);
+            return userProvider.Update(u);
 
         }
     }

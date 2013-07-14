@@ -21,6 +21,11 @@ namespace Web
             links.Add(new LinkItem { Url = url, Text = text });
         }
 
+        public void Add(string url, string text,bool isParent)
+        {
+            links.Add(new LinkItem { Url = url, Text = text,IsParent=isParent });
+        }
+
         public IEnumerator GetEnumerator()
         {
             return links.GetEnumerator();

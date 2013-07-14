@@ -14,11 +14,20 @@ namespace WebUI
 {
     public partial class Login : System.Web.UI.Page
     {
+        protected string Title;
+        protected string Copyright;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (RequestContext.Current.User.Identity.IsAuthenticated)
             {
                 Response.Redirect("~/index.aspx");
+            }
+
+            WebConfig config = ConfigFactory.GetWebConfig();
+            if (config!=null)
+            {
+                Title = config.Title;
+                Copyright = config.Copyright;
             }
 
             if (!IsPostBack)
@@ -95,7 +104,7 @@ namespace WebUI
             string pk = Session["password"].ToString();
             string un = Request.Form[uk];
             string ps = Request.Form[pk];
-            User u = new User { UserName = un, Password = ps };
+            User u = new User { UserName = un, Password = ps,LastLoginIP=RequestContext.Current.UserHostAddress };
             UserStatus s = UserBll.ValidateUser(u);
             if (s != UserStatus.Valid)
             {

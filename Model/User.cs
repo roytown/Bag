@@ -24,6 +24,7 @@ namespace Model
         public string RndPassword { get; set; }
         [StringLength(20)]
         public string Email { get; set; }
+        public string Phone { get; set; }
         public DateTime? LastLoginTime { get; set; }
         [StringLength(20)]
         public string LastLoginIP { get; set; }

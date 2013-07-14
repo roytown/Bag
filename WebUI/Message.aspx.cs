@@ -10,9 +10,11 @@ namespace WebUI
 {
     public partial class Message : System.Web.UI.Page
     {
+        protected bool IsSuccess;
         protected void Page_Load(object sender, EventArgs e)
         {
             string message = HttpContext.Current.Items["Message"] as string;
+            IsSuccess = (bool)HttpContext.Current.Items["IsSuccess"];
             LinkCollection links = HttpContext.Current.Items["Links"] as LinkCollection;
 
             if (!string.IsNullOrEmpty(message))
