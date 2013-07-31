@@ -29,5 +29,6 @@
             <div class="clear h10"></div>
         <a class="button mr10" href="<%=ResolveClientUrl("~/security/addrole.aspx") %>">增加角色</a>
         
-	</div>
+	</div>
+
 </asp:Content>

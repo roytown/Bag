@@ -63,5 +63,6 @@
         <a class="button mr10" href="<%=ResolveClientUrl("~/security/addrole.aspx") %>">锁定选择</a>
         <a class="button mr10" href="<%=ResolveClientUrl("~/security/addrole.aspx") %>">解锁选择</a>
         
-	</div>
+	</div>
+
 </asp:Content>
