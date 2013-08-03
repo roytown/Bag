@@ -17,6 +17,21 @@
             });
         });
     </script>
+        <table>
+            <tr>
+                <td>当前角色：</td><td colspan="2"><asp:DropDownList ID="DdlRoles" DataValueField="RoleId" DataTextField="Name" runat="server"></asp:DropDownList></td>
+            </tr>
+            <tr>
+                <td>用户名：</td>
+                <td>
+                    <asp:TextBox ID="TbUserName" runat="server"></asp:TextBox>
+
+                </td>
+                <td style="padding-left:10px;">
+                    <asp:Button ID="BtnFilter" runat="server" CssClass="button mr10" CommandName="Lock" Text="筛选" OnClick="BtnFilter_Click" />
+                </td>
+            </tr>
+        </table>
             <table cellpadding="0" cellspacing="0" border="0" width="100%" class="table3" id="table3">
                 <tr>
                     <th>
@@ -55,14 +70,15 @@
                         </tr>
                     </ItemTemplate>
                 </asp:Repeater>
-              
+                
             </table>
-           
+          
             <div class="clear h10"></div>
-        <a class="button mr10" href="<%=ResolveClientUrl("~/security/addrole.aspx") %>">增加用户</a>
-        <a class="button mr10" href="<%=ResolveClientUrl("~/security/addrole.aspx") %>">锁定选择</a>
-        <a class="button mr10" href="<%=ResolveClientUrl("~/security/addrole.aspx") %>">解锁选择</a>
-        
+        <bag:Pager ID="pager1" runat="Server" Width="100%" PageSize="20" GenerateGoToSection="true" OnCommand="pager_Command" PageClause="页码" GoToLastClause="上一页" NextToPageClause="下一页"/>
+         <div class="clear h10"></div>
+        <a class="button mr10" href="<%=ResolveClientUrl("~/security/adduser.aspx") %>">增加用户</a>
+        <asp:Button ID="Button1" runat="server" CssClass="button mr10" CommandName="Lock" Text="锁定选择" OnClick="Button1_Click" />
+        <asp:Button ID="Button2" runat="server" CssClass="button mr10" CommandName="UnLock" Text="解锁选择" OnClick="Button1_Click" />
 	</div>
 
 </asp:Content>

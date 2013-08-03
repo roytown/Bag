@@ -276,10 +276,11 @@ namespace Web
             }
         }
 
-        public static void WriteMessageWithLoginLink(string message)
+        public static void WriteMessageWithLoginLink(string message,string returnUrl="")
         {
             LinkCollection links = new LinkCollection();
-            links.Add("~/login.aspx","点此登录");
+            
+            links.Add("~/login.aspx"+(string.IsNullOrEmpty(returnUrl)?"":("?"+returnUrl)),"点此登录");
             WriteMessage(message, links,false);
         }
 

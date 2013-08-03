@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="checkcode.aspx" />
+    <Content Include="css\LightStyle.css" />
     <Content Include="css\reset.css" />
     <Content Include="css\style.css" />
     <Content Include="images\bottom_bg.gif" />
@@ -130,6 +131,8 @@
     <Content Include="Security\RoleManage.aspx" />
     <Content Include="Security\RoleSetting.aspx" />
     <Content Include="Security\UserManage.aspx" />
+    <Content Include="Task\AddTask.aspx" />
+    <Content Include="Task\TaskManage.aspx" />
     <Content Include="Tools\ajax.aspx" />
     <Content Include="Tools\LeftMenu.aspx" />
     <Content Include="Web.config">
@@ -229,6 +232,20 @@
     <Compile Include="Security\UserManage.aspx.designer.cs">
       <DependentUpon>UserManage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Task\AddTask.aspx.cs">
+      <DependentUpon>AddTask.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Task\AddTask.aspx.designer.cs">
+      <DependentUpon>AddTask.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Task\TaskManage.aspx.cs">
+      <DependentUpon>TaskManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Task\TaskManage.aspx.designer.cs">
+      <DependentUpon>TaskManage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Tools\ajax.aspx.cs">
       <DependentUpon>ajax.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -281,9 +298,7 @@
       <Name>Web</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Task\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

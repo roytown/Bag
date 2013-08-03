@@ -46,6 +46,7 @@
     <Compile Include="HyperLinkEx.cs" />
     <Compile Include="ImageButtonEx.cs" />
     <Compile Include="LinkButtonEx.cs" />
+    <Compile Include="Pager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RadioButtonEx.cs" />
     <Compile Include="TextBoxEx.cs" />
@@ -56,6 +57,12 @@
       <Project>{53151449-e535-48b1-ad54-ae59e37e7224}</Project>
       <Name>Web</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\arr_left.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\arr_right.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

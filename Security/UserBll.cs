@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 using Database;
 using Model;
-
+using EntityFramework.Extensions;
 namespace Security
 {
     public class UserBll
@@ -25,21 +25,32 @@ namespace Security
             return userProvider.Get(userName);
         }
 
-        public static List<User> GetUsers(int page, int pageSize, out int count)
+        public static List<User> GetUsers(int page, int pageSize,int roleId,string userName, out int count)
         {
             IUser userProvider = new UserDal(EFContext.Instance);
             if (page<=0)
             {
                 page = 1;
             }
-            return userProvider.GetList(page, pageSize, out count);
+            Expression<Func<User, bool>> expresion = m=>true;
+            if (roleId>0)
+            {
+                expresion = expresion.And(m => m.Roles.Any(r => r.RoleId == roleId));
+            }
+            //Expression<Func<User, bool>> expresion = m=>m.Roles.Any(r=>r.RoleId==roleId);
+            if (!string.IsNullOrEmpty(userName))
+            {
+                expresion = expresion.And(m => m.UserName.Contains(userName));
+            }
+
+            return userProvider.GetList(page, pageSize,expresion, out count);
         }
 
         public static UserStatus ValidateUser(User user)
         {
             IUser userProvider = new UserDal(EFContext.Instance);
             User u = GetUser(user.UserName);
-            UserStatus s = UserStatus.None;
+           
             if (u == null)
             {
                 return UserStatus.Invalid;
@@ -92,7 +103,7 @@ namespace Security
         {
             IUser userProvider = new UserDal(EFContext.Instance);
             User u = GetUser(userName);
-            UserStatus s = UserStatus.None;
+            
             if (u==null)
             {
                 return UserStatus.Invalid;
@@ -157,6 +168,26 @@ namespace Security
             IUser userProvider = new UserDal(EFContext.Instance);
             return userProvider.Update(u);
 
+        }
+
+        public static bool DeleteUser(int userId)
+        {
+            if (userId<=0)
+            {
+                return false;
+            }
+            IUser userProvider = new UserDal(EFContext.Instance);
+            return userProvider.Delete(userId);
+        }
+
+        public static bool SetUserStatus(string idList, bool status)
+        {
+            if (string.IsNullOrEmpty(idList) || !Util.DataValidator.IsValidId(idList))
+            {
+                return false;
+            }
+            IUser userProvider = new UserDal(EFContext.Instance);
+            return userProvider.SetStatus(idList.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Select(i => int.Parse(i)).ToArray(), status);
         }
     }
 }

@@ -117,12 +117,12 @@ namespace Web
                 {
                     if (!RequestContext.Current.User.Identity.IsAuthenticated)
                     {
-                        WebUtility.WriteMessageWithLoginLink("您未登录，请登录后重试！");
+                        WebUtility.WriteMessageWithLoginLink("您未登录，请登录后重试！",context.Server.UrlEncode(context.Request.Url.AbsoluteUri));
                     }
                     else if (RequestContext.Current.User.LastPassword != RequestContext.Current.User.UserInfo.RndPassword)
                     {
                         CookieManager.RemoveCookie(FormsAuthentication.FormsCookieName);
-                        WebUtility.WriteMessageWithLoginLink("未知的用户状态，请重新登录！");
+                        WebUtility.WriteMessageWithLoginLink("该用户已在其他地方登陆，是否重新登录！", context.Server.UrlEncode(context.Request.Url.AbsoluteUri));
                     }
                 }
             }
