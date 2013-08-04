@@ -66,6 +66,10 @@
     <Compile Include="Migrations\201307141021406_userupdate.Designer.cs">
       <DependentUpon>201307141021406_userupdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201308040235306_taskmodel.cs" />
+    <Compile Include="Migrations\201308040235306_taskmodel.Designer.cs">
+      <DependentUpon>201308040235306_taskmodel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ParameterRebinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -90,6 +94,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201307141021406_userupdate.resx">
       <DependentUpon>201307141021406_userupdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308040235306_taskmodel.resx">
+      <DependentUpon>201308040235306_taskmodel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

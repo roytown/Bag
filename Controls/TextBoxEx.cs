@@ -138,6 +138,18 @@ namespace Controls
             }
         }
 
+        protected override void OnPreRender(EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(Purview))
+            {
+                if (!Web.RequestContext.Current.User.Identity.IsAuthenticated || !Web.RequestContext.Current.User.HasPurview(Purview))
+                {
+                    this.Enabled = false;
+                }
+            }
+            base.OnPreRender(e);
+        }
+
         public TextType Type
         {
             get;
@@ -279,6 +291,22 @@ namespace Controls
             set
             {
                 this.ViewState["ValueErrorMessage"] = value;
+            }
+        }
+
+        public string Purview
+        {
+            get
+            {
+                if (this.ViewState["Purview"] != null)
+                {
+                    return (string)this.ViewState["Purview"];
+                }
+                return string.Empty;
+            }
+            set
+            {
+                this.ViewState["Purview"] = value;
             }
         }
     }

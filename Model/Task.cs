@@ -14,8 +14,27 @@ namespace Model
         public int Id { get; set; }
         [StringLength(100)]
         [Required]
-        public string Name { get; set; }
+        public string Title { get; set; }
+
+        [StringLength(50)]
+        public string Code { get; set; }
+
+        [StringLength(20)]
+        public string Customer { get; set; }
+
+        [StringLength(20)]
+        public string TelePhone { get; set; }
+
+        [StringLength(20)]
+        public string MobilePhone { get; set; }
+
+        public TaskState Status { get; set; }
+
         [StringLength(255)]
         public string Description { get; set; }
+
+        public DateTime AddTime { get; set; }
+
+
     }
 }

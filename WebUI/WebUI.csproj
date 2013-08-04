@@ -285,9 +285,9 @@
       <Project>{a08123bb-8916-4deb-bd64-33214a59724a}</Project>
       <Name>Security</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Task\Task.csproj">
+    <ProjectReference Include="..\TaskModule\TaskModule.csproj">
       <Project>{feec0327-8fff-4044-83c9-79bc9df4cf85}</Project>
-      <Name>Task</Name>
+      <Name>TaskModule</Name>
     </ProjectReference>
     <ProjectReference Include="..\Util\Util.csproj">
       <Project>{081887aa-30c0-4f23-ba50-3b53771f31d0}</Project>
