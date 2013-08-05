@@ -70,6 +70,14 @@
     <Compile Include="Migrations\201308040235306_taskmodel.Designer.cs">
       <DependentUpon>201308040235306_taskmodel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201308050241414_add-task-username-attr.cs" />
+    <Compile Include="Migrations\201308050241414_add-task-username-attr.Designer.cs">
+      <DependentUpon>201308050241414_add-task-username-attr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201308050244257_add-task-attr.cs" />
+    <Compile Include="Migrations\201308050244257_add-task-attr.Designer.cs">
+      <DependentUpon>201308050244257_add-task-attr.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ParameterRebinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -97,6 +105,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201308040235306_taskmodel.resx">
       <DependentUpon>201308040235306_taskmodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308050241414_add-task-username-attr.resx">
+      <DependentUpon>201308050241414_add-task-username-attr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308050244257_add-task-attr.resx">
+      <DependentUpon>201308050244257_add-task-attr.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

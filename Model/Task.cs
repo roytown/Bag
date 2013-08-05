@@ -35,8 +35,13 @@ namespace Model
 
         public DateTime AddTime { get; set; }
 
-        public string UserName { get; set; }
+        public string UserName { get; set; }//发布者
 
+        public string SaleUserName { get; set; }//销售负责人
+
+        public string ProduceUserName { get; set; }//生产负责人
+
+        public string QualityUserName { get; set; }//质检负责人
 
     }
 }
