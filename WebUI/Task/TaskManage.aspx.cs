@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TaskModule;
 using Web;
 
 namespace WebUI.Task
@@ -14,14 +15,13 @@ namespace WebUI.Task
         {
             if (!IsPostBack)
             {
-
+                BindData();
             }
         }
 
         protected void BtnFilter_Click(object sender, EventArgs e)
         {
-            DateTime t1 = date1.SelectedDate;
-           
+            BindData();           
         }
 
         public void pager_Command(object sender, CommandEventArgs e)
@@ -34,7 +34,10 @@ namespace WebUI.Task
         private void BindData()
         {
             int count = 0;
+            Repeater1.DataSource = TaskBll.GetTaskList(pager1.CurrentIndex, pager1.PageSize, Util.DataSecurity.FilterBadChar(tbCode.Text), date1.SelectedDate, date2.SelectedDate, Util.DataSecurity.FilterBadChar(tbTitle.Text),Util.DataSecurity.FilterBadChar(tbUserName.Text), out count);
+            Repeater1.DataBind();
             pager1.ItemCount = count;
+
             if (count < pager1.PageSize)
             {
                 pager1.Visible = false;

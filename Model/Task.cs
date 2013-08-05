@@ -35,6 +35,8 @@ namespace Model
 
         public DateTime AddTime { get; set; }
 
+        public string UserName { get; set; }
+
 
     }
 }

@@ -8,6 +8,12 @@
                     <bag:Date ID="date1" runat="Server" DayOfWeekOffset="1"/> 至 <bag:Date ID="date2" runat="Server" DayOfWeekOffset="1"/>
                  </td>
             </tr>
+             <tr>
+                <td>任务标题：</td>
+                <td colspan="2" style="height:30px;">
+                    <asp:TextBox ID="tbTitle" runat="server"></asp:TextBox>  
+                 </td>
+            </tr>
             <tr>
                 <td>任务编码：</td>
                 <td colspan="2" style="height:30px;">

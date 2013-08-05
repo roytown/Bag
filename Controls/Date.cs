@@ -35,7 +35,8 @@ namespace Controls
         {
             base.Render(writer);
             writer.Write(" <div gldp-el=\"" + this.ClientID + "_date\"  style=\"width:"+this.PickerWidth.ToString()+"px; height:"+this.PickerHeight.ToString()+"px; position:absolute; top:70px; left:100px;\"></div>");
-            writer.Write("<script type='text/javascript'>$('#" + this.ClientID + "').glDatePicker({showAlways: false,cssName:'default',dowOffset:"+DayOfWeekOffset.ToString()+",allowMonthSelect: true, allowYearSelect: true,selectedDate: new Date(" + SelectedDate.Year.ToString() + "," + SelectedDate.Month.ToString() + "," + SelectedDate.Day.ToString() + ")});</script>");
+            DateTime s = SelectedDate.HasValue ? SelectedDate.Value : DateTime.Now;
+            writer.Write("<script type='text/javascript'>$('#" + this.ClientID + "').glDatePicker({showAlways: false,cssName:'default',dowOffset:"+DayOfWeekOffset.ToString()+",allowMonthSelect: true, allowYearSelect: true,selectedDate: new Date(" + s.Year.ToString() + "," + s.Month.ToString() + "," + s.Day.ToString() + ")});</script>");
         }
 
         public string Theme
@@ -54,20 +55,16 @@ namespace Controls
             }
         }
 
-        public DateTime SelectedDate
+        public DateTime? SelectedDate
         {
             get
             {
                 if (!string.IsNullOrEmpty(Text))
                 {
                     return DateTime.Parse(this.Text);
-
-                    //return DateTime.Now;
-                   // string[] arr = this.Text.Split(new char[] { '年', '月', '日' }, StringSplitOptions.RemoveEmptyEntries);
-                   // return new DateTime(int.Parse(arr[0]), int.Parse(arr[1]), int.Parse(arr[2]));  
                 }
 
-                return DateTime.Now;
+                return null;
             }
             set
             {

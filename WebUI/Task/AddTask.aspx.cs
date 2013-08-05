@@ -50,6 +50,7 @@ namespace WebUI.Task
             {
                 task = new Model.Task();
                 task.AddTime = DateTime.Now;
+                task.UserName = RequestContext.Current.User.UserName;
             }
 
             task.Title = tbName.Text;
