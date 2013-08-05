@@ -64,7 +64,7 @@
                                 <%#((bool)Eval("IsLocked"))?"<font class=\"red fl\">账户被锁定</font>":"<font class=\"green fl\">账户正常</font>" %>
                                 </td>
                             <td>
-                             <i><a href="AddRole.aspx?action=modify&id=<%#Eval("UserId") %>">修改</a>
+                             <i><a href="AddUser.aspx?action=modify&id=<%#Eval("UserId") %>">修改</a>
                                  <bag:LinkButtonEx ID="del" runat="Server" Purview="system_user" OnClientClick="if(confirm('确认删除当前用户吗?')) return true else return false;" Text="删除" CommandName="Del" CommandArgument='<%#Eval("UserId") %>' />
                                 </i> </td>
                         </tr>
@@ -76,7 +76,7 @@
             <div class="clear h10"></div>
         <bag:Pager ID="pager1" runat="Server" Width="100%" PageSize="20" GenerateGoToSection="true" OnCommand="pager_Command" PageClause="页码" GoToLastClause="上一页" NextToPageClause="下一页"/>
          <div class="clear h10"></div>
-        <a class="button mr10" href="<%=ResolveClientUrl("~/security/adduser.aspx") %>">增加用户</a>
+        <input type="button" class="button mr10" value="增加新用户" onclick="javascript:window.location.href='<%=ResolveClientUrl("~/security/adduser.aspx")%>';"/>
         <asp:Button ID="Button1" runat="server" CssClass="button mr10" CommandName="Lock" Text="锁定选择" OnClick="Button1_Click" />
         <asp:Button ID="Button2" runat="server" CssClass="button mr10" CommandName="UnLock" Text="解锁选择" OnClick="Button1_Click" />
 	</div>

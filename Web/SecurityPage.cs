@@ -14,6 +14,7 @@ namespace Web
     public class SecurityPage:Page
     {
         private List<ValidateRule> _rules;
+     
         public SecurityPage()
         {
             _rules = new List<ValidateRule>();
@@ -45,6 +46,7 @@ namespace Web
             {
                 this.ClientScript.RegisterStartupScript(typeof(Page), "form-validator", GetValidtorJs());
             }
+
             base.OnLoadComplete(e);
         }
 

@@ -21,11 +21,10 @@
 			<div class="top">
 				<img src="<%=ResolveClientUrl("~/images/logo.png") %>"" class="logo" />
 				<ul class="nav">
-
-					<li class="nav_01"><a href="#">任务</a></li>
-					<li class="nav_02"><a href="#">技术</a></li>
-					<li class="nav_03"><a href="#">生产</a></li>
-					<li class="nav_04"><a href="#">仓储</a></li>
+					<li class="nav_01"  onclick="javascript:GetMenu('task')"><a href="javascript:void(0)">任务</a></li>
+					<li class="nav_02"  onclick="javascript:GetMenu('tech')"><a href="javascript:void(0)">技术</a></li>
+					<li class="nav_03"  onclick="javascript:GetMenu('produce')"><a href="javascript:void(0)">生产</a></li>
+					<li class="nav_04"  onclick="javascript:GetMenu('stock')"><a href="javascript:void(0)">仓储</a></li>
 					<li class="nav_05"  onclick="javascript:GetMenu('system')"><a href="javascript:void(0)">系统</a></li>
 				</ul>
 				<div class="login">
@@ -51,6 +50,9 @@
             $("#menulist").html(data);
         });
     }
+    $(document).ready(function () {
+        GetMenu("task");
+    });
 </script>
 	<div class="wrap_con_s">
 	<!-- left部分 -->
@@ -60,9 +62,7 @@
                     <img src="<%=ResolveClientUrl("~/images/loading.gif") %>" />
                 </div>
 				<ul id="menulist">
-					<li><a href="">新建研发任务</a></li>
-					<li><a href="">我负责的任务</a></li>
-					<li><a href="" class="act">查询任务</a></li>
+					
 				</ul>
 			</div>
 		</div>

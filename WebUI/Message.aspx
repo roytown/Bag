@@ -5,7 +5,7 @@
         <span class="tips_title_s">消息提示</span>
     </div>
     <div class="pop_bd_s h100_s clearfix">
-        <span class="error_s fl_s"></span>
+        <span class="<%=IsSuccess?"success_s":"error_s" %> fl_s"></span>
         <p class="tips_text fl_s">
             <asp:Literal ID="Literal1" runat="server"></asp:Literal>
         </p>
@@ -16,7 +16,7 @@
                  <ul>
              </HeaderTemplate>
             <ItemTemplate>
-               <li> <asp:HyperLink ID="HyperLink1" CssClass="button mr10" Target='<%#((bool)Eval("IsParent"))?"parent":"" %>' runat="server" NavigateUrl='<%#Eval("Url") %>' Text='<%#Eval("Text") %>'></asp:HyperLink></li>
+               <li> <asp:HyperLink ID="HyperLink1" Target='<%#((bool)Eval("IsParent"))?"parent":"" %>' runat="server" NavigateUrl='<%#Eval("Url") %>' Text='<%#"["+Eval("Text")+"]" %>'></asp:HyperLink></li>
             </ItemTemplate>
             <FooterTemplate>
                 </ul>

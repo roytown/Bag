@@ -75,6 +75,18 @@ namespace Controls
                         }
                         
                         break;
+                    case TextType.MobilePhone:
+                        if (!string.IsNullOrEmpty(FormatErrorMessage))
+                        {
+                            message += ",mobilephone:'" + FormatErrorMessage + "'";
+                        }
+                        break;
+                    case TextType.Telephone:
+                        if (!string.IsNullOrEmpty(FormatErrorMessage))
+                        {
+                            message += ",telephone:'" + FormatErrorMessage + "'";
+                        }
+                        break;
 
                 }
 
@@ -91,6 +103,14 @@ namespace Controls
         protected override void AddAttributesToRender(HtmlTextWriter writer)
         {
             base.AddAttributesToRender(writer);
+
+            if (!(this.Page is SecurityPage))
+            {
+                return;
+            }
+
+            SecurityPage p = this.Page as SecurityPage;
+
             if (!string.IsNullOrEmpty(EqualTo))
             {
                 writer.AddAttribute("equalTo", EqualTo);
@@ -134,6 +154,14 @@ namespace Controls
                 case TextType.Number:
                     writer.AddAttribute("number", "true");
                     break;
+                case TextType.MobilePhone:
+                    writer.AddAttribute("mobilephone", "true");
+                    this.Page.ClientScript.RegisterStartupScript(typeof(Page),"jquery-validator-mobilephone","<script type='text/javascript'>jQuery.validator.addMethod(\"mobilephone\", function(value, element) { var length = value.length; var mobile = /^(((13[0-9]{1})|(15[0-9]{1}))+\\d{8})$/; return this.optional(element) || (length == 11 && mobile.test(value)); }, \""+FormatErrorMessage+"\");</script> ");
+                    break;
+                case TextType.Telephone:
+                    writer.AddAttribute("telephone", "true");
+                    this.Page.ClientScript.RegisterStartupScript(typeof(Page), "jquery-validator-telephone", "<script type='text/javascript'>jQuery.validator.addMethod(\"telephone\", function(value, element) { var tel =/^\\d{3,4}[-]?\\d{7,8}$/; return this.optional(element) || (tel.test(value)); }, \"" + FormatErrorMessage + "\");</script> ");
+                    break;
 
             }
         }
@@ -152,8 +180,18 @@ namespace Controls
 
         public TextType Type
         {
-            get;
-            set;
+            get
+            {
+                if (this.ViewState["TextType"] != null)
+                {
+                    return (TextType)this.ViewState["TextType"];
+                }
+                return TextType.Normal;
+            }
+            set
+            {
+                this.ViewState["TextType"] = value;
+            }
         }
 
         public int MinTextLength 

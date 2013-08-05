@@ -30,8 +30,12 @@ namespace WebUI.Security
             int count = 0;
             Repeater1.DataSource = UserBll.GetUsers(pager1.CurrentIndex, pager1.PageSize, roleId,DataSecurity.FilterBadChar(TbUserName.Text),out count);
             Repeater1.DataBind();
-
             pager1.ItemCount = count;
+            if (count<pager1.PageSize)
+            {
+                pager1.Visible = false;
+            }
+            
             
         }
 

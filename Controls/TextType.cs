@@ -12,6 +12,8 @@ namespace Controls
         Email,
         Url,
         Int,
-        Number
+        Number,
+        Telephone,
+        MobilePhone
     }
 }

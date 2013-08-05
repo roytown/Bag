@@ -9,6 +9,7 @@ using Database;
 using Model;
 using EntityFramework.Extensions;
 using System.Linq.Expressions;
+using System.Data.Entity.Infrastructure;
 namespace Security
 {
     public class UserDal:IUser
@@ -38,10 +39,31 @@ namespace Security
             return _context.Users.Count();
         }
 
-        public bool Update(User u)
+        public bool UserNameInUse(string userName)
         {
-            _context.Users.Attach(u);
-            _context.Entry(u).State = System.Data.EntityState.Modified;
+            return _context.Users.Any(m => m.UserName == userName);
+        }
+
+        public bool Update(User u, params string[] modifiedProperty)
+        {
+            if (modifiedProperty == null || modifiedProperty.Length == 0)
+            {
+                _context.Entry(u).State = System.Data.EntityState.Modified;
+            }
+            else
+            {
+                _context.Users.Attach(u);
+
+                var entry = ((IObjectContextAdapter)_context).ObjectContext.ObjectStateManager.GetObjectStateEntry(u);
+
+                if (modifiedProperty != null)
+                {
+                    foreach (string str in modifiedProperty)
+                    {
+                        entry.SetModifiedProperty(str);
+                    }
+                }
+            }
             return _context.SaveChanges()>0;
             
         }
@@ -54,6 +76,11 @@ namespace Security
         public User Get(string userName)
         {
             return _context.Users.AsNoTracking().FirstOrDefault(m => m.UserName == userName);
+        }
+
+        public User Get(int userId)
+        {
+            return _context.Users.AsNoTracking().FirstOrDefault(m => m.UserId == userId);
         }
 
         public User Get(string userName, string password)

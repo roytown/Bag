@@ -11,6 +11,7 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using Util;
+using System.Xml;
 
 namespace Web
 {
@@ -184,7 +185,6 @@ namespace Web
             return index;
         }
 
-
         public static string RebuildPageName(string filename, NameValueCollection query)
         {
             if (string.IsNullOrEmpty(filename))
@@ -326,5 +326,13 @@ namespace Web
 
         }
 
+        public static string GetXmlNodeAttribute(XmlNode node, string attr)
+        {
+            if (node!=null && node.Attributes[attr]!=null)
+            {
+                return node.Attributes[attr].Value;
+            }
+            return string.Empty;
+        }
     }
 }

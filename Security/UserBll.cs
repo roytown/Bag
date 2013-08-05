@@ -15,14 +15,30 @@ namespace Security
         public static bool AddUser(User u)
         {
             IUser userProvider = new UserDal(EFContext.Instance);
-            u.Password = Util.StringHelper.MD5(u.Password);
+            //u.Password = Util.StringHelper.MD5(u.Password);
             return userProvider.Add(u);
+        }
+
+        public static bool UserNameInUse(string userName)
+        {
+            IUser userProvider = new UserDal(EFContext.Instance);
+            return userProvider.UserNameInUse(userName);
         }
 
         public static User GetUser(string userName)
         {
             IUser userProvider = new UserDal(EFContext.Instance);
             return userProvider.Get(userName);
+        }
+
+        public static User GetUser(int userId)
+        {
+            if (userId<=0)
+            {
+                return null;
+            }
+            IUser userProvider = new UserDal(EFContext.Instance);
+            return userProvider.Get(userId);
         }
 
         public static List<User> GetUsers(int page, int pageSize,int roleId,string userName, out int count)
@@ -188,6 +204,12 @@ namespace Security
             }
             IUser userProvider = new UserDal(EFContext.Instance);
             return userProvider.SetStatus(idList.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Select(i => int.Parse(i)).ToArray(), status);
+        }
+
+        public static bool UpdateUser(User u, params string[] modifiedProperty)
+        {
+            IUser userProvider = new UserDal(EFContext.Instance);
+            return userProvider.Update(u,modifiedProperty);
         }
     }
 }

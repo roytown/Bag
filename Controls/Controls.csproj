@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="ButtonEx.cs" />
     <Compile Include="CheckBoxEx.cs" />
+    <Compile Include="Date.cs" />
     <Compile Include="DateTimePicker.cs" />
     <Compile Include="HyperLinkEx.cs" />
     <Compile Include="ImageButtonEx.cs" />

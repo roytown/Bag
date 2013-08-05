@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Web;
+using System.Xml;
 
 namespace WebUI
 {
@@ -18,6 +19,10 @@ namespace WebUI
             {
                 Title = config.Title;
             }
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load(Server.MapPath("~/config/map.config"));
+
         }
     }
 }

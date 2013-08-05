@@ -55,6 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="checkcode.aspx" />
+    <Content Include="css\glDatePicker.darkneon.css" />
+    <Content Include="css\glDatePicker.default.css" />
+    <Content Include="css\glDatePicker.flatwhite.css" />
     <Content Include="css\LightStyle.css" />
     <Content Include="css\reset.css" />
     <Content Include="css\style.css" />
@@ -118,10 +121,13 @@
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\additional-methods.js" />
     <Content Include="Scripts\additional-methods.min.js" />
+    <Content Include="Scripts\glDatePicker.js" />
+    <Content Include="Scripts\glDatePicker.min.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
+    <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\main.js" />
@@ -135,6 +141,7 @@
     <Content Include="Task\TaskManage.aspx" />
     <Content Include="Tools\ajax.aspx" />
     <Content Include="Tools\LeftMenu.aspx" />
+    <Content Include="Tools\waitstat.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -259,6 +266,13 @@
     </Compile>
     <Compile Include="Tools\LeftMenu.aspx.designer.cs">
       <DependentUpon>LeftMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\waitstat.aspx.cs">
+      <DependentUpon>waitstat.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tools\waitstat.aspx.designer.cs">
+      <DependentUpon>waitstat.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

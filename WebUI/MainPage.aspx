@@ -4,6 +4,7 @@
         <div class="dcl">
             <h2>待处理</h2>
             <ul>
+
                 <li><a href="#"><img src="../images/li_01.png" />待办事项<b>(3)</b></a></li>
                 <li><a href="#"><img src="../images/li_02.png" />未查看消息<b>(3)</b></a></li>
                 <li><a href="#"><img src="../images/li_03.png" />待审核任务<b>(3)</b></a></li>
@@ -14,16 +15,15 @@
         <div class="kjcz">
             <h2>快捷操作</h2>
             <ul>
-                <li><a href="#"><span><img src="../images/li_001.png" /></span><b>新建研发任务</b></a></li>
-                <li><a href="#"><span><img src="../images/li_002.png" /></span><b>检索研发任务</b></a></li>
-                <li><a href="#"><span><img src="../images/li_001.png" /></span><b>新建生产任务</b></a></li>
-                <li><a href="#"><span><img src="../images/li_002.png" /></span><b>检索研发任务</b></a></li>
-                <li><a href="#"><span><img src="../images/li_003.png" /></span><b>订单时间统计</b></a></li>
-                <li><a href="#"><span><img src="../images/li_004.png" /></span><b>提交质检记录</b></a></li>
-                <li><a href="#"><span><img src="../images/li_005.png" /></span><b>指派质检员</b></a></li>
-                <li><a href="#"><span><img src="../images/li_006.png" /></span><b>指派质检负责负责人</b></a></li>
-                <li><a href="#"><span><img src="../images/li_006.png" /></span><b>指派任务负责人</b></a></li>
-                <li><a href="#"><span><img src="../images/li_007.png" /></span><b>审核研发任务</b></a></li>
+                <asp:Repeater ID="RptShortCuts" runat="server" OnItemDataBound="RptShortCuts_ItemDataBound">
+                    <ItemTemplate>
+                        <li>
+                            <asp:HyperLink ID="HyperLink1" runat="server">
+                                <span><asp:Image ID="Image1" runat="server" /></span><b><asp:Literal ID="Literal1" runat="server"></asp:Literal></b>
+                            </asp:HyperLink>
+                         </li>
+                    </ItemTemplate>
+                </asp:Repeater>
             </ul>
         </div>
     </div>

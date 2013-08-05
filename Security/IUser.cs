@@ -12,13 +12,15 @@ namespace Security
     {
         bool Add(User u);
         bool Delete(int userId);
-        bool Update(User u);
+        bool Update(User u, params string[] modifiedProperty);
         bool ChangePassword(string userName, string password);
+        User Get(int userId);
         User Get(string userName);
         User Get(string userName, string password);
         List<User> GetList(int page, int pageSize, Expression<Func<User, bool>> expresion, out int count);
         bool ValidateUser(string userName, string password);
         int GetCount();
         bool SetStatus(int[] idList, bool status);
+        bool UserNameInUse(string userName);
     }
 }

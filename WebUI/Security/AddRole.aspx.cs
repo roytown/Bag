@@ -20,21 +20,22 @@ namespace WebUI.Security
         protected void Page_Load(object sender, EventArgs e)
         {
             action = RequestString("action");
+            if (action == "modify")
+            {
+                role = RoleBll.GetRole(RequestInt32("id"));
+                if (role == null)
+                {
+                    LinkCollection c = new LinkCollection();
+                    c.Add("~/security/addrole.aspx", "添加角色");
+                    c.Add("~/security/rolemanage.aspx", "角色管理");
 
+                    WriteMessage("无法获取相关角色信息", c, false);
+                }
+            }
             if (!IsPostBack)
             {
                 if (action == "modify")
                 {
-                    role = RoleBll.GetRole(RequestInt32("id"));
-                    if (role==null)
-                    {
-                        LinkCollection c = new LinkCollection();
-                        c.Add("~/security/addrole.aspx", "添加角色");
-                        c.Add("~/security/rolemanage.aspx", "角色管理");
-
-                        WriteMessage("无法获取相关角色信息", c, false);
-                    }
-
                     tbName.Text = role.Name;
                     tbDescription.Text = role.Description;
                     if (string.IsNullOrEmpty(role.Purview))
@@ -65,11 +66,7 @@ namespace WebUI.Security
 
         protected void BtnOk_Click(object sender, EventArgs e)
         {
-            if (action=="modify")
-            {
-                role = RoleBll.GetRole(RequestInt32("id"));
-            }
-            else
+            if (action!="modify")
             {
                 role = new Role();
             }
