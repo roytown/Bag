@@ -34,62 +34,63 @@ namespace Controls
                 {
                     message += ",equalTo:'" + ValueErrorMessage + "'";
                 }
-
-                switch (Type)
+                else
                 {
-                    case TextType.Normal:
-                        if (!string.IsNullOrEmpty(FormatErrorMessage))
-                        {
-                            message += ",minlength:'" + FormatErrorMessage + "'";
-                            message += ",maxlength:'" + FormatErrorMessage + "'";
-                        }
-                        break;
-                    case TextType.Email:
-                        if (!string.IsNullOrEmpty(FormatErrorMessage))
-                        {
-                            message += ",email:'" + FormatErrorMessage + "'";
-                        }
-                        break;
-                    case TextType.Url:
-                        if (!string.IsNullOrEmpty(FormatErrorMessage))
-                        {
-                            message += ",url:'" + FormatErrorMessage + "'";
-                        }
-                        break;
-                    case TextType.Int:
-                        if (!string.IsNullOrEmpty(FormatErrorMessage))
-                        {
-                            message += ",digits:'" + FormatErrorMessage + "'";
-                        }
-                        if (!string.IsNullOrEmpty(ValueErrorMessage))
-                        {
-                            message += ",min:'" + ValueErrorMessage + "'";
-                            message += ",max:'" + ValueErrorMessage + "'";
-                        }
-                       
-                        break;
-                    case TextType.Number:
-                        if (!string.IsNullOrEmpty(FormatErrorMessage))
-                        {
-                            message += ",number:'" + FormatErrorMessage + "'";
-                        }
-                        
-                        break;
-                    case TextType.MobilePhone:
-                        if (!string.IsNullOrEmpty(FormatErrorMessage))
-                        {
-                            message += ",mobilephone:'" + FormatErrorMessage + "'";
-                        }
-                        break;
-                    case TextType.Telephone:
-                        if (!string.IsNullOrEmpty(FormatErrorMessage))
-                        {
-                            message += ",telephone:'" + FormatErrorMessage + "'";
-                        }
-                        break;
+                    switch (Type)
+                    {
+                        case TextType.Normal:
+                            if (!string.IsNullOrEmpty(FormatErrorMessage))
+                            {
+                                message += ",minlength:'" + FormatErrorMessage + "'";
+                                message += ",maxlength:'" + FormatErrorMessage + "'";
+                            }
+                            break;
+                        case TextType.Email:
+                            if (!string.IsNullOrEmpty(FormatErrorMessage))
+                            {
+                                message += ",email:'" + FormatErrorMessage + "'";
+                            }
+                            break;
+                        case TextType.Url:
+                            if (!string.IsNullOrEmpty(FormatErrorMessage))
+                            {
+                                message += ",url:'" + FormatErrorMessage + "'";
+                            }
+                            break;
+                        case TextType.Int:
+                            if (!string.IsNullOrEmpty(FormatErrorMessage))
+                            {
+                                message += ",digits:'" + FormatErrorMessage + "'";
+                            }
+                            if (!string.IsNullOrEmpty(ValueErrorMessage))
+                            {
+                                message += ",min:'" + ValueErrorMessage + "'";
+                                message += ",max:'" + ValueErrorMessage + "'";
+                            }
 
+                            break;
+                        case TextType.Number:
+                            if (!string.IsNullOrEmpty(FormatErrorMessage))
+                            {
+                                message += ",number:'" + FormatErrorMessage + "'";
+                            }
+
+                            break;
+                        case TextType.MobilePhone:
+                            if (!string.IsNullOrEmpty(FormatErrorMessage))
+                            {
+                                message += ",mobilephone:'" + FormatErrorMessage + "'";
+                            }
+                            break;
+                        case TextType.Telephone:
+                            if (!string.IsNullOrEmpty(FormatErrorMessage))
+                            {
+                                message += ",telephone:'" + FormatErrorMessage + "'";
+                            }
+                            break;
+
+                    }
                 }
-
                 if (!string.IsNullOrEmpty(message))
                 {
                     message = message.Remove(0, 1);
