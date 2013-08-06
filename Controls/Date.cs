@@ -69,6 +69,34 @@ namespace Controls
             set
             {
                 this.ViewState["SelectedDate"] = value;
+                if (value != null && value.HasValue)
+                {
+                    this.Text = value.Value.ToString("yyyy-MM-dd");
+                }
+                else
+                {
+                    this.Text = "";
+                }
+            }
+        }
+
+        public DateTime Value
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(Text))
+                {
+                    return DateTime.Parse(this.Text);
+                }
+
+                return DateTime.Now;
+            }
+            set
+            {
+                this.ViewState["Value"] = value;
+
+                this.Text = value.ToString("yyyy-MM-dd");
+
             }
         }
 
