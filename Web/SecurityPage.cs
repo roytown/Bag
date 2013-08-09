@@ -119,6 +119,11 @@ namespace Web
             return WebUtility.RequestInt32(queryItem, 0);
         }
 
+        public DateTime? RequestDateTime(string queryItem)
+        {
+            return WebUtility.RequestDateTime(queryItem);
+        }
+
         public int RequestInt32(string queryItem, int defaultValue)
         {
             return WebUtility.RequestInt32(queryItem, defaultValue);

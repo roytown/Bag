@@ -16,14 +16,9 @@ namespace Web
             links = new List<LinkItem>();
         }
 
-        public void Add(string url, string text)
+        public void Add(string url, string text, bool isParent=false, string purview = "")
         {
-            links.Add(new LinkItem { Url = url, Text = text });
-        }
-
-        public void Add(string url, string text,bool isParent)
-        {
-            links.Add(new LinkItem { Url = url, Text = text,IsParent=isParent });
+            links.Add(new LinkItem { Url = url, Text = text, IsParent=isParent, Purview=purview });
         }
 
         public IEnumerator GetEnumerator()

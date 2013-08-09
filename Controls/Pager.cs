@@ -251,7 +251,7 @@ namespace Controls
         /// Gets or sets the text caption displayed as "go" in the pager control.
         /// Default value: go
         /// </summary>
-        private string _GO = "go";
+        private string _GO = "转到";
         [Category("Globalization")]
         public string GoClause
         {
@@ -299,7 +299,7 @@ namespace Controls
         /// Gets or sets the text caption displayed as "to" in the pager control.
         /// Default value: to
         /// </summary>
-        private string _TO = "to";
+        private string _TO = "到";
         [Category("Globalization")]
         public string ToClause
         {
@@ -323,7 +323,7 @@ namespace Controls
         /// Gets or sets the text caption displayed as "Show Result" in the pager control.
         /// Default value: Show Result
         /// </summary>
-        private string _SHOW_RESULT = "Show Result";
+        private string _SHOW_RESULT = "显示记录";
         [Category("Globalization")]
         public string ShowResultClause
         {
@@ -335,7 +335,7 @@ namespace Controls
         /// Gets or sets the text caption displayed as "to First Page" in the pager control.
         /// Default value: to First Page
         /// </summary>
-        private string _BACK_TO_FIRST = "首页";
+        private string _BACK_TO_FIRST = "转到首页";
         [Category("Globalization")]
         public string BackToFirstClause
         {
@@ -347,7 +347,7 @@ namespace Controls
         /// Gets or sets the text caption displayed as "to Last Page" in the pager control.
         /// Default value: to Last Page
         /// </summary>
-        private string _GO_TO_LAST = "尾页";
+        private string _GO_TO_LAST = "转到尾页";
         [Category("Globalization")]
         public string GoToLastClause
         {
@@ -359,7 +359,7 @@ namespace Controls
         /// Gets or sets the text caption displayed as "Back to Page" in the pager control.
         /// Default value: Back to Page
         /// </summary>
-        private string _BACK_TO_PAGE = "上一页";
+        private string _BACK_TO_PAGE = "转到上一页";
         [Category("Globalization")]
         public string BackToPageClause
         {
@@ -371,7 +371,7 @@ namespace Controls
         /// Gets or sets the text caption displayed as "Next to Page" in the pager control.
         /// Default value: Next to Page
         /// </summary>
-        private string _NEXT_TO_PAGE = "下一页";
+        private string _NEXT_TO_PAGE = "转到下一页";
         [Category("Globalization")]
         public string NextToPageClause
         {
@@ -383,7 +383,7 @@ namespace Controls
         /// Gets or sets the text caption displayed as "Last Page" in the pager control.
         /// Default value: &gt;&gt;
         /// </summary>
-        private string _LAST = "&gt;&gt;";
+        private string _LAST = "尾页";
         [Category("Globalization")]
         public string LastClause
         {
@@ -395,7 +395,7 @@ namespace Controls
         /// Gets or sets the text caption displayed as "First Page" in the pager control.
         /// Default value: &lt;&lt;
         /// </summary>
-        private string _FIRST = "&lt;&lt;";
+        private string _FIRST = "首页";
         [Category("Globalization")]
         public string FirstClause
         {
@@ -407,7 +407,7 @@ namespace Controls
         /// Gets or sets the text caption displayed as "Previous Page" in the pager control.
         /// Default value: &lt;
         /// </summary>
-        private string _previous = "&lt;";
+        private string _previous = "上一页";
         [Category("Globalization")]
         public string PreviousClause
         {
@@ -419,7 +419,7 @@ namespace Controls
         /// Gets or sets the text caption displayed as "Next Page" in the pager control.
         /// Default value: &gt;
         /// </summary>
-        private string _next = "&gt;";
+        private string _next = "下一页";
         [Category("Globalization")]
         public string NextClause
         {

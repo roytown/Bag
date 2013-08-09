@@ -8,6 +8,7 @@ using System.Transactions;
 using Database;
 using Model;
 using EntityFramework.Extensions;
+using ExpressionExtended;
 namespace Security
 {
     public class UserBll

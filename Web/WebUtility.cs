@@ -248,6 +248,24 @@ namespace Web
             return DataConverter.ToLng(HttpContext.Current.Request.QueryString[queryItem], defaultValue);
         }
 
+        public static DateTime? RequestDateTime(string queryItem)
+        {
+            string str = HttpContext.Current.Request.QueryString[queryItem];
+            if (string.IsNullOrEmpty(str))
+            {
+                return null;
+            }
+
+            DateTime t;
+            if (!DateTime.TryParse(str,out t))
+            {
+                return null;
+            }
+
+            return t;
+
+        }
+
         public static string RequestString(string queryItem, string defaultValue)
         {
             string str = HttpContext.Current.Request.QueryString[queryItem];
@@ -280,7 +298,7 @@ namespace Web
         {
             LinkCollection links = new LinkCollection();
 
-            links.Add("~/login.aspx" + (string.IsNullOrEmpty(returnUrl) ? "" : ("?ReturnUrl=" + returnUrl)), "点此登录");
+            links.Add("~/logon.aspx" + (string.IsNullOrEmpty(returnUrl) ? "" : ("?ReturnUrl=" + returnUrl)), "点此登录");
             WriteMessage(message, links,false);
         }
 

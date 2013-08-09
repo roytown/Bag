@@ -63,6 +63,10 @@
       <Project>{466380dc-f9a5-424c-a6cd-f35e35516c42}</Project>
       <Name>Database</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ExpressionExtended\ExpressionExtended.csproj">
+      <Project>{7eca0c69-5227-4e6b-875a-34ebe33f90fb}</Project>
+      <Name>ExpressionExtended</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{02a7e2a7-28dd-4609-bcb3-93e3641861e2}</Project>
       <Name>Model</Name>
