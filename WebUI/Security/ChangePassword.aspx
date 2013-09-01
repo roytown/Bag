@@ -2,7 +2,7 @@
 <asp:Content ContentPlaceHolderID="Content" ID="content" runat="Server">
     <div class="right">
     	
-        	<table cellpadding="0" cellspacing="0" border="0" width="100%" class="table2">
+        	<table cellpadding="2" cellspacing="1" border="0" width="100%" class="table2">
         		<tr>
             		<td class="td2_1">旧密码：</td>
                     <td>
@@ -18,7 +18,7 @@
         		<tr>
             		<td class="td2_1">重复新密码：</td>
                     <td>  
-                        <bag:TextBoxEx ID="confirmPwd" runat="Server"  TextMode="Password" CssClass="input" ValueErrorMessage="两次输入的密码不相同" /></td>
+                        <bag:TextBoxEx ID="confirmPwd" runat="Server"  TextMode="Password" CssClass="input" ValueErrorMessage ="两次输入的密码不相同" /></td>
             	</tr>
         		
         		<tr>

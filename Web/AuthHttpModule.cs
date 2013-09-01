@@ -18,7 +18,8 @@ namespace Web
     {
         private static object _obj=new object();
         private static CheckPurviewElement checkPurviewElement;
-        private NoCheckLogOnElement noCheckLogOnSection;
+        private static NoCheckLogOnElement noCheckLogOnSection;
+        private static CheckSecurityCodeElement checkSecurityCode;
 
         private void Application_BeginRequest(object sender, EventArgs e)
         {
@@ -78,6 +79,8 @@ namespace Web
                         if (principal3.Identity.IsAuthenticated)
                         {
                             principal3.UserInfo = UserBll.GetUser(principal3.UserName);
+                            principal3.UserId = principal3.UserInfo.UserId;
+                            
                             principal3.Roles = principal3.UserInfo.Roles;
                             if (principal3.Roles != null)
                             {
@@ -117,7 +120,7 @@ namespace Web
                 {
                     if (!RequestContext.Current.User.Identity.IsAuthenticated)
                     {
-                        WebUtility.WriteMessageWithLoginLink("您未登录，请登录后重试！",context.Server.UrlEncode(context.Request.Url.AbsoluteUri));
+                        WebUtility.WriteMessageWithLoginLink("您未登录，请登录后重试！", context.Server.UrlEncode(context.Request.Url.AbsoluteUri));
                     }
                     else if (RequestContext.Current.User.LastPassword != RequestContext.Current.User.UserInfo.RndPassword)
                     {
@@ -127,22 +130,52 @@ namespace Web
                 }
             }
         }
+        private void Application_PreRequestHandlerExecute(object sender, EventArgs e)
+        {
+            HttpApplication application = (HttpApplication)sender;
+            HttpContext context = application.Context;
+
+            if (RequestContext.Current.User.Identity.IsAuthenticated && context.Session["UserName"] == null)
+            {
+                context.Session.Add("UserName", RequestContext.Current.User.UserName);
+            }
+            if (context.Request.Url.GetLeftPart(UriPartial.Path).EndsWith(".aspx", StringComparison.OrdinalIgnoreCase))
+            {
+                if (checkSecurityCode != null)
+                {
+                    string filePath = (context.Request.AppRelativeCurrentExecutionFilePath).ToLower(CultureInfo.CurrentCulture);
+
+                    if (checkSecurityCode.Page[filePath] != null)
+                    {
+                        string code = WebUtility.GetSecurityCode(context.Request.Url.PathAndQuery);
+                        if (context.Request.QueryString["sc"] == null || code != context.Request.QueryString["sc"])
+                        {
+                            WebUtility.WriteMessage("安全检验码检验失败，您当前的访问被阻止", false);
+                        }
+                    }
+                }
+            }
+        }
 
 
         private void Application_AuthorizeRequest(object sender, EventArgs e)
         {
-            if (checkPurviewElement!=null)
+            HttpApplication application = (HttpApplication)sender;
+            HttpContext context = application.Context;
+
+            if (context.Request.Url.GetLeftPart(UriPartial.Path).EndsWith(".aspx", StringComparison.OrdinalIgnoreCase))
             {
-                HttpApplication application = (HttpApplication)sender;
-                HttpContext context = application.Context;
-                string filePath = (context.Request.AppRelativeCurrentExecutionFilePath).ToLower(CultureInfo.CurrentCulture);
-
-                CheckPurviewPageElement element = checkPurviewElement.Page[filePath];
-                if (element!=null && !string.IsNullOrEmpty(element.Purview))
+                if (checkPurviewElement != null)
                 {
-                    if (!RequestContext.Current.User.HasPurview(element.Purview))
-                    {
+                    string filePath = (context.Request.AppRelativeCurrentExecutionFilePath).ToLower(CultureInfo.CurrentCulture);
 
+                    CheckPurviewPageElement element = checkPurviewElement.Page[filePath];
+                    if (element != null && !string.IsNullOrEmpty(element.Purview))
+                    {
+                        if (!RequestContext.Current.User.HasPurview(element.Purview))
+                        {
+                            WebUtility.WriteMessage("您没有权限执行该操作", false);
+                        }
                     }
                 }
             }
@@ -197,6 +230,7 @@ namespace Web
                 PageSecuritySection section = (PageSecuritySection)WebConfigurationManager.GetSection("PageSecurity");
                 checkPurviewElement = section.CheckPurview;
                 noCheckLogOnSection = section.NoCheckLogOn;
+                checkSecurityCode = section.CheckSecurityCode;
             }
 
             AuthenticationSection section1 = (AuthenticationSection)WebConfigurationManager.GetSection("system.web/authentication");
@@ -206,8 +240,11 @@ namespace Web
                 context.AuthenticateRequest += new EventHandler(this.Application_AuthenticateRequest);
                 context.PostAuthenticateRequest += Application_PostAuthenticateRequest;
                 context.AuthorizeRequest += Application_AuthorizeRequest;
+                context.PreRequestHandlerExecute += Application_PreRequestHandlerExecute;
             }
         }
+
+        
 
         // Properties
         public static string ModuleName

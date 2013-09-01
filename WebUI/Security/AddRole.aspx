@@ -12,7 +12,7 @@
         		<tr>
             		<td class="td2_1">角色说明：</td>
                     <td>
-                        <bag:TextBoxEx ID="tbDescription" runat="Server" TextMode="MultiLine" Rows="6" CssClass="input"  />
+                        <bag:TextBoxEx ID="tbDescription" Height="130" runat="Server" TextMode="MultiLine" Rows="6" CssClass="input"  />
                      </td>
             	</tr>
         		<tr>
@@ -45,7 +45,7 @@
         		
         		<tr>
             		<td class="td2_1"></td><td>
-                        <asp:Button ID="BtnOk" OnClick="BtnOk_Click" runat="server" CssClass="button" Text="提  交" />
+                        <asp:Button ID="BtnOk" OnClick="BtnOk_Click" runat="server" CssClass="coolbg" Text="提  交" />
                         </td>
             	</tr>
         	</table>

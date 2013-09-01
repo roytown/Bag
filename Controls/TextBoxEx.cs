@@ -348,5 +348,21 @@ namespace Controls
                 this.ViewState["Purview"] = value;
             }
         }
+
+        public ShowType ShowType
+        {
+            get
+            {
+                if (this.ViewState["ShowType"] != null)
+                {
+                    return (ShowType)this.ViewState["ShowType"];
+                }
+                return ShowType.Visible;
+            }
+            set
+            {
+                this.ViewState["ShowType"] = value;
+            }
+        }
     }
 }

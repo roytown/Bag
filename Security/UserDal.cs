@@ -10,6 +10,7 @@ using Model;
 using EntityFramework.Extensions;
 using System.Linq.Expressions;
 using System.Data.Entity.Infrastructure;
+using System.Data.Objects;
 namespace Security
 {
     public class UserDal:IUser
@@ -23,6 +24,17 @@ namespace Security
         public bool Add(User u)
         {
             _context.Users.Add(u);
+            if (u.Roles != null)
+            {
+              
+                for (int i = 0; i < u.Roles.Count; ++i)
+                {
+                 
+                    _context.Entry(u.Roles[i]).State = System.Data.EntityState.Unchanged;
+                  
+                }
+            }
+         
             return _context.SaveChanges() > 0;
         }
 
@@ -64,6 +76,7 @@ namespace Security
                     }
                 }
             }
+
             return _context.SaveChanges()>0;
             
         }
@@ -75,17 +88,17 @@ namespace Security
 
         public User Get(string userName)
         {
-            return _context.Users.AsNoTracking().FirstOrDefault(m => m.UserName == userName);
+            return _context.Users.FirstOrDefault(m => m.UserName == userName);
         }
 
         public User Get(int userId)
         {
-            return _context.Users.AsNoTracking().FirstOrDefault(m => m.UserId == userId);
+            return _context.Users.FirstOrDefault(m => m.UserId == userId);
         }
 
         public User Get(string userName, string password)
         {
-            return _context.Users.AsNoTracking().FirstOrDefault(m => m.UserName == userName && m.Password == password);
+            return _context.Users.FirstOrDefault(m => m.UserName == userName && m.Password == password);
         }
 
         public List<User> GetList(int page, int pageSize, Expression<Func<User, bool>> expresion, out int count)
@@ -96,7 +109,7 @@ namespace Security
                 q = q.Where(expresion);
             }
             var qc = q.FutureCount();
-            var q1 = q.OrderBy(u => u.UserId).Skip((page - 1) * pageSize).Take(pageSize);
+            var q1 = q.OrderByDescending(u => u.UserId).Skip((page - 1) * pageSize).Take(pageSize);
             count = qc.Value;
             return q1.ToList();
         }

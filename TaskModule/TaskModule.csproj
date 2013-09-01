@@ -49,7 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ILog.cs" />
+    <Compile Include="IOrder.cs" />
     <Compile Include="ITask.cs" />
+    <Compile Include="LogDal.cs" />
+    <Compile Include="OrderBll.cs" />
+    <Compile Include="OrderDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TaskBll.cs" />
     <Compile Include="TaskDal.cs" />

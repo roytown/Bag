@@ -41,7 +41,7 @@
         		<tr>
             		<td class="td2_1"></td><td>
                         <asp:Button ID="BtnOk" OnClick="BtnOk_Click" runat="server" CssClass="button" Text="提  交" />
-                        <input type="button" value="返回管理" class="button"  onclick="javascript:window.location.href='taskmanage.aspx'"/>
+                       
                         </td>
             	</tr>
         	</table>

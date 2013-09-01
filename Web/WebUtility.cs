@@ -12,6 +12,8 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using Util;
 using System.Xml;
+using System.Data.OleDb;
+using System.Data;
 
 namespace Web
 {
@@ -162,12 +164,11 @@ namespace Web
                 
                 foreach (string key in query.AllKeys)
                 {
-                    if (string.Compare(key, "action", false) == 0)
+                    if (string.Compare(key, "sc", true) == 0 || string.Compare(key, "page", true) == 0)
                     {
-                        str = query[key];
-                        break;
+                        continue;
                     }
-                    //str += query[key];
+                    str += key + query[key];
                 }
             }
             string s = fileNameWithoutExtension.ToLower(CultureInfo.CurrentCulture) + str.ToLower(CultureInfo.CurrentCulture) + HttpContext.Current.Session.SessionID;
@@ -298,7 +299,7 @@ namespace Web
         {
             LinkCollection links = new LinkCollection();
 
-            links.Add("~/logon.aspx" + (string.IsNullOrEmpty(returnUrl) ? "" : ("?ReturnUrl=" + returnUrl)), "点此登录");
+            links.Add("~/login.aspx" + (string.IsNullOrEmpty(returnUrl) ? "" : ("?ReturnUrl=" + returnUrl)), "点此登录",true);
             WriteMessage(message, links,false);
         }
 
@@ -309,9 +310,7 @@ namespace Web
 
         public static void WriteMessage(string message,bool isSuccess)
         {
-            LinkCollection links = new LinkCollection();
-            links.Add("javascript:history.back();","返回");
-            WriteMessage(message, links, isSuccess);
+            WriteMessage(message, null, isSuccess);
         }
 
         public static void WriteMessage(string message, LinkCollection links,bool isSuccess)
@@ -351,6 +350,55 @@ namespace Web
                 return node.Attributes[attr].Value;
             }
             return string.Empty;
+        }
+
+        public static DataSet ExcelToDataSet(string file)
+        {
+            string[] sheet = GetExcelSheetsName(file);
+
+            DataSet ds = new DataSet();
+            string connectionstring = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + file + ";Extended Properties='Excel 8.0;HDR=NO;IMEX=1'";
+            string sql = "";
+            OleDbConnection conn = new OleDbConnection(connectionstring);
+            conn.Open();
+
+            foreach (string s in sheet)
+            {
+                if (s.IndexOf("_") > 0)
+                {
+                    continue;
+                }
+
+                sql = "SELECT * FROM [" + s + "]";
+
+                OleDbDataAdapter adp = new OleDbDataAdapter(sql, conn);
+                adp.Fill(ds, s);
+
+            }
+
+            conn.Close();
+            return ds;
+
+        }
+
+        public static string[] GetExcelSheetsName(string filePath)
+        {
+            StringCollection sc = new StringCollection();
+            string strConn;
+            strConn = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filePath + ";Extended Properties=Excel 8.0;";
+            OleDbConnection conn = new OleDbConnection(strConn);
+            conn.Open();
+            DataTable sheetNames = conn.GetOleDbSchemaTable(System.Data.OleDb.OleDbSchemaGuid.Tables, new object[] { null, null, null, "TABLE" });
+            conn.Close();
+
+            foreach (DataRow dr in sheetNames.Rows)
+            {
+                sc.Add(dr[2].ToString());
+            }
+
+            string[] arr = new string[sc.Count];
+            sc.CopyTo(arr, 0);
+            return arr;
         }
     }
 }

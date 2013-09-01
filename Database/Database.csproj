@@ -54,29 +54,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EFContext.cs" />
-    <Compile Include="Migrations\201307070318101_init.cs" />
-    <Compile Include="Migrations\201307070318101_init.Designer.cs">
-      <DependentUpon>201307070318101_init.cs</DependentUpon>
+    <Compile Include="Migrations\201308240154406_initdb.cs" />
+    <Compile Include="Migrations\201308240154406_initdb.Designer.cs">
+      <DependentUpon>201308240154406_initdb.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201307070346209_setuserlength.cs" />
-    <Compile Include="Migrations\201307070346209_setuserlength.Designer.cs">
-      <DependentUpon>201307070346209_setuserlength.cs</DependentUpon>
+    <Compile Include="Migrations\201308310231520_add-order-log.cs" />
+    <Compile Include="Migrations\201308310231520_add-order-log.Designer.cs">
+      <DependentUpon>201308310231520_add-order-log.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201307141021406_userupdate.cs" />
-    <Compile Include="Migrations\201307141021406_userupdate.Designer.cs">
-      <DependentUpon>201307141021406_userupdate.cs</DependentUpon>
+    <Compile Include="Migrations\201308311016318_change-task-log.cs" />
+    <Compile Include="Migrations\201308311016318_change-task-log.Designer.cs">
+      <DependentUpon>201308311016318_change-task-log.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201308040235306_taskmodel.cs" />
-    <Compile Include="Migrations\201308040235306_taskmodel.Designer.cs">
-      <DependentUpon>201308040235306_taskmodel.cs</DependentUpon>
+    <Compile Include="Migrations\201308311106322_update-order.cs" />
+    <Compile Include="Migrations\201308311106322_update-order.Designer.cs">
+      <DependentUpon>201308311106322_update-order.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201308050241414_add-task-username-attr.cs" />
-    <Compile Include="Migrations\201308050241414_add-task-username-attr.Designer.cs">
-      <DependentUpon>201308050241414_add-task-username-attr.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201308050244257_add-task-attr.cs" />
-    <Compile Include="Migrations\201308050244257_add-task-attr.Designer.cs">
-      <DependentUpon>201308050244257_add-task-attr.cs</DependentUpon>
+    <Compile Include="Migrations\201308311324479_update-order-expand.cs" />
+    <Compile Include="Migrations\201308311324479_update-order-expand.Designer.cs">
+      <DependentUpon>201308311324479_update-order-expand.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -96,23 +92,20 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201307070318101_init.resx">
-      <DependentUpon>201307070318101_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201308240154406_initdb.resx">
+      <DependentUpon>201308240154406_initdb.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201307070346209_setuserlength.resx">
-      <DependentUpon>201307070346209_setuserlength.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201308310231520_add-order-log.resx">
+      <DependentUpon>201308310231520_add-order-log.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201307141021406_userupdate.resx">
-      <DependentUpon>201307141021406_userupdate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201308311016318_change-task-log.resx">
+      <DependentUpon>201308311016318_change-task-log.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201308040235306_taskmodel.resx">
-      <DependentUpon>201308040235306_taskmodel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201308311106322_update-order.resx">
+      <DependentUpon>201308311106322_update-order.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201308050241414_add-task-username-attr.resx">
-      <DependentUpon>201308050241414_add-task-username-attr.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201308050244257_add-task-attr.resx">
-      <DependentUpon>201308050244257_add-task-attr.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201308311324479_update-order-expand.resx">
+      <DependentUpon>201308311324479_update-order-expand.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

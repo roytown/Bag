@@ -3,7 +3,7 @@
 <asp:Content ContentPlaceHolderID="Content" ID="content" runat="Server">
     <div class="right_list">
     
-            <table cellpadding="0" cellspacing="0" border="0" width="100%" class="table3" id="table3">
+            <table cellpadding="2" cellspacing="1" border="0" width="100%" class="table3" id="table3">
                 <tr>
                     <th>角色ID</th>
                     <th>角色名称</th>
@@ -19,7 +19,7 @@
                             <td>
                              <i><a href="AddRole.aspx?action=modify&id=<%#Eval("RoleId") %>">修改</a>
                                  <bag:LinkButtonEx ID="del" runat="Server" Purview="system_role" Text="删除" OnClientClick="if(confirm('确认删除当前角色吗?')) return true else return false;" CommandName="Del" CommandArgument='<%#Eval("RoleId") %>' />
-                                 <a href="RoleSetting.aspx?id=<%#Eval("RoleId") %>">角色参数设置</a></i> </td>
+                             </i> </td>
                         </tr>
                     </ItemTemplate>
                 </asp:Repeater>
@@ -27,7 +27,8 @@
             </table>
            
             <div class="clear h10"></div>
-        <a class="button mr10" href="<%=ResolveClientUrl("~/security/addrole.aspx") %>">增加角色</a>
+
+        <a class="coolbg" href="<%=ResolveClientUrl("~/security/addrole.aspx") %>">增加角色</a>
         
 	</div>
 

@@ -39,6 +39,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Web.Entity" />
@@ -119,6 +122,12 @@
     <Content Include="Config\Map.config" />
     <Content Include="MainMaster.Master" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Order\AddCheckLog.aspx" />
+    <Content Include="Order\AddOrder.aspx" />
+    <Content Include="Order\OrderConfirm.aspx" />
+    <Content Include="Order\OrderDetail.aspx" />
+    <Content Include="Order\OrderFilter.aspx" />
+    <Content Include="Order\OrderManage.aspx" />
     <Content Include="Scripts\additional-methods.js" />
     <Content Include="Scripts\additional-methods.min.js" />
     <Content Include="Scripts\glDatePicker.js" />
@@ -130,15 +139,122 @@
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\lhgdialog\lhgcore.lhgdialog.min.js" />
+    <Content Include="Scripts\lhgdialog\lhgdialog.js" />
+    <Content Include="Scripts\lhgdialog\lhgdialog.min.js" />
+    <Content Include="Scripts\lhgdialog\skins\blue.css" />
+    <Content Include="Scripts\lhgdialog\skins\blue\blue_s.png" />
+    <Content Include="Scripts\lhgdialog\skins\blue\blue_s2.png" />
+    <Content Include="Scripts\lhgdialog\skins\blue\ie6\blue_titbtn.gif" />
+    <Content Include="Scripts\lhgdialog\skins\blue\ie6\ui_b.png" />
+    <Content Include="Scripts\lhgdialog\skins\blue\ie6\ui_l.png" />
+    <Content Include="Scripts\lhgdialog\skins\blue\ie6\ui_lb.png" />
+    <Content Include="Scripts\lhgdialog\skins\blue\ie6\ui_lt.png" />
+    <Content Include="Scripts\lhgdialog\skins\blue\ie6\ui_lt2.png" />
+    <Content Include="Scripts\lhgdialog\skins\blue\ie6\ui_r.png" />
+    <Content Include="Scripts\lhgdialog\skins\blue\ie6\ui_rb.png" />
+    <Content Include="Scripts\lhgdialog\skins\blue\ie6\ui_rt.png" />
+    <Content Include="Scripts\lhgdialog\skins\blue\ie6\ui_rt2.png" />
+    <Content Include="Scripts\lhgdialog\skins\blue\ie6\ui_t.png" />
+    <Content Include="Scripts\lhgdialog\skins\blue\ie6\ui_t2.png" />
+    <Content Include="Scripts\lhgdialog\skins\chrome.css" />
+    <Content Include="Scripts\lhgdialog\skins\chrome\chrome_s.gif" />
+    <Content Include="Scripts\lhgdialog\skins\chrome\chrome_s2.gif" />
+    <Content Include="Scripts\lhgdialog\skins\chrome\chrome_s3.gif" />
+    <Content Include="Scripts\lhgdialog\skins\default.css" />
+    <Content Include="Scripts\lhgdialog\skins\discuz.css" />
+    <Content Include="Scripts\lhgdialog\skins\iblack.css" />
+    <Content Include="Scripts\lhgdialog\skins\iblack\iblack_s.png" />
+    <Content Include="Scripts\lhgdialog\skins\iblack\iblack_s2.png" />
+    <Content Include="Scripts\lhgdialog\skins\iblack\ie6\ui_b.png" />
+    <Content Include="Scripts\lhgdialog\skins\iblack\ie6\ui_l.png" />
+    <Content Include="Scripts\lhgdialog\skins\iblack\ie6\ui_lb.png" />
+    <Content Include="Scripts\lhgdialog\skins\iblack\ie6\ui_lt.png" />
+    <Content Include="Scripts\lhgdialog\skins\iblack\ie6\ui_lt2.png" />
+    <Content Include="Scripts\lhgdialog\skins\iblack\ie6\ui_r.png" />
+    <Content Include="Scripts\lhgdialog\skins\iblack\ie6\ui_rb.png" />
+    <Content Include="Scripts\lhgdialog\skins\iblack\ie6\ui_rt.png" />
+    <Content Include="Scripts\lhgdialog\skins\iblack\ie6\ui_rt2.png" />
+    <Content Include="Scripts\lhgdialog\skins\iblack\ie6\ui_t.png" />
+    <Content Include="Scripts\lhgdialog\skins\iblack\ie6\ui_t2.png" />
+    <Content Include="Scripts\lhgdialog\skins\iblue.css" />
+    <Content Include="Scripts\lhgdialog\skins\iblue\iblue_s.png" />
+    <Content Include="Scripts\lhgdialog\skins\iblue\iblue_s2.png" />
+    <Content Include="Scripts\lhgdialog\skins\iblue\ie6\ui_b.png" />
+    <Content Include="Scripts\lhgdialog\skins\iblue\ie6\ui_l.png" />
+    <Content Include="Scripts\lhgdialog\skins\iblue\ie6\ui_lb.png" />
+    <Content Include="Scripts\lhgdialog\skins\iblue\ie6\ui_lt.png" />
+    <Content Include="Scripts\lhgdialog\skins\iblue\ie6\ui_lt2.png" />
+    <Content Include="Scripts\lhgdialog\skins\iblue\ie6\ui_r.png" />
+    <Content Include="Scripts\lhgdialog\skins\iblue\ie6\ui_rb.png" />
+    <Content Include="Scripts\lhgdialog\skins\iblue\ie6\ui_rt.png" />
+    <Content Include="Scripts\lhgdialog\skins\iblue\ie6\ui_rt2.png" />
+    <Content Include="Scripts\lhgdialog\skins\iblue\ie6\ui_t.png" />
+    <Content Include="Scripts\lhgdialog\skins\iblue\ie6\ui_t2.png" />
+    <Content Include="Scripts\lhgdialog\skins\icons\32X32\fail.png" />
+    <Content Include="Scripts\lhgdialog\skins\icons\32X32\hits.png" />
+    <Content Include="Scripts\lhgdialog\skins\icons\32X32\i.png" />
+    <Content Include="Scripts\lhgdialog\skins\icons\32X32\succ.png" />
+    <Content Include="Scripts\lhgdialog\skins\icons\alert.gif" />
+    <Content Include="Scripts\lhgdialog\skins\icons\confirm.gif" />
+    <Content Include="Scripts\lhgdialog\skins\icons\discuz_bg.gif" />
+    <Content Include="Scripts\lhgdialog\skins\icons\error.gif" />
+    <Content Include="Scripts\lhgdialog\skins\icons\face-sad.png" />
+    <Content Include="Scripts\lhgdialog\skins\icons\face-smile.png" />
+    <Content Include="Scripts\lhgdialog\skins\icons\gb_tip_layer.png" />
+    <Content Include="Scripts\lhgdialog\skins\icons\gb_tip_layer_ie6.png" />
+    <Content Include="Scripts\lhgdialog\skins\icons\lhgcore.gif" />
+    <Content Include="Scripts\lhgdialog\skins\icons\loading.gif" />
+    <Content Include="Scripts\lhgdialog\skins\icons\prompt.gif" />
+    <Content Include="Scripts\lhgdialog\skins\icons\success.gif" />
+    <Content Include="Scripts\lhgdialog\skins\icons\tips.gif" />
+    <Content Include="Scripts\lhgdialog\skins\idialog.css" />
+    <Content Include="Scripts\lhgdialog\skins\idialog\idialog_s.png" />
+    <Content Include="Scripts\lhgdialog\skins\idialog\idialog_s2.png" />
+    <Content Include="Scripts\lhgdialog\skins\idialog\ie6\ui_b.png" />
+    <Content Include="Scripts\lhgdialog\skins\idialog\ie6\ui_close.hover.png" />
+    <Content Include="Scripts\lhgdialog\skins\idialog\ie6\ui_close.png" />
+    <Content Include="Scripts\lhgdialog\skins\idialog\ie6\ui_l.png" />
+    <Content Include="Scripts\lhgdialog\skins\idialog\ie6\ui_lb.png" />
+    <Content Include="Scripts\lhgdialog\skins\idialog\ie6\ui_lt.png" />
+    <Content Include="Scripts\lhgdialog\skins\idialog\ie6\ui_r.png" />
+    <Content Include="Scripts\lhgdialog\skins\idialog\ie6\ui_rb.png" />
+    <Content Include="Scripts\lhgdialog\skins\idialog\ie6\ui_rt.png" />
+    <Content Include="Scripts\lhgdialog\skins\idialog\ie6\ui_t.png" />
+    <Content Include="Scripts\lhgdialog\skins\igreen.css" />
+    <Content Include="Scripts\lhgdialog\skins\igreen\ie6\ui_b.png" />
+    <Content Include="Scripts\lhgdialog\skins\igreen\ie6\ui_l.png" />
+    <Content Include="Scripts\lhgdialog\skins\igreen\ie6\ui_lb.png" />
+    <Content Include="Scripts\lhgdialog\skins\igreen\ie6\ui_lt.png" />
+    <Content Include="Scripts\lhgdialog\skins\igreen\ie6\ui_r.png" />
+    <Content Include="Scripts\lhgdialog\skins\igreen\ie6\ui_rb.png" />
+    <Content Include="Scripts\lhgdialog\skins\igreen\ie6\ui_rt.png" />
+    <Content Include="Scripts\lhgdialog\skins\igreen\ie6\ui_t.png" />
+    <Content Include="Scripts\lhgdialog\skins\igreen\igreen_s.png" />
+    <Content Include="Scripts\lhgdialog\skins\igreen\igreen_s2.png" />
+    <Content Include="Scripts\lhgdialog\skins\jtop.css" />
+    <Content Include="Scripts\lhgdialog\skins\mac.css" />
     <Content Include="Scripts\main.js" />
     <Content Include="Security\AddRole.aspx" />
     <Content Include="Security\AddUser.aspx" />
     <Content Include="Security\ChangePassword.aspx" />
     <Content Include="Security\RoleManage.aspx" />
-    <Content Include="Security\RoleSetting.aspx" />
     <Content Include="Security\UserManage.aspx" />
+    <Content Include="Security\WebConfig.aspx" />
+    <Content Include="Stock\AddStockLog.aspx" />
+    <Content Include="Stock\StatDetail.aspx" />
+    <Content Include="Stock\StockLogManage.aspx" />
     <Content Include="Task\AddTask.aspx" />
+    <Content Include="Task\CustomConfirmLog.aspx" />
+    <Content Include="Task\TaskConfirm.aspx" />
+    <Content Include="Task\TaskDetail.aspx" />
+    <Content Include="Task\TaskFilter.aspx" />
     <Content Include="Task\TaskManage.aspx" />
+    <Content Include="Tech\AddDeveLog.aspx" />
+    <Content Include="Tech\DeveDetail.aspx" />
+    <Content Include="Tech\DeveManage.aspx" />
+    <Content Include="Tech\DeveConfirm.aspx" />
+    <Content Include="Tech\DeveFilter.aspx" />
     <Content Include="Tools\ajax.aspx" />
     <Content Include="Tools\LeftMenu.aspx" />
     <Content Include="Tools\waitstat.aspx" />
@@ -196,6 +312,48 @@
     <Compile Include="Message.aspx.designer.cs">
       <DependentUpon>Message.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Order\AddCheckLog.aspx.cs">
+      <DependentUpon>AddCheckLog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Order\AddCheckLog.aspx.designer.cs">
+      <DependentUpon>AddCheckLog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Order\AddOrder.aspx.cs">
+      <DependentUpon>AddOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Order\AddOrder.aspx.designer.cs">
+      <DependentUpon>AddOrder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Order\OrderConfirm.aspx.cs">
+      <DependentUpon>OrderConfirm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Order\OrderConfirm.aspx.designer.cs">
+      <DependentUpon>OrderConfirm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Order\OrderDetail.aspx.cs">
+      <DependentUpon>OrderDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Order\OrderDetail.aspx.designer.cs">
+      <DependentUpon>OrderDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Order\OrderFilter.aspx.cs">
+      <DependentUpon>OrderFilter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Order\OrderFilter.aspx.designer.cs">
+      <DependentUpon>OrderFilter.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Order\OrderManage.aspx.cs">
+      <DependentUpon>OrderManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Order\OrderManage.aspx.designer.cs">
+      <DependentUpon>OrderManage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\AddRole.aspx.cs">
       <DependentUpon>AddRole.aspx</DependentUpon>
@@ -225,19 +383,40 @@
     <Compile Include="Security\RoleManage.aspx.designer.cs">
       <DependentUpon>RoleManage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Security\RoleSetting.aspx.cs">
-      <DependentUpon>RoleSetting.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Security\RoleSetting.aspx.designer.cs">
-      <DependentUpon>RoleSetting.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Security\UserManage.aspx.cs">
       <DependentUpon>UserManage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Security\UserManage.aspx.designer.cs">
       <DependentUpon>UserManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Security\WebConfig.aspx.cs">
+      <DependentUpon>WebConfig.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Security\WebConfig.aspx.designer.cs">
+      <DependentUpon>WebConfig.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\AddStockLog.aspx.cs">
+      <DependentUpon>AddStockLog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stock\AddStockLog.aspx.designer.cs">
+      <DependentUpon>AddStockLog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\StatDetail.aspx.cs">
+      <DependentUpon>StatDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stock\StatDetail.aspx.designer.cs">
+      <DependentUpon>StatDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\StockLogManage.aspx.cs">
+      <DependentUpon>StockLogManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stock\StockLogManage.aspx.designer.cs">
+      <DependentUpon>StockLogManage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Task\AddTask.aspx.cs">
       <DependentUpon>AddTask.aspx</DependentUpon>
@@ -246,12 +425,75 @@
     <Compile Include="Task\AddTask.aspx.designer.cs">
       <DependentUpon>AddTask.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Task\CustomConfirmLog.aspx.cs">
+      <DependentUpon>CustomConfirmLog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Task\CustomConfirmLog.aspx.designer.cs">
+      <DependentUpon>CustomConfirmLog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Task\TaskConfirm.aspx.cs">
+      <DependentUpon>TaskConfirm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Task\TaskConfirm.aspx.designer.cs">
+      <DependentUpon>TaskConfirm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Task\TaskDetail.aspx.cs">
+      <DependentUpon>TaskDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Task\TaskDetail.aspx.designer.cs">
+      <DependentUpon>TaskDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Task\TaskFilter.aspx.cs">
+      <DependentUpon>TaskFilter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Task\TaskFilter.aspx.designer.cs">
+      <DependentUpon>TaskFilter.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Task\TaskManage.aspx.cs">
       <DependentUpon>TaskManage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Task\TaskManage.aspx.designer.cs">
       <DependentUpon>TaskManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tech\AddDeveLog.aspx.cs">
+      <DependentUpon>AddDeveLog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tech\AddDeveLog.aspx.designer.cs">
+      <DependentUpon>AddDeveLog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tech\DeveDetail.aspx.cs">
+      <DependentUpon>DeveDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tech\DeveDetail.aspx.designer.cs">
+      <DependentUpon>DeveDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tech\DeveManage.aspx.cs">
+      <DependentUpon>DeveManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tech\DeveManage.aspx.designer.cs">
+      <DependentUpon>DeveManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tech\DeveConfirm.aspx.cs">
+      <DependentUpon>DeveConfirm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tech\DeveConfirm.aspx.designer.cs">
+      <DependentUpon>DeveConfirm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tech\DeveFilter.aspx.cs">
+      <DependentUpon>DeveFilter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tech\DeveFilter.aspx.designer.cs">
+      <DependentUpon>DeveFilter.aspx</DependentUpon>
     </Compile>
     <Compile Include="Tools\ajax.aspx.cs">
       <DependentUpon>ajax.aspx</DependentUpon>
@@ -290,6 +532,10 @@
     <ProjectReference Include="..\Controls\Controls.csproj">
       <Project>{9e32a620-b208-4a5a-bd81-f892360e0fec}</Project>
       <Name>Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ExpressionExtended\ExpressionExtended.csproj">
+      <Project>{7eca0c69-5227-4e6b-875a-34ebe33f90fb}</Project>
+      <Name>ExpressionExtended</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{02a7e2a7-28dd-4609-bcb3-93e3641861e2}</Project>

@@ -9,14 +9,75 @@
     <link href="<%=ResolveClientUrl("~/css/reset.css") %>" rel="stylesheet" type="text/css" />
     <link href="<%=ResolveClientUrl("~/css/LightStyle.css") %>" rel="stylesheet" type="text/css" />
     <link href="<%=ResolveClientUrl("~/css/glDatePicker.default.css") %>" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript">
+        var windowstatus = <%=Status%>;
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
-    
+        <script type="text/javascript" src="<%=ResolveClientUrl("~/scripts/lhgdialog/lhgdialog.min.js?skin=discuz") %>"></script>
         <asp:ContentPlaceHolder ID="Content" runat="server">
         
         </asp:ContentPlaceHolder>
-    
+        <div id="loading" style="position:absolute;right:0px;top:0px;display:none">
+             <img src="<%=ResolveClientUrl("~/images/loading.gif") %>" />
+        </div>
+        <script type="text/javascript">
+            function wating(a) {
+                $("#loading").css("display", a ? "block" : "none");
+            }
+            function Confirm()
+            {
+                var r=false;
+                $.dialog.confirm('你确定要删除这个消息吗？', function(){
+                    r=true;
+                }, function(){
+                    r=false;
+                });
+
+                return r;
+            }
+            function OpenDialog(t, url, w, h, m) {
+
+                if (w == null || w == 0) w = 800;
+                if (h == null || h == 0) h = 500;
+
+                if (url != null && url != "") {
+
+                    var d = $.dialog({
+                        lock: true,
+                        content: 'url:' + url,
+                        title: t,
+                        width: w,
+                        height: h,
+                        close: function () {
+                           
+                            if (windowstatus) {
+                                var url = window.location.href;
+                                var i = url.indexOf('?');
+                                if (i > 0) {
+                                    url = url.substring(0, i);
+                                }
+                                url += "?";
+                                for (var k in windowstatus) {
+                                    url += k + "=" + windowstatus[k] + "&";
+                                }
+
+                                url = url.substring(0, url.length - 1);
+                                window.location.href = url;
+                            }
+                            else
+                                window.location.reload();
+                        }
+                    });
+
+                    if (m) {
+                        d.max();
+                    }
+
+                }
+            }
+        </script>
     </form>
 </body>
 </html>

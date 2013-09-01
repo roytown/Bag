@@ -16,7 +16,7 @@ namespace WebUI.Security
         {
             if (!IsPostBack)
             {
-                WebConfig config = ConfigFactory.GetWebConfig();
+                Web.WebConfig config = ConfigFactory.GetWebConfig();
                 if (config!=null)
                 {
                     newPwd.MinTextLength = config.PasswordMinLength;

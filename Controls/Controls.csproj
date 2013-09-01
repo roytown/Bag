@@ -40,16 +40,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AttachmentField.cs" />
     <Compile Include="ButtonEx.cs" />
     <Compile Include="CheckBoxEx.cs" />
     <Compile Include="Date.cs" />
     <Compile Include="DateTimePicker.cs" />
+    <Compile Include="DropDownListEx.cs" />
+    <Compile Include="FileUpload.cs" />
+    <Compile Include="FlashUpload.cs" />
     <Compile Include="HyperLinkEx.cs" />
     <Compile Include="ImageButtonEx.cs" />
     <Compile Include="LinkButtonEx.cs" />
     <Compile Include="Pager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RadioButtonEx.cs" />
+    <Compile Include="ShowType.cs" />
     <Compile Include="TextBoxEx.cs" />
     <Compile Include="TextType.cs" />
   </ItemGroup>
@@ -64,6 +69,76 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Images\arr_right.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Upload\FlashFileUpload.swf" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Upload\swfupload.js" />
+    <EmbeddedResource Include="Upload\swfupload.swf" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\btn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Upload\handlers.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\error.gif" />
+    <EmbeddedResource Include="Images\toobig.gif" />
+    <EmbeddedResource Include="Images\uploadlimit.gif" />
+    <EmbeddedResource Include="Images\zerobyte.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\format\accdb.png" />
+    <EmbeddedResource Include="Images\format\avi.png" />
+    <EmbeddedResource Include="Images\format\bmp.png" />
+    <EmbeddedResource Include="Images\format\css.png" />
+    <EmbeddedResource Include="Images\format\docx.png" />
+    <EmbeddedResource Include="Images\format\eml.png" />
+    <EmbeddedResource Include="Images\format\eps.png" />
+    <EmbeddedResource Include="Images\format\fla.png" />
+    <EmbeddedResource Include="Images\format\gif.png" />
+    <EmbeddedResource Include="Images\format\html.png" />
+    <EmbeddedResource Include="Images\format\ind.png" />
+    <EmbeddedResource Include="Images\format\ini.png" />
+    <EmbeddedResource Include="Images\format\jpeg.png" />
+    <EmbeddedResource Include="Images\format\jsf.png" />
+    <EmbeddedResource Include="Images\format\midi.png" />
+    <EmbeddedResource Include="Images\format\mov.png" />
+    <EmbeddedResource Include="Images\format\mp3.png" />
+    <EmbeddedResource Include="Images\format\mpeg.png" />
+    <EmbeddedResource Include="Images\format\pdf.png" />
+    <EmbeddedResource Include="Images\format\png.png" />
+    <EmbeddedResource Include="Images\format\pptx.png" />
+    <EmbeddedResource Include="Images\format\proj.png" />
+    <EmbeddedResource Include="Images\format\psd.png" />
+    <EmbeddedResource Include="Images\format\pst.png" />
+    <EmbeddedResource Include="Images\format\pub.png" />
+    <EmbeddedResource Include="Images\format\rar.png" />
+    <EmbeddedResource Include="Images\format\readme.png" />
+    <EmbeddedResource Include="Images\format\settings.png" />
+    <EmbeddedResource Include="Images\format\text.png" />
+    <EmbeddedResource Include="Images\format\tiff.png" />
+    <EmbeddedResource Include="Images\format\url.png" />
+    <EmbeddedResource Include="Images\format\vsd.png" />
+    <EmbeddedResource Include="Images\format\wav.png" />
+    <EmbeddedResource Include="Images\format\wma.png" />
+    <EmbeddedResource Include="Images\format\wmv.png" />
+    <EmbeddedResource Include="Images\format\xlsx.png" />
+    <EmbeddedResource Include="Images\format\zip.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Upload\fileupload.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\uploadbtn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Date\glDatePicker.min.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

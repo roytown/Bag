@@ -22,9 +22,17 @@ namespace WebUI.Tools
             if (menu!=null && menu.HasChildNodes)
             {
                 StringBuilder builder = new StringBuilder();
+                string appendcode = "";
+                string url = "";
                 foreach (XmlNode n in menu.ChildNodes)
                 {
-                    builder.AppendFormat("<li><a href='{0}' target='rightFrame'>{1}</a></li>", ResolveClientUrl(GetAttributeValue(n, "url")), GetAttributeValue(n, "title"));
+                    appendcode = GetAttributeValue(n, "appendsecuritycode");
+                    url=GetAttributeValue(n,"url");
+                    if (!string.IsNullOrEmpty(appendcode) && appendcode=="true")
+                    {
+                        url = WebUtility.AppendSecurityCode(url);
+                    }
+                    builder.AppendFormat("<li><a href='{0}' target='rightFrame'>{1}</a></li>", ResolveClientUrl(url), GetAttributeValue(n, "title"));
                 }
                 Response.Write(builder.ToString());
             }

@@ -55,7 +55,7 @@ namespace TaskModule
 
         public Model.Task Get(int id)
         {
-            return _context.Tasks.AsNoTracking().FirstOrDefault(m => m.Id == id);
+            return _context.Tasks.FirstOrDefault(m => m.Id == id);
         }
 
         public IList<Task> GetList(int page, int pageSize, System.Linq.Expressions.Expression<Func<Task, bool>> expresion, out int count)

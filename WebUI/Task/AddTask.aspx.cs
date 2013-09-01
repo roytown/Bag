@@ -24,7 +24,7 @@ namespace WebUI.Task
                 {
                     LinkCollection c = new LinkCollection();
                     c.Add("~/task/addtask.aspx", "添加新任务");
-                    c.Add("~/task/taskmanage.aspx", "所有任务记录");
+                    
 
                     WriteMessage("无法获取当前任务相关信息", c, false);
                 }
@@ -60,10 +60,15 @@ namespace WebUI.Task
             task.MobilePhone = tbMobilePhone.Text;
             task.TelePhone = tbTelephone.Text;
 
-            bool result = action == "modify" ? TaskBll.UpdateTask(task,new string[]{"Title","Description","Code","Customer","MobilePhone","Telephone"}) : TaskBll.AddTask(task);
+            bool result = action == "modify" ? TaskBll.UpdateTask(task) : TaskBll.AddTask(task);
             LinkCollection c = new LinkCollection();
             c.Add("~/task/addtask.aspx", "添加任务");
-            c.Add("~/task/taskmanage.aspx", "所有任务");
+
+            if (result)
+            {
+                c.Add("~/task/addtask.aspx?action=modify&id=" + task.Id.ToString(), "修改当前任务"); 
+            }
+            
 
             WriteMessage(result ? "操作执行成功" : "当前操作失败，请选择下列操作", c, result);
         }

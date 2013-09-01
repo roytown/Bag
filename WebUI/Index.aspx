@@ -23,13 +23,14 @@
 				<ul class="nav">
 					<li class="nav_01"  onclick="javascript:GetMenu('task')"><a href="javascript:void(0)">任务</a></li>
 					<li class="nav_02"  onclick="javascript:GetMenu('tech')"><a href="javascript:void(0)">技术</a></li>
-					<li class="nav_03"  onclick="javascript:GetMenu('produce')"><a href="javascript:void(0)">生产</a></li>
+					<li class="nav_03"  onclick="javascript:GetMenu('order')"><a href="javascript:void(0)">生产</a></li>
 					<li class="nav_04"  onclick="javascript:GetMenu('stock')"><a href="javascript:void(0)">仓储</a></li>
 					<li class="nav_05"  onclick="javascript:GetMenu('system')"><a href="javascript:void(0)">系统</a></li>
 				</ul>
 				<div class="login">
 					<p class="login_left"></p>
 					<dl class="login_middle">
+                        <dt><a href="/mainpage.aspx" target="rightFrame">办公桌面</a></dt>
 						<dt><a href="#"><%=RequestContext.Current.User.UserName %></a></dt>
 						<dt><a href="<%=ResolveClientUrl("~/logoff.aspx") %>">退出</a></dt>
 					</dl>
@@ -41,10 +42,9 @@
 <script type="text/javascript">
     function GetMenu(m)
     {
-     
         $("#menulist").css("display", "none");
         $("#loading").css("display", "block");
-        $.get("<%=ResolveClientUrl("~/tools/LeftMenu.aspx")%>", { menu: m }, function (data) {
+        $.get("<%=ResolveClientUrl("~/tools/LeftMenu.aspx")%>", { menu: m,r:Math.random() }, function (data) {
             $("#loading").css("display", "none");
             $("#menulist").css("display", "block");
             $("#menulist").html(data);
@@ -69,7 +69,7 @@
 	<!-- //left部分 -->
 	<!-- 内容部分 -->
 		<div class="wrap_con_main_s clearfix">
-			<iframe width="100%"  id="rightFrame" frameborder="0" src="MainPage.aspx"></iframe>
+			<iframe width="100%" name="rightFrame"  id="rightFrame" frameborder="0" src="MainPage.aspx"></iframe>
 		</div>
 	<!-- //内容部分 -->
 

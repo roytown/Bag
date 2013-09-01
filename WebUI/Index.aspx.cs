@@ -20,9 +20,7 @@ namespace WebUI
                 Title = config.Title;
             }
 
-            XmlDocument doc = new XmlDocument();
-            doc.Load(Server.MapPath("~/config/map.config"));
-
+          
         }
     }
 }

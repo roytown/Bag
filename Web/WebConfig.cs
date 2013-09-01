@@ -16,6 +16,9 @@ namespace Web
         public bool EnableSystemErrorLog { get; set; }
         public bool EnableUserLogOnLog { get; set; }
         public bool EnableOperationLog { get; set; }
-
+        public int SelLessonTimeLimit { get; set; }
+        public int DefaultRole { get; set; }
+        public int HomeworkCommitTimeLimit { get; set; }
+        public string UploadDir { get; set; }
     }
 }

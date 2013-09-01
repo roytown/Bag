@@ -39,9 +39,9 @@ namespace Model
 
         public string SaleUserName { get; set; }//销售负责人
 
-        public string ProduceUserName { get; set; }//生产负责人
+        public string DevelopUserName { get; set; }//研发负责人
 
-        public string QualityUserName { get; set; }//质检负责人
-
+        public virtual List<Order> Orders { get; set; }
+        public virtual List<Log> Logs { get; set; }
     }
 }

@@ -33,6 +33,12 @@ namespace WebUI.Security
             {
                 cbRoles.DataSource = RoleBll.GetAll();
                 cbRoles.DataBind();
+
+                Web.WebConfig config = ConfigFactory.GetWebConfig();
+                
+                tbPassword.MinTextLength = config.PasswordMinLength>0?config.PasswordMinLength:6;
+                tbPassword.MaxTextLength = config.PasswordMaxLength>0?config.PasswordMaxLength:10;
+                tbPassword.FormatErrorMessage = "密码长度为" + tbPassword.MinTextLength.ToString() + "到" + tbPassword.MaxTextLength.ToString() + "位";
                 
                 if (action == "modify")
                 {
@@ -42,12 +48,15 @@ namespace WebUI.Security
                     tbPhone.Text = user.Phone;
                     modifymsg.Visible = true;
                     tbUserName.Enabled = false;
-                    if (user.Roles!=null)
+                    tbPassword.IsRequired = false;
+                    if (user.Roles != null)
                     {
-                        foreach (Role r in user.Roles)
+
+                        for (int i = 0; i < cbRoles.Items.Count; ++i)
                         {
-                            WebUtility.SetSelectedIndexByValue(cbRoles, r.RoleId.ToString());
+                            cbRoles.Items[i].Selected = user.Roles.Any(m => m.RoleId.ToString() == cbRoles.Items[i].Value);
                         }
+
                     }
                 }
             }
@@ -55,6 +64,7 @@ namespace WebUI.Security
 
         protected void BtnOk_Click(object sender, EventArgs e)
         {
+            IList<Role> roles = RoleBll.GetAll();
             LinkCollection c = new LinkCollection();
             c.Add("~/security/adduser.aspx", "添加用户");
             c.Add("~/security/usermanage.aspx", "用户管理");
@@ -67,7 +77,11 @@ namespace WebUI.Security
                 user = new User();
                 user.IsLocked = false;
                 user.JoinTime = DateTime.Now;
-
+                user.Roles = new List<Model.Role>();
+            }
+            else
+            {
+                user.Roles.Clear();
             }
 
             user.UserName = tbUserName.Text;
@@ -77,6 +91,14 @@ namespace WebUI.Security
             if (!string.IsNullOrEmpty(tbPassword.Text))
             {
                 user.Password = Util.StringHelper.MD5(tbPassword.Text);
+            }
+
+            foreach (ListItem item in cbRoles.Items)
+            {
+                if (item.Selected)
+                {
+                    user.Roles.Add(roles.First(m=>m.RoleId== Util.DataConverter.ToLng(item.Value) ));
+                }
             }
 
             bool result = action == "modify" ? UserBll.UpdateUser(user) : UserBll.AddUser(user);

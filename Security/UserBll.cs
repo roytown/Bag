@@ -16,7 +16,7 @@ namespace Security
         public static bool AddUser(User u)
         {
             IUser userProvider = new UserDal(EFContext.Instance);
-            //u.Password = Util.StringHelper.MD5(u.Password);
+
             return userProvider.Add(u);
         }
 
@@ -183,7 +183,7 @@ namespace Security
 
             u.Password = Util.StringHelper.MD5(newPwd);
             IUser userProvider = new UserDal(EFContext.Instance);
-            return userProvider.Update(u);
+            return userProvider.Update(u, new string[] { "Password" });
 
         }
 

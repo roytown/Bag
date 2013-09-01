@@ -61,7 +61,7 @@ namespace WebUI.Security
                 return "";                
             }
 
-            return purviews.Any(m => m == p)?"checked='checked'":"";
+            return purviews.Any(m => m == p || m=="-1")?"checked='checked'":"";
         }
 
         protected void BtnOk_Click(object sender, EventArgs e)

@@ -28,11 +28,11 @@
 
                 </td>
                 <td style="padding-left:10px;">
-                    <asp:Button ID="BtnFilter" runat="server" CssClass="button mr10" CommandName="Lock" Text="筛选" OnClick="BtnFilter_Click" />
+                    <asp:Button ID="BtnFilter" runat="server" CssClass="coolbg" CommandName="Lock" Text="筛选" OnClick="BtnFilter_Click" />
                 </td>
             </tr>
         </table>
-            <table cellpadding="0" cellspacing="0" border="0" width="100%" class="table3" id="table3">
+            <table cellpadding="2" cellspacing="1" border="0" width="100%" class="table3" id="table3">
                 <tr>
                     <th>
                         <input id="checkAll" type="checkbox"/>
@@ -76,9 +76,9 @@
             <div class="clear h10"></div>
         <bag:Pager ID="pager1" runat="Server" Width="100%" PageSize="20" GenerateGoToSection="true" OnCommand="pager_Command" PageClause="页码" GoToLastClause="上一页" NextToPageClause="下一页"/>
          <div class="clear h10"></div>
-        <input type="button" class="button mr10" value="增加新用户" onclick="javascript:window.location.href='<%=ResolveClientUrl("~/security/adduser.aspx")%>';"/>
-        <asp:Button ID="Button1" runat="server" CssClass="button mr10" CommandName="Lock" Text="锁定选择" OnClick="Button1_Click" />
-        <asp:Button ID="Button2" runat="server" CssClass="button mr10" CommandName="UnLock" Text="解锁选择" OnClick="Button1_Click" />
+        <input type="button" class="coolbg" value="增加新用户" onclick="javascript:window.location.href='<%=ResolveClientUrl("~/security/adduser.aspx")%>';"/>
+        <asp:Button ID="Button1" runat="server" CssClass="coolbg" CommandName="Lock" Text="锁定选择" OnClick="Button1_Click" />
+        <asp:Button ID="Button2" runat="server" CssClass="coolbg" CommandName="UnLock" Text="解锁选择" OnClick="Button1_Click" />
 	</div>
 
 </asp:Content>

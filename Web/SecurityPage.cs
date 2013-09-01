@@ -23,9 +23,7 @@ namespace Web
         {
             if (!RequestContext.Current.User.Identity.IsAuthenticated)
             {
-                LinkCollection links = new LinkCollection();
-                links.Add("~/login.aspx","点此登录");
-                WriteMessage("您未登录，请登录后重试",links,false);
+                WebUtility.WriteMessageWithLoginLink("您未登录，请登录后重试", Server.UrlEncode(Request.Url.AbsoluteUri));
             }
             base.OnPreInit(e);
         }
@@ -36,7 +34,10 @@ namespace Web
             {
                 this.ClientScript.RegisterClientScriptBlock(typeof(Page), "jquery", "<script src=\"" + this.ResolveClientUrl("~/Scripts/jquery-1.8.2.min.js") + "\" type=\"text/javascript\"></script>");
             }
-            
+            if (!this.Page.ClientScript.IsClientScriptBlockRegistered("jquery-validator"))
+            {
+                this.ClientScript.RegisterClientScriptBlock(typeof(Page), "jquery-validator", "<script src=\"" + this.ResolveClientUrl("~/Scripts/jquery.validate.js") + "\" type=\"text/javascript\"></script>");
+            }
             base.OnLoad(e);
         }
 
@@ -152,17 +153,12 @@ namespace Web
 
         public void WriteMessage(string message,bool isSuccess)
         {
-            LinkCollection links = new LinkCollection();
-            links.Add("javascript:history.back();","返回");
-            WriteMessage(message, links, isSuccess);
+            WebUtility.WriteMessage(message, null, isSuccess);
         }
 
         public void WriteMessage(string message, LinkCollection links, bool isSuccess)
         {
-            HttpContext.Current.Items["IsSuccess"] = isSuccess;
-            HttpContext.Current.Items["Message"] = message;
-            HttpContext.Current.Items["Links"] = links;
-            HttpContext.Current.Server.Transfer(PromptMessagePageUrl);
+            WebUtility.WriteMessage(message, links, isSuccess);
         }
 
         public static void SetSelectedIndexByValue(ListControl listControl, string selectValue)
@@ -204,6 +200,20 @@ namespace Web
         public List<ValidateRule> ValidateRules
         {
             get { return _rules; }
+        }
+
+        private Dictionary<string, string> _pageStatus;
+        public Dictionary<string, string> PageStatus 
+        {
+            get 
+            {
+                if (_pageStatus == null)
+                {
+                    _pageStatus = new Dictionary<string, string>();
+                }
+
+                return _pageStatus;
+            }
         }
 
     }

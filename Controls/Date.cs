@@ -12,13 +12,9 @@ namespace Controls
     {
         protected override void OnLoad(EventArgs e)
         { 
-            if (!this.Page.ClientScript.IsClientScriptBlockRegistered("jquery"))
-            {
-                this.Page.ClientScript.RegisterClientScriptBlock(typeof(Page), "jquery", "<script src=\"" + this.ResolveClientUrl("~/Scripts/jquery-1.8.2.min.js") + "\" type=\"text/javascript\"></script>");
-            }
             if (!this.Page.ClientScript.IsClientScriptBlockRegistered("glDatePicker"))
             {
-                this.Page.ClientScript.RegisterClientScriptBlock(typeof(Page), "glDatePicker", "<script src=\"" + this.ResolveClientUrl("~/Scripts/glDatePicker.min.js") + "\" type=\"text/javascript\"></script>");
+                this.Page.ClientScript.RegisterClientScriptBlock(typeof(Page), "glDatePicker", "<script src=\"" + Page.ClientScript.GetWebResourceUrl(this.GetType(), "Controls.Date.glDatePicker.min.js") + "\" type=\"text/javascript\"></script>");
             }
 
             base.OnLoad(e);
@@ -69,7 +65,7 @@ namespace Controls
             set
             {
                 this.ViewState["SelectedDate"] = value;
-                if (value != null && value.HasValue)
+                if (value!=null && value.HasValue)
                 {
                     this.Text = value.Value.ToString("yyyy-MM-dd");
                 }
@@ -94,9 +90,9 @@ namespace Controls
             set
             {
                 this.ViewState["Value"] = value;
-
-                this.Text = value.ToString("yyyy-MM-dd");
-
+              
+               this.Text = value.ToString("yyyy-MM-dd");
+                
             }
         }
 
