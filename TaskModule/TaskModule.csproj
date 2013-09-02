@@ -52,6 +52,7 @@
     <Compile Include="ILog.cs" />
     <Compile Include="IOrder.cs" />
     <Compile Include="ITask.cs" />
+    <Compile Include="LogBll.cs" />
     <Compile Include="LogDal.cs" />
     <Compile Include="OrderBll.cs" />
     <Compile Include="OrderDal.cs" />

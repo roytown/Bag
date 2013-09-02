@@ -9,8 +9,6 @@ namespace Model
     public enum LogType
     {
         Normal,
-        Tech,
-        Order,
-        Stock
+        Main
     }
 }

@@ -26,29 +26,24 @@ namespace TaskModule
             return taskProvider.Delete(id);
         }
 
-        public static Task GetTask(int id)
+        public static Task GetTask(int id,bool includeLog=false,bool includeOrder=false)
         {
             if (id<=0)
             {
                 return null;
             }
             ITask taskProvider = new TaskDal(EFContext.Instance);
-            return taskProvider.Get(id);
+            return taskProvider.Get(id,includeLog,includeOrder);
         }
 
-        public static IList<Model.Log> GetTaskLogs(int tid,Expression<Func<Model.Log,bool>> expression)
+        public static Task GetTask(string code, bool includeLog = false, bool includeOrder = false)
         {
-            if (tid<=0)
+            if (string.IsNullOrEmpty(code))
             {
                 return null;
             }
-            Expression<Func<Model.Log, bool>> where = m => m.Task.Id == tid;
-            if (expression!=null)
-            {
-                where = where.And(expression);
-            }
-            ILog logDal = new LogDal(EFContext.Instance);
-            return logDal.GetList(where);
+            ITask taskProvider = new TaskDal(EFContext.Instance);
+            return taskProvider.Get(code,includeLog,includeOrder);
         }
 
         public static bool UpdateTask(Task task, params string[] modifyParameters)
@@ -57,11 +52,11 @@ namespace TaskModule
             return taskProvider.Update(task,modifyParameters);
         }
 
-        public static IList<Task> GetTaskList(int page, int pageSize, Expression<Func<Task,bool>> expression, out int count)
+        public static IList<Task> GetTaskList(int page, int pageSize, Expression<Func<Task,bool>> expression, out int count,bool includeLog=false,bool includeOrder=false)
         {
             ITask taskProvider = new TaskDal(EFContext.Instance);
            
-            return taskProvider.GetList(page, pageSize, expression, out count); 
+            return taskProvider.GetList(page, pageSize,includeLog,includeOrder, expression, out count); 
         }
         
         public static string GetTaskState(TaskState state)

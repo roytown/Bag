@@ -245,6 +245,7 @@
     <Content Include="Stock\StatDetail.aspx" />
     <Content Include="Stock\StockLogManage.aspx" />
     <Content Include="Task\AddTask.aspx" />
+    <Content Include="Task\card.aspx" />
     <Content Include="Task\CustomConfirmLog.aspx" />
     <Content Include="Task\TaskConfirm.aspx" />
     <Content Include="Task\TaskDetail.aspx" />
@@ -424,6 +425,13 @@
     </Compile>
     <Compile Include="Task\AddTask.aspx.designer.cs">
       <DependentUpon>AddTask.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Task\card.aspx.cs">
+      <DependentUpon>card.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Task\card.aspx.designer.cs">
+      <DependentUpon>card.aspx</DependentUpon>
     </Compile>
     <Compile Include="Task\CustomConfirmLog.aspx.cs">
       <DependentUpon>CustomConfirmLog.aspx</DependentUpon>

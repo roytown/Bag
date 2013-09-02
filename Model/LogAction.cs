@@ -10,6 +10,12 @@ namespace Model
     {
         None,
         NewTaskConfirm,
-        DevelopConfirm
+        DevelopConfirm,
+        Design,
+        Plate,
+        Sample,
+        Package,
+        Order,
+        Stock
     }
 }

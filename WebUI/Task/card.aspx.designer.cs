@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebUI.Tech {
+namespace WebUI.Task {
     
     
-    public partial class DeveDetail {
+    public partial class card {
     }
 }

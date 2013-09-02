@@ -53,14 +53,51 @@ namespace TaskModule
             return _context.SaveChanges() > 0;
         }
 
-        public Model.Task Get(int id)
+        public Model.Task Get(int id, bool includeLog, bool includeOrder)
         {
-            return _context.Tasks.FirstOrDefault(m => m.Id == id);
+            DbQuery<Model.Task> dbq=_context.Tasks;
+            if (includeLog)
+            {
+                dbq=dbq.Include("Logs");
+            }
+
+            if (includeOrder)
+            {
+		        dbq=dbq.Include("Orders");
+            }
+
+            return dbq.FirstOrDefault(m => m.Id == id);
         }
 
-        public IList<Task> GetList(int page, int pageSize, System.Linq.Expressions.Expression<Func<Task, bool>> expresion, out int count)
+        public Model.Task Get(string code, bool includeLog, bool includeOrder)
         {
-            var q = _context.Tasks.AsQueryable();
+            DbQuery<Model.Task> dbq=_context.Tasks;
+            if (includeLog)
+            {
+                dbq=dbq.Include("Logs");
+            }
+
+            if (includeOrder)
+            {
+		        dbq=dbq.Include("Orders");
+            }
+            return dbq.FirstOrDefault(m => m.Code == code);
+        }
+
+        public IList<Task> GetList(int page, int pageSize,bool includeLog,bool includeOrder, System.Linq.Expressions.Expression<Func<Task, bool>> expresion, out int count)
+        {
+            DbQuery<Model.Task> dbq=_context.Tasks;
+            if (includeLog)
+            {
+                dbq=dbq.Include("Logs");
+            }
+
+            if (includeOrder)
+            {
+		        dbq=dbq.Include("Orders");
+            }
+
+            var q = dbq.AsQueryable();
             if (expresion != null)
             {
                 q = q.Where(expresion);

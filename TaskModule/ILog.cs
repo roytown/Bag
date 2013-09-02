@@ -9,6 +9,8 @@ namespace TaskModule
 {
     public interface ILog
     {
+        bool Add(Model.Log log);
         IList<Model.Log> GetList(Expression<Func<Model.Log, bool>> expresion);
+        Model.Log Get(int tid, Model.LogAction action,int ex);
     }
 }

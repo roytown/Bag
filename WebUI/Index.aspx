@@ -15,6 +15,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <script type="text/javascript" src="<%=ResolveClientUrl("~/scripts/lhgdialog/lhgdialog.min.js?skin=discuz") %>"></script>
       	<div class="wrap_s">
 		<div class="wrap_top_s">
 		<!-- top部分 -->
@@ -50,8 +51,31 @@
             $("#menulist").html(data);
         });
     }
+
+    function card()
+    {
+        var code = "123456";//调用刷卡机API接口，获得编码
+        if (code != null && code != "")
+        {
+            //处理刷卡操作
+            var d = $.dialog({
+                lock: true,
+                content: 'url:/task/card.aspx?code='+code+"&r="+Math.random(),
+                title: "操作内容",
+                width: 500,
+                height: 400,
+                close: function () {
+                   // setTimeout("card()", 1000);
+                }
+            });
+        }
+        //else
+         //   setTimeout("card()", 1000);
+    }
+
     $(document).ready(function () {
         GetMenu("task");
+        card();
     });
 </script>
 	<div class="wrap_con_s">
