@@ -54,7 +54,7 @@
 
     function card()
     {
-        var code = "123456";// rd.ReadID();//调用刷卡机API接口，获得编码
+        var code =  rd.ReadID();//调用刷卡机API接口，获得编码
         if (code != null && code != "")
         {
             //处理刷卡操作
@@ -65,12 +65,12 @@
                 width: 800,
                 height: 500,
                 close: function () {
-                    //setTimeout("card()", 1000);
+                    setTimeout("card()", 1000);
                 }
             });
         }
-        //else
-           //setTimeout("card()", 1000);
+        else
+           setTimeout("card()", 1000);
     }
     var rd;
     $(document).ready(function () {
@@ -86,12 +86,12 @@
         } catch(e) {
             
         }
-        //if (!f)
-       // {
-        //    $.dialog.alert('无法获取刷卡器，请检查相关驱动是否安装。');
-        //}
-        //else
-           // card();
+        if (!f)
+        {
+            $.dialog.alert('无法获取刷卡器，请检查相关驱动是否安装。');
+        }
+        else
+            card();
     });
 </script>
 	<div class="wrap_con_s">

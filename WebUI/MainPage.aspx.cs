@@ -33,6 +33,8 @@ namespace WebUI
                 RptShortCuts.DataSource = nodes;
                 RptShortCuts.DataBind();
             }
+
+
         }
 
         protected void RptShortCuts_ItemDataBound(object sender, RepeaterItemEventArgs e)
