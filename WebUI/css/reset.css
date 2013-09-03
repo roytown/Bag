@@ -97,7 +97,7 @@ span.valid
 {
     border:none;
 }
-.button {
+.button,.coolbg {
 	background:url(../images/button.png) no-repeat left top;
 	width:67px;
 	height:24px;

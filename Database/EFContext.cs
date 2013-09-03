@@ -44,6 +44,16 @@ namespace Database
                 m.MapKey("OrderId");
             }).WillCascadeOnDelete(true);
 
+            modelBuilder.Entity<Order>().HasMany(m => m.OrderCheckLogs).WithRequired(m => m.Order).Map(m =>
+            {
+                m.MapKey("OrderId");
+            }).WillCascadeOnDelete(true);
+
+            modelBuilder.Entity<Task>().HasMany(m => m.StockLogs).WithRequired(m => m.Task).Map(m =>
+            {
+                m.MapKey("TaskId");
+            }).WillCascadeOnDelete(true);
+
             base.OnModelCreating(modelBuilder);
         }
 
@@ -52,6 +62,8 @@ namespace Database
         public DbSet<Task> Tasks { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Log> Logs { get; set; }
+        public DbSet<OrderCheckLog> OrderCheckLogs { get; set; }
+        public DbSet<StockLog> StockLogs { get; set; }
         public static EFContext Instance
         {
             get

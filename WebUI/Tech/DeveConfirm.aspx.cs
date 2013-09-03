@@ -45,7 +45,7 @@ namespace WebUI.Tech
             l.Task = t;
             l.Title = "研发任务确认";
             l.Type = Model.LogType.Normal;
-            l.UserName = RequestContext.Current.User.UserName;
+            l.StartUserName = RequestContext.Current.User.UserName;
             l.AddTime = DateTime.Now;
             l.Description = tbDescription.Text;
             l.Action = Model.LogAction.DevelopConfirm;

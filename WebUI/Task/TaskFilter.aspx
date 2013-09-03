@@ -46,14 +46,14 @@
             <tr>
                 <td style="height:30px;">发布人：</td>
                 <td>
-                     <asp:TextBox ID="tbUserName" runat="server"></asp:TextBox>
+                     <asp:TextBox ID="tbUserName" CssClass="autocomplete-user" runat="server"></asp:TextBox>
                 </td>
 
             </tr>
                <tr>
                 <td style="height:30px;">销售负责人：</td>
                 <td>
-                     <asp:TextBox ID="tbSaleUserName" runat="server"></asp:TextBox>
+                     <asp:TextBox ID="tbSaleUserName" CssClass="autocomplete-user" runat="server"></asp:TextBox>
                 </td>
 
             </tr>

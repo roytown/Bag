@@ -61,9 +61,28 @@
     <Content Include="css\glDatePicker.darkneon.css" />
     <Content Include="css\glDatePicker.default.css" />
     <Content Include="css\glDatePicker.flatwhite.css" />
+    <Content Include="css\jquery.jqplot.min.css" />
     <Content Include="css\LightStyle.css" />
     <Content Include="css\reset.css" />
+    <Content Include="css\shCoreDefault.min.css" />
+    <Content Include="css\shThemejqPlot.min.css" />
     <Content Include="css\style.css" />
+    <Content Include="css\ui-lightness\images\animated-overlay.gif" />
+    <Content Include="css\ui-lightness\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="css\ui-lightness\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="css\ui-lightness\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="css\ui-lightness\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="css\ui-lightness\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="css\ui-lightness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="css\ui-lightness\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="css\ui-lightness\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="css\ui-lightness\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="css\ui-lightness\images\ui-icons_222222_256x240.png" />
+    <Content Include="css\ui-lightness\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="css\ui-lightness\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="css\ui-lightness\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="css\ui-lightness\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="css\ui-lightness\jquery-ui-1.10.3.custom.min.css" />
     <Content Include="images\bottom_bg.gif" />
     <Content Include="images\button.png" />
     <Content Include="images\hide_pop_s.gif" />
@@ -106,6 +125,7 @@
     <Content Include="images\span.png" />
     <Content Include="images\tips_ico_s.png" />
     <Content Include="images\top_bg.gif" />
+    <Content Include="images\ui-anim_basic_16x16.gif" />
     <Content Include="images\welcome_ul_bg.gif" />
     <Content Include="images\welcome_ul_bg_hover.gif" />
     <Content Include="Index.aspx" />
@@ -132,8 +152,81 @@
     <Content Include="Scripts\additional-methods.min.js" />
     <Content Include="Scripts\glDatePicker.js" />
     <Content Include="Scripts\glDatePicker.min.js" />
+    <Content Include="Scripts\jqplot\excanvas.js" />
+    <Content Include="Scripts\jqplot\excanvas.min.js" />
+    <Content Include="Scripts\jqplot\jquery.jqplot.js" />
+    <Content Include="Scripts\jqplot\jquery.jqplot.min.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.barRenderer.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.barRenderer.min.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.BezierCurveRenderer.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.BezierCurveRenderer.min.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.blockRenderer.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.blockRenderer.min.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.bubbleRenderer.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.bubbleRenderer.min.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.canvasAxisLabelRenderer.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.canvasAxisLabelRenderer.min.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.canvasAxisTickRenderer.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.canvasAxisTickRenderer.min.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.canvasOverlay.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.canvasOverlay.min.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.canvasTextRenderer.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.canvasTextRenderer.min.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.categoryAxisRenderer.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.categoryAxisRenderer.min.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.ciParser.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.ciParser.min.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.cursor.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.cursor.min.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.dateAxisRenderer.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.dateAxisRenderer.min.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.donutRenderer.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.donutRenderer.min.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.dragable.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.dragable.min.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.enhancedLegendRenderer.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.enhancedLegendRenderer.min.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.funnelRenderer.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.funnelRenderer.min.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.highlighter.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.highlighter.min.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.json2.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.json2.min.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.logAxisRenderer.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.logAxisRenderer.min.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.mekkoAxisRenderer.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.mekkoAxisRenderer.min.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.mekkoRenderer.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.mekkoRenderer.min.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.meterGaugeRenderer.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.meterGaugeRenderer.min.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.mobile.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.mobile.min.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.ohlcRenderer.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.ohlcRenderer.min.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.pieRenderer.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.pieRenderer.min.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.pointLabels.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.pointLabels.min.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.pyramidAxisRenderer.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.pyramidAxisRenderer.min.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.pyramidGridRenderer.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.pyramidGridRenderer.min.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.pyramidRenderer.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.pyramidRenderer.min.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.trendline.js" />
+    <Content Include="Scripts\jqplot\plugins\jqplot.trendline.min.js" />
+    <Content Include="Scripts\jqplot\syntaxhighlighter\shAutoloader.js" />
+    <Content Include="Scripts\jqplot\syntaxhighlighter\shAutoloader.min.js" />
+    <Content Include="Scripts\jqplot\syntaxhighlighter\shBrushJScript.js" />
+    <Content Include="Scripts\jqplot\syntaxhighlighter\shBrushJScript.min.js" />
+    <Content Include="Scripts\jqplot\syntaxhighlighter\shBrushXml.js" />
+    <Content Include="Scripts\jqplot\syntaxhighlighter\shBrushXml.min.js" />
+    <Content Include="Scripts\jqplot\syntaxhighlighter\shCore.js" />
+    <Content Include="Scripts\jqplot\syntaxhighlighter\shCore.min.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
+    <Content Include="Scripts\jquery-ui-1.10.3.custom.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
     <Content Include="Scripts\jquery.min.js" />
@@ -243,6 +336,7 @@
     <Content Include="Security\WebConfig.aspx" />
     <Content Include="Stock\AddStockLog.aspx" />
     <Content Include="Stock\StatDetail.aspx" />
+    <Content Include="Stock\StockFilter.aspx" />
     <Content Include="Stock\StockLogManage.aspx" />
     <Content Include="Task\AddTask.aspx" />
     <Content Include="Task\card.aspx" />
@@ -258,7 +352,6 @@
     <Content Include="Tech\DeveFilter.aspx" />
     <Content Include="Tools\ajax.aspx" />
     <Content Include="Tools\LeftMenu.aspx" />
-    <Content Include="Tools\waitstat.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -412,6 +505,13 @@
     <Compile Include="Stock\StatDetail.aspx.designer.cs">
       <DependentUpon>StatDetail.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Stock\StockFilter.aspx.cs">
+      <DependentUpon>StockFilter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stock\StockFilter.aspx.designer.cs">
+      <DependentUpon>StockFilter.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Stock\StockLogManage.aspx.cs">
       <DependentUpon>StockLogManage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -516,13 +616,6 @@
     </Compile>
     <Compile Include="Tools\LeftMenu.aspx.designer.cs">
       <DependentUpon>LeftMenu.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Tools\waitstat.aspx.cs">
-      <DependentUpon>waitstat.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Tools\waitstat.aspx.designer.cs">
-      <DependentUpon>waitstat.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

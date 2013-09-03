@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using TaskModule;
 using Web;
 using ExpressionExtended;
+using Controls;
 namespace WebUI.Task
 {
     public partial class TaskManage : SecurityPage
@@ -78,9 +79,9 @@ namespace WebUI.Task
             }
 
             int s=RequestInt32("status",-1);
+            PageStatus.Add("status", s.ToString());
             if (s>=0)
             {
-                PageStatus.Add("status", s.ToString());
                 Model.TaskState ts = (Model.TaskState)s;
                 if (ts == Model.TaskState.PackageEndAndWaitConfirm)
                 {
@@ -106,7 +107,7 @@ namespace WebUI.Task
             Repeater1.DataSource = TaskBll.GetTaskList(pager1.CurrentIndex, pager1.PageSize,expression, out count);
             Repeater1.DataBind();
             pager1.ItemCount = count;
-
+            
             if (count < pager1.PageSize)
             {
                 pager1.Visible = false;
@@ -140,16 +141,24 @@ namespace WebUI.Task
                 LinkButton lbmodify = e.Item.FindControl("lbModify") as LinkButton;
                 LinkButton lbdel = e.Item.FindControl("lbDel") as LinkButton;
                 LinkButton lbconfirm = e.Item.FindControl("lbConfirm") as LinkButton;
-                LinkButton lbAddOrder = e.Item.FindControl("lbAddOrder") as LinkButton;
+                LinkButtonEx lbAddOrder = e.Item.FindControl("lbAddOrder") as LinkButtonEx;
+                LinkButton lbOrderExpand = e.Item.FindControl("lbOrderExpand") as LinkButton;
 
                 Model.Task t = e.Item.DataItem as Model.Task;
+
+                if (t.Status != Model.TaskState.PackageEndAndWaitConfirm)
+                {
+                    lbAddOrder.Visible = false;
+                }
+
                 lbmodify.Visible = (t.Status == Model.TaskState.New) && HasModifyPurview;
                 lbdel.Visible = (t.Status == Model.TaskState.New) && HasDelPurview;
                 lbconfirm.Visible = (t.Status == Model.TaskState.New) && HasConfirmPurview;
 
                 lbmodify.OnClientClick = "javascript:OpenDialog('修改任务信息','/task/addtask.aspx?action=modify&id=" + t.Id.ToString() + "',700,500);return false;";
                 lbconfirm.OnClientClick = "javascript:OpenDialog('确认任务','/task/taskconfirm.aspx?id=" + t.Id.ToString() + "',500,400);return false;";
-                lbAddOrder.OnClientClick = "javascript:OpenDialog('客户确认结果','/task/customconfirmlog.aspx?id=" + t.Id.ToString() + "',500,400);return false;";
+                lbAddOrder.OnClientClick = "javascript:OpenDialog('客户确认结果','/task/customconfirmlog.aspx?id=" + t.Id.ToString() + "',800,500);return false;";
+                lbOrderExpand.OnClientClick = "javascript:OpenDialog('追加订单','/order/addorder.aspx?tid=" + t.Id.ToString() + "',800,500);return false;";
             }
         }
     }

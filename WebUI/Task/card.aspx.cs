@@ -35,7 +35,7 @@ namespace WebUI.Task
                     case Model.TaskState.Packageing:
                     case Model.TaskState.PackageEndAndWaitConfirm:
                         //打开任务操作界面
-                        Response.Redirect("~/tech/addevelog.aspx?id=" + task.Id.ToString());
+                        Response.Redirect("~/tech/adddevelog.aspx?id=" + task.Id.ToString());
                         break;
                     case Model.TaskState.WaitOrderConfirm:
                         //打开客户确认结果录入界面
@@ -43,7 +43,7 @@ namespace WebUI.Task
                         break;
                     case Model.TaskState.Ordering:
                         //打开质检记录录入界面
-                        Response.Redirect("~/order/addchecklog.aspx?id=" + task.Id.ToString());        
+                        Response.Redirect("~/order/addchecklog.aspx?tid=" + task.Id.ToString());        
                         break;
                     case Model.TaskState.Stocking:
                         //打开入库记录操作界面

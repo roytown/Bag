@@ -54,28 +54,44 @@
 
     function card()
     {
-        var code = "123456";//调用刷卡机API接口，获得编码
+        var code = "123456";// rd.ReadID();//调用刷卡机API接口，获得编码
         if (code != null && code != "")
         {
             //处理刷卡操作
             var d = $.dialog({
                 lock: true,
                 content: 'url:/task/card.aspx?code='+code+"&r="+Math.random(),
-                title: "操作内容",
-                width: 500,
-                height: 400,
+                title: "任务信息",
+                width: 800,
+                height: 500,
                 close: function () {
-                   // setTimeout("card()", 1000);
+                    //setTimeout("card()", 1000);
                 }
             });
         }
         //else
-         //   setTimeout("card()", 1000);
+           //setTimeout("card()", 1000);
     }
-
+    var rd;
     $(document).ready(function () {
         GetMenu("task");
-        card();
+        var rd = document.getElementById("rdcard");
+
+        var ret;
+        var f;
+        try {
+            ret = rd.Connet();
+            f = ret == 1;
+           
+        } catch(e) {
+            
+        }
+        //if (!f)
+       // {
+        //    $.dialog.alert('无法获取刷卡器，请检查相关驱动是否安装。');
+        //}
+        //else
+           // card();
     });
 </script>
 	<div class="wrap_con_s">
@@ -97,7 +113,13 @@
 		</div>
 	<!-- //内容部分 -->
 
-	
+	<OBJECT ID="rdcard" 
+	 classid="clsid:5dfebaaa-519e-67c2-7d15-8bb2cdf56ced"
+	  width=1
+	  height=1
+	  align=center
+	  hspace=0
+	  vspace=0></OBJECT>
 
 	</div>
 

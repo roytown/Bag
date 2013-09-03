@@ -28,7 +28,7 @@
 
                 </td>
                 <td style="padding-left:10px;">
-                    <asp:Button ID="BtnFilter" runat="server" CssClass="coolbg" CommandName="Lock" Text="筛选" OnClick="BtnFilter_Click" />
+                    <asp:Button ID="BtnFilter" runat="server" CssClass="button" CommandName="Lock" Text="筛选" OnClick="BtnFilter_Click" />
                 </td>
             </tr>
         </table>

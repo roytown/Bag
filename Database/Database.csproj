@@ -78,6 +78,34 @@
     <Compile Include="Migrations\201309021318315_change-log.Designer.cs">
       <DependentUpon>201309021318315_change-log.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201309030604569_change-logs.cs" />
+    <Compile Include="Migrations\201309030604569_change-logs.Designer.cs">
+      <DependentUpon>201309030604569_change-logs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201309030713329_change-task.cs" />
+    <Compile Include="Migrations\201309030713329_change-task.Designer.cs">
+      <DependentUpon>201309030713329_change-task.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201309030813336_updatelog-startusername.cs" />
+    <Compile Include="Migrations\201309030813336_updatelog-startusername.Designer.cs">
+      <DependentUpon>201309030813336_updatelog-startusername.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201309030944585_add-order-checklog.cs" />
+    <Compile Include="Migrations\201309030944585_add-order-checklog.Designer.cs">
+      <DependentUpon>201309030944585_add-order-checklog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201309030946311_add-order-checklog1.cs" />
+    <Compile Include="Migrations\201309030946311_add-order-checklog1.Designer.cs">
+      <DependentUpon>201309030946311_add-order-checklog1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201309031245435_add-stocklog.cs" />
+    <Compile Include="Migrations\201309031245435_add-stocklog.Designer.cs">
+      <DependentUpon>201309031245435_add-stocklog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201309031313276_change-stocklog.cs" />
+    <Compile Include="Migrations\201309031313276_change-stocklog.Designer.cs">
+      <DependentUpon>201309031313276_change-stocklog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -113,6 +141,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201309021318315_change-log.resx">
       <DependentUpon>201309021318315_change-log.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201309030604569_change-logs.resx">
+      <DependentUpon>201309030604569_change-logs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201309030713329_change-task.resx">
+      <DependentUpon>201309030713329_change-task.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201309030813336_updatelog-startusername.resx">
+      <DependentUpon>201309030813336_updatelog-startusername.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201309030944585_add-order-checklog.resx">
+      <DependentUpon>201309030944585_add-order-checklog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201309030946311_add-order-checklog1.resx">
+      <DependentUpon>201309030946311_add-order-checklog1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201309031245435_add-stocklog.resx">
+      <DependentUpon>201309031245435_add-stocklog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201309031313276_change-stocklog.resx">
+      <DependentUpon>201309031313276_change-stocklog.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

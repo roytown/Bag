@@ -13,13 +13,13 @@ namespace WebUI.Task {
     public partial class CustomConfirmLog {
         
         /// <summary>
-        /// LtTile control.
+        /// LtCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LtTile;
+        protected global::System.Web.UI.WebControls.Literal LtCode;
         
         /// <summary>
         /// LtTitle control.
@@ -40,13 +40,40 @@ namespace WebUI.Task {
         protected global::System.Web.UI.WebControls.Literal LtDescription;
         
         /// <summary>
-        /// tbDescription control.
+        /// RblResult control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Controls.TextBoxEx tbDescription;
+        protected global::System.Web.UI.WebControls.RadioButtonList RblResult;
+        
+        /// <summary>
+        /// tbOrderNum control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Controls.TextBoxEx tbOrderNum;
+        
+        /// <summary>
+        /// tbOrderTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Controls.TextBoxEx tbOrderTime;
+        
+        /// <summary>
+        /// tbOrderDesc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Controls.TextBoxEx tbOrderDesc;
         
         /// <summary>
         /// BtnOk control.

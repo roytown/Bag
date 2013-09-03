@@ -38,6 +38,7 @@
                                  <asp:LinkButton ID="lbDel" runat="server" Text="删除" CommandName="Del" CommandArgument='<%#Eval("Id") %>' />
                                  <asp:LinkButton ID="lbConfirm" runat="server" Text="确认" />
                                  <bag:LinkButtonEx ID="lbAddOrder" runat="server" Text="提交客户确认记录" Purview="task_customconfirm" />
+                                 <bag:LinkButtonEx ID="lbOrderExpand" runat="server" Text="追加订单" Purview="order_expand" />
                                  <bag:LinkButtonEx ID="lbDetail" runat="server" Text="查看任务明细" Purview="task_manage" />
                               </i> </td>
                         </tr>

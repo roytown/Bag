@@ -27,7 +27,7 @@
                  </td>
             </tr>
              <tr>
-            	<td class="td2_1">订单说明：</td>
+            	<td class="td2_1">其它说明：</td>
                 <td>
                     <bag:TextBoxEx ID="tbDescription" runat="Server" TextMode="MultiLine" Rows="6" CssClass="input"  />
                     </td>

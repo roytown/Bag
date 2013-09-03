@@ -9,13 +9,20 @@
     <link href="<%=ResolveClientUrl("~/css/reset.css") %>" rel="stylesheet" type="text/css" />
     <link href="<%=ResolveClientUrl("~/css/LightStyle.css") %>" rel="stylesheet" type="text/css" />
     <link href="<%=ResolveClientUrl("~/css/glDatePicker.default.css") %>" rel="stylesheet" type="text/css"/>
+    <link href="<%=ResolveClientUrl("~/css/ui-lightness/jquery-ui-1.10.3.custom.min.css") %>" rel="stylesheet" type="text/css"/>
     <script type="text/javascript">
         var windowstatus = <%=Status%>;
     </script>
+    <style>
+        .ui-autocomplete-loading {
+            background: white url('/images/ui-anim_basic_16x16.gif') right center no-repeat;
+          }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <script type="text/javascript" src="<%=ResolveClientUrl("~/scripts/lhgdialog/lhgdialog.min.js?skin=discuz") %>"></script>
+         <script type="text/javascript" src="<%=ResolveClientUrl("~/scripts/jquery-ui-1.10.3.custom.min.js") %>"></script>
         <asp:ContentPlaceHolder ID="Content" runat="server">
         
         </asp:ContentPlaceHolder>
@@ -23,6 +30,33 @@
              <img src="<%=ResolveClientUrl("~/images/loading.gif") %>" />
         </div>
         <script type="text/javascript">
+            $(document).ready(function(){
+                $(".autocomplete-user").autocomplete({
+                    source: function( request, response ) {
+                        $.ajax({
+                            url: "/tools/ajax.aspx",
+                           
+                            data: {
+                                maxRows: 12,
+                                name_startsWith: request.term,
+                                action:'userfilter'
+                            },
+                            success: function( data ) {
+                                response(eval('('+data+')'));
+                            }
+                        });
+                    },
+                    minLength: 1,
+                    delay:500,
+                   
+                    open: function() {
+                        $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+                    },
+                    close: function() {
+                        $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+                    }
+                });
+            });
             function wating(a) {
                 $("#loading").css("display", a ? "block" : "none");
             }

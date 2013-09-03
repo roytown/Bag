@@ -43,7 +43,7 @@ namespace WebUI.Task
             l.Task = t;
             l.Title = "任务确认";
             l.Type = Model.LogType.Normal;
-            l.UserName = RequestContext.Current.User.UserName;
+            l.StartUserName = RequestContext.Current.User.UserName;
             l.AddTime = DateTime.Now;
             l.Description = tbDescription.Text;
             l.Action = Model.LogAction.NewTaskConfirm;

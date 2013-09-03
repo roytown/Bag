@@ -53,7 +53,7 @@ namespace TaskModule
             return _context.SaveChanges() > 0;
         }
 
-        public Model.Task Get(int id, bool includeLog, bool includeOrder)
+        public Model.Task Get(int id, bool includeLog, bool includeOrder, bool includeStockLog)
         {
             DbQuery<Model.Task> dbq=_context.Tasks;
             if (includeLog)
@@ -64,12 +64,17 @@ namespace TaskModule
             if (includeOrder)
             {
 		        dbq=dbq.Include("Orders");
+            }
+
+            if (includeOrder)
+            {
+                dbq = dbq.Include("StockLogs");
             }
 
             return dbq.FirstOrDefault(m => m.Id == id);
         }
 
-        public Model.Task Get(string code, bool includeLog, bool includeOrder)
+        public Model.Task Get(string code, bool includeLog, bool includeOrder, bool includeStockLog)
         {
             DbQuery<Model.Task> dbq=_context.Tasks;
             if (includeLog)
@@ -81,10 +86,15 @@ namespace TaskModule
             {
 		        dbq=dbq.Include("Orders");
             }
+            if (includeOrder)
+            {
+                dbq = dbq.Include("StockLogs");
+            }
+
             return dbq.FirstOrDefault(m => m.Code == code);
         }
 
-        public IList<Task> GetList(int page, int pageSize,bool includeLog,bool includeOrder, System.Linq.Expressions.Expression<Func<Task, bool>> expresion, out int count)
+        public IList<Task> GetList(int page, int pageSize, bool includeLog, bool includeOrder, bool includeStockLog, System.Linq.Expressions.Expression<Func<Task, bool>> expresion, out int count)
         {
             DbQuery<Model.Task> dbq=_context.Tasks;
             if (includeLog)
@@ -96,7 +106,10 @@ namespace TaskModule
             {
 		        dbq=dbq.Include("Orders");
             }
-
+            if (includeOrder)
+            {
+                dbq = dbq.Include("StockLogs");
+            }
             var q = dbq.AsQueryable();
             if (expresion != null)
             {

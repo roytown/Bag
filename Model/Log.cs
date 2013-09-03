@@ -25,7 +25,9 @@ namespace Model
         public LogAction Action { get; set; }
         [Required]
         [StringLength(50)]
-        public string UserName { get; set; }
+        public string StartUserName { get; set; }
+        [StringLength(50)]
+        public string EndUserName { get; set; }
         public Task Task { get; set; }
 
         public int Extend { get; set; }

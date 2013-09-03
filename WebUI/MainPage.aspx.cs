@@ -43,7 +43,12 @@ namespace WebUI
                 Image img = e.Item.FindControl("Image1") as Image;
                 Literal l = e.Item.FindControl("Literal1") as Literal;
                 XmlNode node = e.Item.DataItem as XmlNode;
-                link.NavigateUrl = WebUtility.GetXmlNodeAttribute(node, "url");
+                string url=WebUtility.GetXmlNodeAttribute(node, "url");
+                if (WebUtility.GetXmlNodeAttribute(node,"appendsecuritycode")=="true")
+                {
+                    url=WebUtility.AppendSecurityCode(url);
+                }
+                link.NavigateUrl = url;
                 img.ImageUrl = WebUtility.GetXmlNodeAttribute(node, "icon");
                 l.Text = WebUtility.GetXmlNodeAttribute(node, "title");
             }

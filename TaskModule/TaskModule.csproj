@@ -51,12 +51,15 @@
   <ItemGroup>
     <Compile Include="ILog.cs" />
     <Compile Include="IOrder.cs" />
+    <Compile Include="IStockLog.cs" />
     <Compile Include="ITask.cs" />
     <Compile Include="LogBll.cs" />
     <Compile Include="LogDal.cs" />
     <Compile Include="OrderBll.cs" />
     <Compile Include="OrderDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StockLogDal.cs" />
+    <Compile Include="StockLogBll.cs" />
     <Compile Include="TaskBll.cs" />
     <Compile Include="TaskDal.cs" />
   </ItemGroup>

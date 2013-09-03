@@ -26,24 +26,24 @@ namespace TaskModule
             return taskProvider.Delete(id);
         }
 
-        public static Task GetTask(int id,bool includeLog=false,bool includeOrder=false)
+        public static Task GetTask(int id,bool includeLog=false,bool includeOrder=false,bool includeStockLog=false)
         {
             if (id<=0)
             {
                 return null;
             }
             ITask taskProvider = new TaskDal(EFContext.Instance);
-            return taskProvider.Get(id,includeLog,includeOrder);
+            return taskProvider.Get(id, includeLog, includeOrder, includeStockLog);
         }
 
-        public static Task GetTask(string code, bool includeLog = false, bool includeOrder = false)
+        public static Task GetTask(string code, bool includeLog = false, bool includeOrder = false, bool includeStockLog = false)
         {
             if (string.IsNullOrEmpty(code))
             {
                 return null;
             }
             ITask taskProvider = new TaskDal(EFContext.Instance);
-            return taskProvider.Get(code,includeLog,includeOrder);
+            return taskProvider.Get(code, includeLog, includeOrder, includeStockLog);
         }
 
         public static bool UpdateTask(Task task, params string[] modifyParameters)
@@ -52,11 +52,11 @@ namespace TaskModule
             return taskProvider.Update(task,modifyParameters);
         }
 
-        public static IList<Task> GetTaskList(int page, int pageSize, Expression<Func<Task,bool>> expression, out int count,bool includeLog=false,bool includeOrder=false)
+        public static IList<Task> GetTaskList(int page, int pageSize, Expression<Func<Task, bool>> expression, out int count, bool includeLog = false, bool includeOrder = false, bool includeStockLog = false)
         {
             ITask taskProvider = new TaskDal(EFContext.Instance);
-           
-            return taskProvider.GetList(page, pageSize,includeLog,includeOrder, expression, out count); 
+
+            return taskProvider.GetList(page, pageSize, includeLog, includeOrder, includeStockLog,expression, out count); 
         }
         
         public static string GetTaskState(TaskState state)

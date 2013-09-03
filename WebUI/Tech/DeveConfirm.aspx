@@ -24,7 +24,7 @@
                 <tr>
             		<td class="td2_1">研发负责人：</td>
                     <td>
-                        <bag:TextBoxEx ID="tbDevelopUserName" Width="100" runat="Server" CssClass="input"  IsRequired="true" RequiredErrorMessage="请输入研发负责人" Purview="tech_developconfirm"/>
+                        <bag:TextBoxEx ID="tbDevelopUserName" Width="100" runat="Server" CssClass="input autocomplete-user"  IsRequired="true" RequiredErrorMessage="请输入研发负责人" Purview="tech_developconfirm"/>
                      </td>
             	</tr>
                

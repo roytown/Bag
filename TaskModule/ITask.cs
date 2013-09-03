@@ -12,8 +12,8 @@ namespace TaskModule
         bool Add(Task info);
         bool Delete(int id);
         bool Update(Task info, params string[] modifiedProperty);
-        Task Get(int id,bool includeLog,bool includeOrder);
-        Task Get(string code,bool includeLog,bool includeOrder);
-        IList<Task> GetList(int page, int pageSize,bool includeLog,bool includeOrder, Expression<Func<Task, bool>> expresion, out int count);
+        Task Get(int id,bool includeLog,bool includeOrder,bool includeStockLog);
+        Task Get(string code, bool includeLog, bool includeOrder, bool includeStockLog);
+        IList<Task> GetList(int page, int pageSize, bool includeLog, bool includeOrder, bool includeStockLog, Expression<Func<Task, bool>> expresion, out int count);
     }
 }

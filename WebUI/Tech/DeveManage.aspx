@@ -31,7 +31,7 @@
                             </td>
                             <td>
                              <i>
-                                 <bag:LinkButtonEx ID="lbAddlog" runat="server" Text="发布研发日志" Purview="tech_addlog" />
+                                 <bag:LinkButtonEx ID="lbAddlog" runat="server" Text="任务操作" Purview="tech_addlog" />
                                  <asp:LinkButton ID="lbDevelopConfirm" runat="server" Text="研发确认" />
                                  <bag:LinkButtonEx ID="lbDetail" runat="server" Text="查看研发明细" Purview="tech_viewlog" />
                               </i> </td>

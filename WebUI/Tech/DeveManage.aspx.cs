@@ -73,9 +73,10 @@ namespace WebUI.Tech
             }
 
             int s = RequestInt32("status", -1);
+            PageStatus.Add("status", s.ToString());
             if (s >= 0)
             {
-                PageStatus.Add("status", s.ToString());
+                
                 Model.TaskState ts = (Model.TaskState)s;
                 if (ts == Model.TaskState.PackageEndAndWaitConfirm)
                 {
@@ -84,9 +85,13 @@ namespace WebUI.Tech
 
                 expression = expression.And(m => m.Status == ts);
             }
-            else
+            else if(s==-1)
             {
                 expression = expression.And(m => (int)m.Status >1);
+            }
+            else if (s == -2)
+            {
+                expression = expression.And(m => ((int)m.Status >=2) && ((int)m.Status<=9));
             }
 
             int self = RequestInt32("self", -1);
@@ -119,7 +124,7 @@ namespace WebUI.Tech
                 Model.Task t = e.Item.DataItem as Model.Task;
                 lbDevelopConfirm.Visible = (t.Status == Model.TaskState.CanDevelop) && HasDevelopConfirmPurview;
                 lbDevelopConfirm.OnClientClick = "javascript:OpenDialog('确认研发任务','/tech/deveconfirm.aspx?id=" + t.Id.ToString() + "',500,400);return false;";
-                lbAddlog.OnClientClick = "javascript:OpenDialog('发布研发日志','/tech/adddevelog.aspx?id=" + t.Id.ToString() + "',500,400);return false;";
+                lbAddlog.OnClientClick = "javascript:OpenDialog('发布研发日志','/tech/adddevelog.aspx?id=" + t.Id.ToString() + "',800,500);return false;";
             }
         }
     }

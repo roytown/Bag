@@ -43,5 +43,8 @@ namespace Model
 
         public virtual List<Order> Orders { get; set; }
         public virtual List<Log> Logs { get; set; }
+        public virtual List<StockLog> StockLogs { get; set; }
+
+        public int ModifyTimes { get; set; }
     }
 }

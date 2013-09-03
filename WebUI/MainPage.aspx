@@ -5,11 +5,11 @@
             <h2>待处理</h2>
             <ul>
 
-                <li><a href="#"><img src="../images/li_01.png" />待办事项<b>(3)</b></a></li>
-                <li><a href="#"><img src="../images/li_02.png" />未查看消息<b>(3)</b></a></li>
-                <li><a href="#"><img src="../images/li_03.png" />待审核任务<b>(3)</b></a></li>
-                <li><a href="#"><img src="../images/li_04.png" />新接收任务<b>(3)</b></a></li>
-                <li><a href="#"><img src="../images/li_05.png" />新订单<b>(3)</b></a></li>
+                <li id="task1" runat="server" purview="task_confirm"><a href="#"><img src="../images/li_01.png" />待确认任务<b>(3)</b></a></li>
+                <li id="task2" runat="server" purview="tech_confirm"><a href="#"><img src="../images/li_02.png" />待确认研发任务<b>(3)</b></a></li>
+                <li id="task3" runat="server" purview="order_confirm"><a href="#"><img src="../images/li_03.png" />待确认订单<b>(3)</b></a></li>
+                <li id="task4" runat="server" purview="stock_add"><a href="#"><img src="../images/li_04.png" />待入库任务<b>(3)</b></a></li>
+                
             </ul>
         </div>
         <div class="kjcz">

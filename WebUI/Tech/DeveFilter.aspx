@@ -45,7 +45,7 @@
                <tr>
                 <td style="height:30px;">研发负责人：</td>
                 <td>
-                     <asp:TextBox ID="tbDevelopUserName" runat="server"></asp:TextBox>
+                     <asp:TextBox ID="tbDevelopUserName" CssClass="autocomplete-user" runat="server"></asp:TextBox>
                 </td>
 
             </tr>

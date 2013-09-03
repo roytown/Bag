@@ -15,7 +15,10 @@ namespace Model
         Plate,
         Sample,
         Package,
+        
         Order,
-        Stock
+        Stock,
+        CustomConfirm,
+        OrderConfirm
     }
 }

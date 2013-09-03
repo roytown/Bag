@@ -31,5 +31,7 @@ namespace Model
         public string QualityUserName { get; set; }//质检负责人
         public virtual List<OrderExpand> Expands { get; set; }
         public OrderStatus Status { get; set; }
+
+        public virtual List<OrderCheckLog> OrderCheckLogs { get; set; }
     }
 }

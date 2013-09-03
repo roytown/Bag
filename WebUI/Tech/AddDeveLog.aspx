@@ -1,12 +1,13 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/MainMaster.Master" CodeBehind="AddDeveLog.aspx.cs" Inherits="WebUI.Tech.AddDeveLog" %>
 <asp:Content ContentPlaceHolderID="Content" ID="content" runat="Server">
      <div class="right_list">
-         <div style="width:100%;">
-             <bag:ButtonEx ID="btnDesign" CommandName="BeginDesign" Visible="false" runat="server" Text="开始设计" Purview="tech_design" OnClick="Btn_Click" />
-             <bag:ButtonEx ID="btnPlate" CommandName="BeginPlate" Visible="false" runat="server" Text="开始制版" Purview="tech_plate" />
-             <bag:ButtonEx ID="btnSample" CommandName="BeginSample" Visible="false" runat="server" Text="开始打样" Purview="tech_sample" />
-             <bag:ButtonEx ID="btnPackage" CommandName="BeginPackage" Visible="false" runat="server" Text="开始制作样包" Purview="tech_package" />
+         <div style="width:98%;margin:10px;">
+             <bag:ButtonEx ID="btnDesign" CssClass="button" CommandName="BeginDesign" Visible="false" runat="server" Text="开始设计" Purview="tech_design" OnClick="Btn_Click" />
+             <bag:ButtonEx ID="btnPlate" CssClass="button" CommandName="BeginPlate" Visible="false" runat="server" Text="开始制版" Purview="tech_plate"  OnClick="Btn_Click" />
+             <bag:ButtonEx ID="btnSample" CssClass="button" CommandName="BeginSample" Visible="false" runat="server" Text="开始打样" Purview="tech_sample"  OnClick="Btn_Click" />
+             <bag:ButtonEx ID="btnPackage" CssClass="button" CommandName="BeginPackage" Visible="false" runat="server" Text="制作样包" Purview="tech_package"  OnClick="Btn_Click" />
          </div>
+         <br /><br />
          <table cellpadding="0" cellspacing="0" border="0" width="98%" class="table2">
         	<tr>
             	<td class="td2_1">任务编码：</td>
@@ -32,28 +33,31 @@
            	</tr>
         	<tr>
             	<td class="td2_1">任务说明：</td>
-                <td>
+                <td colspan="3">
                     <asp:Literal ID="LtDescription" runat="server"></asp:Literal>
                     </td>
             </tr>
         	<tr>
-                <td colspan="2">
-                    <table>
+                <td colspan="4">
+                    <table cellpadding="0" cellspacing="0" border="0" width="100%" class="table3" id="table3">
                         <tr>
                             <td>操作类型</td>
                             <td>起始时间</td>
                             <td>结束时间</td>
                             <td>总用时</td>
-                            <td>操作人</td>
+                            <td>起始操作人</td>
+                            <td>结束操作人</td>
                         </tr>
-                        <asp:Repeater ID="RptLogs" runat="server">
+                        <asp:Repeater ID="RptLogs" OnItemDataBound="RptLogs_ItemDataBound" runat="server">
                             <ItemTemplate>
                                 <tr>
-                                    <td>操作类型</td>
-                                    <td>起始时间</td>
-                                    <td>结束时间</td>
-                                    <td>总用时</td>
-                                    <td>操作人</td>
+                                    <td><%#Model.LogActionDictionary.Dic[(Model.LogAction)Eval("Action")] %></td>
+                                    <td>
+                                        <asp:Literal ID="Literal1" runat="server"></asp:Literal></td>
+                                    <td><asp:Literal ID="Literal2" runat="server"></asp:Literal></td>
+                                    <td><asp:Literal ID="Literal3" runat="server"></asp:Literal></td>
+                                    <td><%#Eval("StartUserName") %></td>
+                                    <td><%#Eval("EndUserName") %></td>
                                 </tr>
                             </ItemTemplate>
                         </asp:Repeater>
