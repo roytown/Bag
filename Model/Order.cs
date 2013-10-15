@@ -14,11 +14,9 @@ namespace Model
         public int Id { get; set; }
         public Task Task { get; set; }
         [Required]
-        [StringLength(100)]
-        public string Time { get; set; }
+        public DateTime Time { get; set; }
         [Required]
-        [StringLength(100)]
-        public string Num{get;set;}
+        public int Num{get;set;}
         [StringLength(255)]
         public string Description { get; set; }
         [Required]
@@ -29,7 +27,7 @@ namespace Model
         public string PublishUserName { get; set; }//生产负责人
         [StringLength(50)]
         public string QualityUserName { get; set; }//质检负责人
-        public virtual List<OrderExpand> Expands { get; set; }
+        //public virtual List<OrderExpand> Expands { get; set; }
         public OrderStatus Status { get; set; }
 
         public virtual List<OrderCheckLog> OrderCheckLogs { get; set; }

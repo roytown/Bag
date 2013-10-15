@@ -1,11 +1,17 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/MainMaster.Master" CodeBehind="AddCheckLog.aspx.cs" Inherits="WebUI.Order.AddCheckLog" %>
 <asp:Content ContentPlaceHolderID="Content" ID="content" runat="Server">
-    <div class="right">
-         <div style="width:98%;margin:10px;">
-             <bag:ButtonEx ID="btnResult" CssClass="button"  runat="server" Text="订单完成" Purview="order_resultlog" OnClick="btnResult_Click" />
-             
-         </div>
-         <br /><br />
+    <div id="epcdiv" class="right">
+         <table id="epctable" runat="server" cellpadding="0" cellspacing="0" border="0" width="98%" class="table2">
+             <tr>
+            	<td class="td2_1">EPC：</td>
+                <td>
+                    <asp:TextBox ID="tbEpc" AutoPostBack="true" Enabled="true" OnTextChanged="tbEcp_TextChanged" runat="server" CssClass="input"/>
+                    &nbsp;&nbsp;&nbsp;<input type="button" style="padding:0px 5px 0px 5px;" onclick="javascript:readcard('<%=tbEpc.ClientID%>');__doPostBack('<%=tbEpc.UniqueID%>','');" value="读卡" /> 
+                </td>
+           	</tr>
+         </table>
+     </div>
+    <div id="maindiv" runat="server" class="right" visible="false">
           <table cellpadding="0" cellspacing="0" border="0" width="100%" class="table2">
             <tr>
             	<td class="td2_1">说明：</td>
@@ -20,13 +26,13 @@
              <tr>
             	<td class="td2_1">说明：</td>
                 <td>
-                    <bag:TextBoxEx ID="tbDescription" runat="Server" TextMode="MultiLine" Rows="6" CssClass="input"  />
+                    <bag:TextBoxEx ID="tbDescription" runat="Server" TextMode="MultiLine" Rows="6" CssClass="input" IsRequired="true" MaxTextLength="255" FormatErrorMessage="内容长度不能超过255个字符" RequiredErrorMessage="请输入质检说明"  />
                     </td>
             </tr>
               <tr>
                   <td></td>
                   <td>
-
+                      <asp:HiddenField ID="HiddenField1" runat="server" />
                        <asp:Button ID="BtnOk" runat="server" CssClass="button mr10" Text="提交记录" OnClick="BtnOk_Click"/>
                     
                   </td>

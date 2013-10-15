@@ -58,13 +58,13 @@ namespace WebUI.Task {
         protected global::Controls.TextBoxEx tbOrderNum;
         
         /// <summary>
-        /// tbOrderTime control.
+        /// date1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Controls.TextBoxEx tbOrderTime;
+        protected global::Controls.Date date1;
         
         /// <summary>
         /// tbOrderDesc control.

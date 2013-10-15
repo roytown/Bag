@@ -23,7 +23,16 @@ namespace TaskModule
             _context.Entry<Model.Task>(order.Task).State = System.Data.EntityState.Unchanged;
             return _context.SaveChanges() > 0;
         }
+        public int Count(Expression<Func<Model.Order, bool>> expresion)
+        {
+            var dbq = _context.Orders.AsQueryable();
+            if (expresion != null)
+            {
+                dbq = dbq.Where(expresion);
+            }
 
+            return dbq.Count();
+        }
         public bool AddLog(Model.OrderCheckLog log)
         {
             _context.OrderCheckLogs.Add(log);
@@ -38,14 +47,17 @@ namespace TaskModule
             return _context.SaveChanges() > 0;
         }
 
-        public Model.Order Get(int id, bool includeTask)
+        public Model.Order Get(int id, bool includeTask, bool includeLog)
         {
             DbQuery<Model.Order> dbq = _context.Orders;
             if (includeTask)
             {
                 dbq = dbq.Include("Task");
             }
-
+            if (includeLog)
+            {
+                dbq = dbq.Include("OrderCheckLogs");
+            }
             return dbq.FirstOrDefault(m => m.Id == id);
         }
 

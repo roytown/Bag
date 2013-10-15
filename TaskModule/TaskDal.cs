@@ -6,6 +6,7 @@ using System.Text;
 using Database;
 using Model;
 using EntityFramework.Extensions;
+using System.Linq.Expressions;
 namespace TaskModule
 {
     public class TaskDal:ITask
@@ -94,6 +95,42 @@ namespace TaskModule
             return dbq.FirstOrDefault(m => m.Code == code);
         }
 
+        public Task Get(Expression<Func<Task, bool>> expresion, bool includeLog, bool includeOrder, bool includeStockLog)
+        {
+            DbQuery<Model.Task> dbq = _context.Tasks;
+            if (includeLog)
+            {
+                dbq = dbq.Include("Logs");
+            }
+
+            if (includeOrder)
+            {
+                dbq = dbq.Include("Orders");
+            }
+            if (includeOrder)
+            {
+                dbq = dbq.Include("StockLogs");
+            }
+            var q = dbq.AsQueryable();
+            if (expresion != null)
+            {
+                q = q.Where(expresion);
+            }
+
+            return q.FirstOrDefault();
+        }
+
+        public int Count(Expression<Func<Task, bool>> expresion)
+        {
+            var dbq = _context.Tasks.AsQueryable();
+            if (expresion != null)
+            {
+                dbq = dbq.Where(expresion);
+            }
+
+            return dbq.Count();
+        }
+
         public IList<Task> GetList(int page, int pageSize, bool includeLog, bool includeOrder, bool includeStockLog, System.Linq.Expressions.Expression<Func<Task, bool>> expresion, out int count)
         {
             DbQuery<Model.Task> dbq=_context.Tasks;
@@ -110,13 +147,15 @@ namespace TaskModule
             {
                 dbq = dbq.Include("StockLogs");
             }
-            var q = dbq.AsQueryable();
+
+            var q = dbq.OrderByDescending(m => m.Id).AsQueryable();
             if (expresion != null)
             {
                 q = q.Where(expresion);
             }
+            
             var qc = q.FutureCount();
-            var q1 = q.OrderBy(u => u.Id).Skip((page - 1) * pageSize).Take(pageSize);
+            var q1 = q.Skip((page - 1) * pageSize).Take(pageSize);
             count = qc.Value;
             return q1.ToList();
         }

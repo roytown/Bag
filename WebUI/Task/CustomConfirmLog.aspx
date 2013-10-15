@@ -20,7 +20,7 @@
             </tr>
             <tr>
             	<td class="td2_1">确认结果：</td>
-                <td>
+                <td colspan="3">
                     <asp:RadioButtonList ID="RblResult" RepeatDirection="Horizontal" RepeatLayout="Flow"  RepeatColumns="3" runat="server">
                         <asp:ListItem Value="0" Text="要求修改"  />
                         <asp:ListItem Value="1" Text="有订单" Selected="True"/>
@@ -35,19 +35,20 @@
              <tr>
             	<td class="td2_1">订单数量说明：</td>
                 <td style="padding-right:10px;">
-                    <bag:TextBoxEx ID="tbOrderNum" Width="536px" Height="" runat="Server" TextMode="MultiLine" Rows="6" CssClass="input"  />
+                    <bag:TextBoxEx ID="tbOrderNum" Width="536px" IsRequired="true" RequiredErrorMessage="请输入数量说明"  FormatErrorMessage="只能输入整数" Type="Int" runat="Server" CssClass="input"  />件
                 </td>
             </tr>
             <tr>
-            	<td class="td2_1">订单时间说明：</td>
+            	<td class="td2_1">订单完成时间要求：</td>
                 <td>
-                    <bag:TextBoxEx ID="tbOrderTime" Width="100%" runat="Server" TextMode="MultiLine" Rows="6" CssClass="input"  />
+                    <bag:Date ID="date1" runat="Server" />
+                   
                 </td>
             </tr>
             <tr>
             	<td class="td2_1">其它说明：</td>
                 <td>
-                    <bag:TextBoxEx ID="tbOrderDesc" Width="100%" runat="Server" TextMode="MultiLine" Rows="6" CssClass="input"  />
+                    <bag:TextBoxEx ID="tbOrderDesc" Width="100%" runat="Server" MaxLength="255" FormatErrorMessage="内容长度不能超过255个字符" TextMode="MultiLine" Rows="6" CssClass="input"  />
                 </td>
             </tr>
          </table>
@@ -61,7 +62,7 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $("input").bind("click", function () {
+            $("input[type=radio]").bind("click", function () {
                 if($(this).val()=="1")
                 {
                     $("#order").css("display", "block");

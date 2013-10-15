@@ -39,10 +39,10 @@ namespace Database
                 m.MapKey("TaskId");
             }).WillCascadeOnDelete(true);
 
-            modelBuilder.Entity<Order>().HasMany(m => m.Expands).WithRequired(m => m.Order).Map(m =>
-            {
-                m.MapKey("OrderId");
-            }).WillCascadeOnDelete(true);
+            //modelBuilder.Entity<Order>().HasMany(m => m.Expands).WithRequired(m => m.Order).Map(m =>
+            //{
+            //    m.MapKey("OrderId");
+            //}).WillCascadeOnDelete(true);
 
             modelBuilder.Entity<Order>().HasMany(m => m.OrderCheckLogs).WithRequired(m => m.Order).Map(m =>
             {

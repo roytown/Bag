@@ -13,6 +13,7 @@ namespace WebUI.Tech
     {
         private int id;
         private Model.Task t;
+        protected string ecp;
         protected void Page_Load(object sender, EventArgs e)
         {
             id = RequestInt32("id");
@@ -30,15 +31,38 @@ namespace WebUI.Tech
 
             if (!IsPostBack)
             {
-                LtTile.Text = t.Title;
-                tbCode.Text = t.Code;
+                LtCode.Text = t.Code;
+                LtTitle.Text = t.Title;
                 LtDescription.Text = t.Description;
+
+                LtBigness.Text = t.Bigness;
+                LTBrand.Text = t.Brand;
+                LtCarryPart.Text = t.CarryPart;
+                LtCollapse.Text = t.Collapse ? "可折叠" : "不可折叠";
+                LtColor.Text = t.Color;
+                ecp=LtEcp.Text = t.Ecp;
+                LtFineness.Text = t.Fineness;
+                LtHardness.Text = t.Hardness;
+                LtInternalStructure.Text = t.InternalStructure;
+                LtMaterial.Text = t.Materail;
+                LtModel.Text = t.Model;
+                LtPattern.Text = t.Pattern;
+                LtPopularElement.Text = t.PopularElement;
+                LtPrice.Text = t.Price;
+                LtQuality.Text = t.Quality;
+                LtSituation.Text = t.Situation;
+                LtSize.Text = t.Size;
+                LtStyle.Text = t.Style;
+                LtTexture.Text = t.Texture;
+                LtType.Text = t.Type;
+
+
             }
         }
 
         protected void BtnOk_Click(object sender, EventArgs e)
         {
-            t.Code = tbCode.Text;
+            //t.Code = tbCode.Text;
             t.DevelopUserName = tbDevelopUserName.Text;
             t.Status = Model.TaskState.DevelopConfirmed;
             Model.Log l = new Model.Log();

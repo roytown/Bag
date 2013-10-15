@@ -7,6 +7,7 @@
                     <th>ID</th>
                     <th>任务标题</th>
                     <th>编码</th>
+                    <th>EPC</th>
                     <th>销售负责人</th>
                     <th>研发负责人</th>
                     <th>说明</th>
@@ -20,6 +21,7 @@
                             <td><%#Eval("ID") %></td>
                             <td><%#Eval("Title") %></td>
                             <td><%#Eval("Code") %></td>
+                            <td>&nbsp;<%#Eval("Ecp") %></td>
                              <td><%#(Eval("SaleUserName")==null || Eval("SaleUserName").ToString()=="")?"未确定":Eval("SaleUserName") %></td>
                             <td><%#(Eval("DevelopUserName")==null || Eval("DevelopUserName").ToString()=="")?"未确定":Eval("DevelopUserName") %></td>
                           
@@ -32,7 +34,7 @@
                             <td>
                              <i>
                                  <bag:LinkButtonEx ID="lbAddlog" runat="server" Text="任务操作" Purview="tech_addlog" />
-                                 <asp:LinkButton ID="lbDevelopConfirm" runat="server" Text="研发确认" />
+                                 <bag:LinkButtonEx ID="lbDevelopConfirm" Purview="tech_confirm" runat="server" Text="研发确认" />
                                  <bag:LinkButtonEx ID="lbDetail" runat="server" Text="查看研发明细" Purview="tech_viewlog" />
                               </i> </td>
                         </tr>

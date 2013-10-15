@@ -47,10 +47,10 @@ namespace TaskModule
                     return "制版";
                    
                 case Model.LogAction.Sample:
-                    return "打样";
+                    return "打样生产";
                 
                 case Model.LogAction.Package:
-                    return "样包制作";
+                    return "交付";
                    
                 case Model.LogAction.Order:
                     return "订单";

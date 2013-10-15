@@ -78,11 +78,21 @@ namespace Web
 
         public bool HasPurview(string purview)
         {
-           if (_purviews!=null)
+           if (!string.IsNullOrEmpty(purview))
            {
-               return _purviews.Any(m => m == purview||m=="-1");
+               string[] ps = purview.Split(new char[] { ',', '£¬' }, StringSplitOptions.RemoveEmptyEntries);
+               bool pass = false;
+               foreach (var item in ps)
+               {
+                   if (_purviews.Any(m => m == item||m=="-1"))
+                   {
+                       pass = true;
+                       break;
+                   }
+               }
+               return pass;
            }
-            return false;
+            return true;
         }
 
         public bool IsInRole(int roleId)

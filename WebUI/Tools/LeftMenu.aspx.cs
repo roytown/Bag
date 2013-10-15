@@ -26,13 +26,16 @@ namespace WebUI.Tools
                 string url = "";
                 foreach (XmlNode n in menu.ChildNodes)
                 {
-                    appendcode = GetAttributeValue(n, "appendsecuritycode");
-                    url=GetAttributeValue(n,"url");
-                    if (!string.IsNullOrEmpty(appendcode) && appendcode=="true")
+                    if (RequestContext.Current.User.HasPurview(GetAttributeValue(n, "purview")))
                     {
-                        url = WebUtility.AppendSecurityCode(url);
+                        appendcode = GetAttributeValue(n, "appendsecuritycode");
+                        url = GetAttributeValue(n, "url");
+                        if (!string.IsNullOrEmpty(appendcode) && appendcode == "true")
+                        {
+                            url = WebUtility.AppendSecurityCode(url);
+                        }
+                        builder.AppendFormat("<li><a href='{0}' target='rightFrame'>{1}</a></li>", ResolveClientUrl(url), GetAttributeValue(n, "title"));
                     }
-                    builder.AppendFormat("<li><a href='{0}' target='rightFrame'>{1}</a></li>", ResolveClientUrl(url), GetAttributeValue(n, "title"));
                 }
                 Response.Write(builder.ToString());
             }

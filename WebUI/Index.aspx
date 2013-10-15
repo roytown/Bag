@@ -22,11 +22,12 @@
 			<div class="top">
 				<img src="<%=ResolveClientUrl("~/images/logo.png") %>"" class="logo" />
 				<ul class="nav">
-					<li class="nav_01"  onclick="javascript:GetMenu('task')"><a href="javascript:void(0)">任务</a></li>
-					<li class="nav_02"  onclick="javascript:GetMenu('tech')"><a href="javascript:void(0)">技术</a></li>
-					<li class="nav_03"  onclick="javascript:GetMenu('order')"><a href="javascript:void(0)">生产</a></li>
-					<li class="nav_04"  onclick="javascript:GetMenu('stock')"><a href="javascript:void(0)">仓储</a></li>
-					<li class="nav_05"  onclick="javascript:GetMenu('system')"><a href="javascript:void(0)">系统</a></li>
+                    <asp:Repeater ID="Repeater1" runat="server">
+                        <ItemTemplate>
+                            <li class="<%#WebUtility.GetXmlNodeAttribute(((System.Xml.XmlElement)Container.DataItem),"icon") %>"  onclick="javascript:GetMenu('<%#WebUtility.GetXmlNodeAttribute(((System.Xml.XmlElement)Container.DataItem),"alias") %>')"><a href="javascript:void(0)"><%#WebUtility.GetXmlNodeAttribute(((System.Xml.XmlElement)Container.DataItem),"name") %></a></li>
+                        </ItemTemplate>
+                    </asp:Repeater>
+					
 				</ul>
 				<div class="login">
 					<p class="login_left"></p>
@@ -52,46 +53,9 @@
         });
     }
 
-    function card()
-    {
-        var code =  rd.ReadID();//调用刷卡机API接口，获得编码
-        if (code != null && code != "")
-        {
-            //处理刷卡操作
-            var d = $.dialog({
-                lock: true,
-                content: 'url:/task/card.aspx?code='+code+"&r="+Math.random(),
-                title: "任务信息",
-                width: 800,
-                height: 500,
-                close: function () {
-                    setTimeout("card()", 1000);
-                }
-            });
-        }
-        else
-           setTimeout("card()", 1000);
-    }
-    var rd;
-    $(document).ready(function () {
-        GetMenu("task");
-        var rd = document.getElementById("rdcard");
 
-        var ret;
-        var f;
-        try {
-            ret = rd.Connet();
-            f = ret == 1;
-           
-        } catch(e) {
-            
-        }
-        if (!f)
-        {
-            $.dialog.alert('无法获取刷卡器，请检查相关驱动是否安装。');
-        }
-        else
-            card();
+    $(document).ready(function () {
+        GetMenu("<%=firstMenu%>");  
     });
 </script>
 	<div class="wrap_con_s">
@@ -112,15 +76,7 @@
 			<iframe width="100%" name="rightFrame"  id="rightFrame" frameborder="0" src="MainPage.aspx"></iframe>
 		</div>
 	<!-- //内容部分 -->
-
-	<OBJECT ID="rdcard" 
-	 classid="clsid:5dfebaaa-519e-67c2-7d15-8bb2cdf56ced"
-	  width=1
-	  height=1
-	  align=center
-	  hspace=0
-	  vspace=0></OBJECT>
-
+	
 	</div>
 
 	</div>

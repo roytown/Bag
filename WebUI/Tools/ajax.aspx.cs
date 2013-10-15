@@ -6,6 +6,7 @@ using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TaskModule;
 using Web;
 
 namespace WebUI.Tools
@@ -42,6 +43,26 @@ namespace WebUI.Tools
                 builder.Append("]");
 
                 Response.Write(builder.ToString());
+            }
+            else if (action == "checktaskcode")
+            {
+                string code = RequestString("code");
+                if (string.IsNullOrEmpty(code))
+                {
+                    Response.Write("error");
+                }
+                else
+                {
+                    bool exist = TaskBll.CheckCodeInUse(code);
+                    if (exist)
+                    {
+                        Response.Write("error");
+                    }
+                    else
+                    {
+                        Response.Write("ok");
+                    }
+                }
             }
 
             Response.End();

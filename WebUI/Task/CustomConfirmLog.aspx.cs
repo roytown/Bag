@@ -66,9 +66,9 @@ namespace WebUI.Task
                 Model.Order order=new Model.Order();
                 order.AddTime=DateTime.Now;
                 order.Description=tbOrderDesc.Text;
-                order.Num = tbOrderNum.Text;
+                order.Num = Util.DataConverter.ToLng(tbOrderNum.Text);
                 order.Status = Model.OrderStatus.New;
-                order.Time =tbOrderTime.Text;
+                order.Time = date1.SelectedDate.HasValue?date1.SelectedDate.Value:DateTime.Now;
                 order.UserName = RequestContext.Current.User.UserName;
 
                 msg = "订单确认";

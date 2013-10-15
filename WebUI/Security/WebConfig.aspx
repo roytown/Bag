@@ -45,12 +45,7 @@
                         <bag:TextBoxEx ID="tbHomeworkCommitTimes" Width="50" runat="Server"  CssClass="input" Type="Int" FormatErrorMessage="只能输入整数" />
                         </td>
            		</tr>
-                <tr>
-            		<td class="td2_1">学员角色：</td>
-                    <td>
-                        <asp:DropDownList ID="DdlRoles" runat="server" DataTextField="Name" DataValueField="RoleId"></asp:DropDownList>
-                     </td>
-           		</tr>
+                
         		<tr>
             		<td class="td2_1"></td><td>
                         <asp:Button ID="BtnOk" OnClick="BtnOk_Click" runat="server" CssClass="coolbg" Text="提  交" />

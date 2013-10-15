@@ -29,6 +29,14 @@
         <div id="loading" style="position:absolute;right:0px;top:0px;display:none">
              <img src="<%=ResolveClientUrl("~/images/loading.gif") %>" />
         </div>
+         <OBJECT ID="rdcard" 
+	         classid="clsid:5dfebaaa-519e-67c2-7d15-8bb2cdf56ced"
+	          width="1"
+	          height="1"
+	          align="center"
+	          hspace="0"
+	          vspace="0">
+        </OBJECT>
         <script type="text/javascript">
             $(document).ready(function(){
                 $(".autocomplete-user").autocomplete({
@@ -111,7 +119,28 @@
 
                 }
             }
+
+            function readcard(a)
+            {
+                var rd = document.getElementById("rdcard");
+                ret = rd.Connet();	
+                if(ret != 1)
+                {
+                    $.dialog.alert("无法连接设备！");
+                    return;
+                }
+
+                $("#"+a).val(rd.ReadID());
+                ret = rd.DisConnect();	
+                if(ret != 1)
+                {
+                    $.dialog.alert("断开设备发生异常，请检查设备！");
+                }
+
+            }
         </script>
+       
+
     </form>
 </body>
 </html>

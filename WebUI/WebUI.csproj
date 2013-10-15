@@ -141,6 +141,7 @@
     <Content Include="Config\WebConfig.config" />
     <Content Include="Config\Map.config" />
     <Content Include="MainMaster.Master" />
+    <None Include="Properties\PublishProfiles\basg.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Order\AddCheckLog.aspx" />
     <Content Include="Order\AddOrder.aspx" />
@@ -226,6 +227,7 @@
     <Content Include="Scripts\jqplot\syntaxhighlighter\shCore.min.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
+    <Content Include="Scripts\jquery-ui-1.10.3.custom.js" />
     <Content Include="Scripts\jquery-ui-1.10.3.custom.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
@@ -338,6 +340,7 @@
     <Content Include="Stock\StatDetail.aspx" />
     <Content Include="Stock\StockFilter.aspx" />
     <Content Include="Stock\StockLogManage.aspx" />
+    <Content Include="Stock\WaitStockManage.aspx" />
     <Content Include="Task\AddTask.aspx" />
     <Content Include="Task\card.aspx" />
     <Content Include="Task\CustomConfirmLog.aspx" />
@@ -518,6 +521,13 @@
     </Compile>
     <Compile Include="Stock\StockLogManage.aspx.designer.cs">
       <DependentUpon>StockLogManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\WaitStockManage.aspx.cs">
+      <DependentUpon>WaitStockManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stock\WaitStockManage.aspx.designer.cs">
+      <DependentUpon>WaitStockManage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Task\AddTask.aspx.cs">
       <DependentUpon>AddTask.aspx</DependentUpon>

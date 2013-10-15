@@ -17,8 +17,8 @@ namespace WebUI.Security
             config = ConfigFactory.GetWebConfig();
             if (!IsPostBack)
             {
-                DdlRoles.DataSource = RoleBll.GetAll();
-                DdlRoles.DataBind();
+                //DdlRoles.DataSource = RoleBll.GetAll();
+                //DdlRoles.DataBind();
 
                 tbTitle.Text = config.Title;
                 tbCopyright.Text = config.Copyright;
@@ -27,7 +27,7 @@ namespace WebUI.Security
                 tbMaxLength.Text = config.PasswordMaxLength.ToString();
                 tbSelLessonTimes.Text = config.SelLessonTimeLimit.ToString();
                 tbHomeworkCommitTimes.Text = config.HomeworkCommitTimeLimit.ToString();
-                WebUtility.SetSelectedIndexByValue(DdlRoles, config.DefaultRole.ToString());
+                //WebUtility.SetSelectedIndexByValue(DdlRoles, config.DefaultRole.ToString());
             }
         }
 
@@ -40,7 +40,7 @@ namespace WebUI.Security
             config.PasswordMaxLength = Util.DataConverter.ToLng(tbMaxLength.Text);
             config.SelLessonTimeLimit = Util.DataConverter.ToLng(tbSelLessonTimes.Text);
             config.HomeworkCommitTimeLimit = Util.DataConverter.ToLng(tbHomeworkCommitTimes.Text);
-            config.DefaultRole = Util.DataConverter.ToLng(DdlRoles.SelectedValue);
+            //config.DefaultRole = Util.DataConverter.ToLng(DdlRoles.SelectedValue);
            
             try
             {

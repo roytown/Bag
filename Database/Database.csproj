@@ -106,6 +106,22 @@
     <Compile Include="Migrations\201309031313276_change-stocklog.Designer.cs">
       <DependentUpon>201309031313276_change-stocklog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201309041223489_add-task-attr.cs" />
+    <Compile Include="Migrations\201309041223489_add-task-attr.Designer.cs">
+      <DependentUpon>201309041223489_add-task-attr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201309121306385_change.cs" />
+    <Compile Include="Migrations\201309121306385_change.Designer.cs">
+      <DependentUpon>201309121306385_change.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201309170045377_changeorderexpand.cs" />
+    <Compile Include="Migrations\201309170045377_changeorderexpand.Designer.cs">
+      <DependentUpon>201309170045377_changeorderexpand.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201309170133131_changeorder.cs" />
+    <Compile Include="Migrations\201309170133131_changeorder.Designer.cs">
+      <DependentUpon>201309170133131_changeorder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -162,6 +178,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201309031313276_change-stocklog.resx">
       <DependentUpon>201309031313276_change-stocklog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201309041223489_add-task-attr.resx">
+      <DependentUpon>201309041223489_add-task-attr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201309121306385_change.resx">
+      <DependentUpon>201309121306385_change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201309170045377_changeorderexpand.resx">
+      <DependentUpon>201309170045377_changeorderexpand.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201309170133131_changeorder.resx">
+      <DependentUpon>201309170133131_changeorder.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

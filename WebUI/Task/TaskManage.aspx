@@ -40,6 +40,7 @@
                                  <bag:LinkButtonEx ID="lbAddOrder" runat="server" Text="提交客户确认记录" Purview="task_customconfirm" />
                                  <bag:LinkButtonEx ID="lbOrderExpand" runat="server" Text="追加订单" Purview="order_expand" />
                                  <bag:LinkButtonEx ID="lbDetail" runat="server" Text="查看任务明细" Purview="task_manage" />
+                                 <bag:LinkButtonEx ID="lbStock" runat="server" Text="提交入库记录" Purview="stock_add" />
                               </i> </td>
                         </tr>
                     </ItemTemplate>

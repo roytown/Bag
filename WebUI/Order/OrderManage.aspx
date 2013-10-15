@@ -15,12 +15,12 @@
                     <th>订单状态</th>
                     <th width="200">操作</th>
                 </tr>
-                <asp:Repeater ID="Repeater1" runat="server" OnItemDataBound="Repeater1_ItemDataBound">
+                <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand" OnItemDataBound="Repeater1_ItemDataBound">
                     <ItemTemplate>
                         <tr>
                             <td><%#Eval("ID") %></td>
-                            <td><%#Eval("Time") %></td>
-                            <td><%#Eval("Num") %></td>
+                            <td><%#((DateTime)Eval("Time")).ToString("yyyy-MM-dd") %></td>
+                            <td><%#Eval("Num") %>件</td>
                             <td><%#Eval("Description") %></td>
                             <td><%#Eval("UserName") %></td>
                             <td><%#(Eval("PublishUserName")==null || Eval("PublishUserName").ToString()=="")?"未确定":Eval("PublishUserName") %></td>
@@ -31,9 +31,10 @@
                             <td>
                              <i>
                                  <bag:LinkButtonEx ID="lbConfirm" runat="server" Text="确认" Purview="order_manage" />
+                                 <bag:LinkButtonEx ID="lbResult" OnClientClick="javascript:if(!confirm('确认执行订单完成操作吗')) return false;" runat="server" CommandName="Result" CommandArgument='<%#Eval("Id") %>' Text="订单完成" Purview="order_resultlog"/>
                                  
-                                 <bag:LinkButtonEx ID="lbLast" runat="server" Text="提交质检记录" Purview="checklog_add" />
-                                 <bag:LinkButtonEx ID="lbDetail" runat="server" Text="查看明细" Purview="order_manage" />
+                                 <bag:LinkButtonEx ID="lbLast" runat="server" Text="提交质检记录" Purview="order_addchecklog" />
+                                 <bag:LinkButtonEx ID="lbDetail" runat="server" Text="查看明细" Purview="order_view,order_addchecklog,order_viewchecklog" />
                               </i> </td>
                         </tr>
                     </ItemTemplate>

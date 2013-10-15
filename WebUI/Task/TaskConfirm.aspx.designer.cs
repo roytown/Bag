@@ -31,6 +31,24 @@ namespace WebUI.Task {
         protected global::System.Web.UI.WebControls.Literal LtDescription;
         
         /// <summary>
+        /// codetr control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow codetr;
+        
+        /// <summary>
+        /// tbCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Controls.TextBoxEx tbCode;
+        
+        /// <summary>
         /// tbSaleUserName control.
         /// </summary>
         /// <remarks>

@@ -48,7 +48,6 @@
     <Compile Include="LogType.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderCheckLog.cs" />
-    <Compile Include="OrderExpand.cs" />
     <Compile Include="OrderStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs" />

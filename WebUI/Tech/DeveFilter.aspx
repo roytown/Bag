@@ -30,11 +30,11 @@
                         <asp:ListItem Value="3" Text="设计中" />
                         <asp:ListItem Value="4" Text="设计结束，可制版" />
                         <asp:ListItem Value="5" Text="制版中" />
-                        <asp:ListItem Value="6" Text="制版结束，可打样" />
-                        <asp:ListItem Value="7" Text="打样中" />
-                        <asp:ListItem Value="8" Text="打样结束，样包可生产" />
-                        <asp:ListItem Value="9" Text="样包生产中" />
-                        <asp:ListItem Value="10" Text="样包已完成，等待客户确认" />
+                        <asp:ListItem Value="6" Text="制版结束，可打样生产" />
+                        <asp:ListItem Value="7" Text="打样生产中" />
+                        <asp:ListItem Value="8" Text="打样生产结束，样包可交付" />
+                        <asp:ListItem Value="9" Text="样包交付中" />
+                        <asp:ListItem Value="10" Text="样包交付已完成，等待客户确认" />
                         <asp:ListItem Value="11" Text="待客户确认订单" />
                         <asp:ListItem Value="12" Text="订单生产中" />
                         <asp:ListItem Value="13" Text="样包可入库" />

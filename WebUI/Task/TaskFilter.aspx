@@ -3,25 +3,28 @@
     <div class="right">
           <table cellpadding="0" cellspacing="0" border="0" width="100%" class="table2">
             <tr>
-                <td>发布时间：</td>
-                <td  style="height:30px;">
+                <td class="td2_1">发布时间：</td>
+                <td colspan="3"  style="height:30px;">
                     <bag:Date ID="date1" runat="Server" DayOfWeekOffset="1"/> 至 <bag:Date ID="date2" runat="Server" DayOfWeekOffset="1"/>
                  </td>
             </tr>
              <tr>
-                <td>任务标题：</td>
+                <td class="td2_1">任务标题：</td>
                 <td  style="height:30px;">
                     <asp:TextBox ID="tbTitle" runat="server"></asp:TextBox>  
                  </td>
-            </tr>
-            <tr>
-                <td>任务编码：</td>
+                  <td class="td2_1">任务编码：</td>
                 <td  style="height:30px;">
                     <asp:TextBox ID="tbCode" runat="server"></asp:TextBox>  
                  </td>
             </tr>
-             <tr>
-                <td>任务状态：</td>
+            <tr>
+                <td class="td2_1">EPC：</td>
+                <td  style="height:30px;">
+                    <asp:TextBox ID="tbEpc" runat="server"></asp:TextBox> 
+                    <input type="button" style="padding:0px 5px 0px 5px;" onclick="javascript:readcard('<%=tbEpc.ClientID%>')" value="读卡" /> 
+                 </td>
+                <td class="td2_1">任务状态：</td>
                 <td  style="height:30px;">
                     <asp:DropDownList ID="DdlStatus" runat="server">
                         <asp:ListItem Value="-1" Text="不限" />
@@ -44,22 +47,19 @@
                  </td>
             </tr>
             <tr>
-                <td style="height:30px;">发布人：</td>
+                <td class="td2_1" style="height:30px;">发布人：</td>
                 <td>
                      <asp:TextBox ID="tbUserName" CssClass="autocomplete-user" runat="server"></asp:TextBox>
                 </td>
-
-            </tr>
-               <tr>
-                <td style="height:30px;">销售负责人：</td>
+            
+                <td class="td2_1" style="height:30px;">销售负责人：</td>
                 <td>
                      <asp:TextBox ID="tbSaleUserName" CssClass="autocomplete-user" runat="server"></asp:TextBox>
                 </td>
-
             </tr>
               <tr>
                   <td></td>
-                  <td>
+                  <td colspan="3">
 
                        <asp:Button ID="BtnFilter" runat="server" CssClass="button mr10"  Text="筛选" OnClick="BtnFilter_Click"/>
                     
@@ -68,5 +68,5 @@
         </table> 
 
      </div>
-   
+  
  </asp:Content>

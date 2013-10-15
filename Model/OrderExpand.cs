@@ -16,12 +16,14 @@ namespace Model
         [StringLength(200)]
         [Required]
         public string Num { get; set; }
+        [StringLength(200)]
+        [Required]
+        public string Time { get; set; }
         public DateTime AddTime { get; set; }
         [StringLength(50)]
         [Required]
         public string UserName { get; set; }
         [StringLength(255)]
-        [Required]
         public string Description { get; set; }
     }
 }

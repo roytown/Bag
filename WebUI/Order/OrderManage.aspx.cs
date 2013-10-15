@@ -51,15 +51,14 @@ namespace WebUI.Order
             }
             if (ds != null && ds.HasValue)
             {
-
                 PageStatus.Add("ds", ds.Value.ToString("yyyy-MM-dd"));
-                expression = expression.And(m => m.AddTime >= ds.Value);
+                DateTime t1 = new DateTime(ds.Value.Year, ds.Value.Month, ds.Value.Day);
+                expression = expression.And(m => m.AddTime >= t1);
             }
             if (de != null && de.HasValue)
             {
-
                 PageStatus.Add("de", de.Value.ToString("yyyy-MM-dd"));
-                DateTime dt = de.Value.AddDays(1);
+                DateTime dt = new DateTime(de.Value.Year, de.Value.Month, de.Value.Day + 1);
                 expression = expression.And(m => m.AddTime <= dt);
             }
 
@@ -112,7 +111,8 @@ namespace WebUI.Order
                 LinkButton lbConfirm = e.Item.FindControl("lbConfirm") as LinkButton;
                 
                 LinkButton lbLast = e.Item.FindControl("lbLast") as LinkButton;
-                
+                LinkButton lbDetail = e.Item.FindControl("lbDetail") as LinkButton;
+
                 Model.Order t = e.Item.DataItem as Model.Order;
 
                 if (t.Status == Model.OrderStatus.New)
@@ -129,9 +129,53 @@ namespace WebUI.Order
                     lbConfirm.Visible = lbLast.Visible = false;
                 }
 
-                lbConfirm.OnClientClick = "javascript:OpenDialog('订单确认','/order/orderconfirm.aspx?orderid=" + t.Id.ToString() + "',700,500);return false;";
-               
+                lbConfirm.OnClientClick = "javascript:OpenDialog('订单确认','/order/orderconfirm.aspx?orderid=" + t.Id.ToString() + "',700,400);return false;";
+               lbDetail.OnClientClick = "javascript:OpenDialog('订单明细','/order/orderdetail.aspx?orderid=" + t.Id.ToString() + "',800,500);return false;";
                 lbLast.OnClientClick = "javascript:OpenDialog('提交质检记录','/order/addchecklog.aspx?orderid=" + t.Id.ToString() + "',600,400);return false;";
+            }
+        }
+
+        protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName=="Result")
+            {
+                Model.Order order = OrderBll.GetOrder(Util.DataConverter.ToLng(e.CommandArgument),true);
+                if (order==null)
+                {
+                    WriteMessage("当前无可用数据", false);
+                }
+                Model.Task task = order.Task;
+                Model.Log log = task.Logs.OrderByDescending(m => m.Id).FirstOrDefault(m => m.Action == Model.LogAction.Order && !m.RangeEnd.HasValue);
+                if (log == null)
+                {
+                    WriteMessage("当前无可用数据", false);
+                }
+
+                log.RangeEnd = DateTime.Now;
+                log.EndUserName = RequestContext.Current.User.UserName;
+                task.Status = Model.TaskState.Stocking;
+
+                order.Status = Model.OrderStatus.End;
+
+                Model.Log stocklog = new Model.Log();
+                stocklog.Action = Model.LogAction.Stock;
+                stocklog.AddTime = DateTime.Now;
+                stocklog.RangeBegin = DateTime.Now;
+                stocklog.StartUserName = RequestContext.Current.User.UserName;
+                stocklog.Title = "任务（编码：" + task.Code + "）入库记录";
+                stocklog.Type = Model.LogType.Main;
+                task.Logs.Add(stocklog);
+
+                bool flag = TaskBll.UpdateTask(task, new string[] { "Status" });
+                if (flag)
+                {
+                    BindData();
+                }
+                else
+                {
+                    WriteMessage("更新操作失败,请重试", flag);
+                }
+                
             }
         }
     }

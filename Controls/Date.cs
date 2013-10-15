@@ -32,7 +32,7 @@ namespace Controls
             base.Render(writer);
             writer.Write(" <div gldp-el=\"" + this.ClientID + "_date\"  style=\"width:"+this.PickerWidth.ToString()+"px; height:"+this.PickerHeight.ToString()+"px; position:absolute; top:70px; left:100px;\"></div>");
             DateTime s = SelectedDate.HasValue ? SelectedDate.Value : DateTime.Now;
-            writer.Write("<script type='text/javascript'>$('#" + this.ClientID + "').glDatePicker({showAlways: false,cssName:'default',dowOffset:"+DayOfWeekOffset.ToString()+",allowMonthSelect: true, allowYearSelect: true,selectedDate: new Date(" + s.Year.ToString() + "," + s.Month.ToString() + "," + s.Day.ToString() + ")});</script>");
+            writer.Write("<script type='text/javascript'>$('#" + this.ClientID + "').glDatePicker({showAlways: false,cssName:'default',dowOffset:"+DayOfWeekOffset.ToString()+",allowMonthSelect: true, allowYearSelect: true,selectedDate: new Date(" + s.Year.ToString() + "," + (s.Month-1).ToString() + "," + s.Day.ToString() + ")});</script>");
         }
 
         public string Theme

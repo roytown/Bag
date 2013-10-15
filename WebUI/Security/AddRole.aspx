@@ -23,15 +23,15 @@
                         	 <asp:Repeater ID="RptResource" runat="server" OnItemDataBound="RptResource_ItemDataBound">
                                 <ItemTemplate>
                                     <tr>
-                                        <td style="border-right:none">
-                                            <%#Eval("Name") %>
+                                        <td style="border-right:none;border-bottom:none">
+                                            <input type="checkbox" onchange="javascript:allchk(this);" class="<%#Eval("Value") %>" name="purview" <%#CheckedResult(Eval("Value").ToString()) %> value="<%#Eval("Value") %>"/><%#Eval("Name") %>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style="border:none">
+                                        <td style="border-right:none;padding-left:20px;">
                                             <asp:Repeater ID="RptPurview" runat="server">
                                                 <ItemTemplate>
-                                                    <input type="checkbox" name="purview" <%#CheckedResult(currentResource+"_"+Eval("Value").ToString()) %> value="<%#currentResource+"_"+Eval("Value") %>"/><%#Eval("Name") %>
+                                                    <input type="checkbox" class="resource" resource="<%#currentResource %>" name="purview" <%#CheckedResult(currentResource+"_"+Eval("Value").ToString()) %> value="<%#currentResource+"_"+Eval("Value") %>"/><%#Eval("Name") %>
                                                 </ItemTemplate>
                                             </asp:Repeater>
                                         </td>
@@ -45,10 +45,38 @@
         		
         		<tr>
             		<td class="td2_1"></td><td>
-                        <asp:Button ID="BtnOk" OnClick="BtnOk_Click" runat="server" CssClass="coolbg" Text="提  交" />
+                        <asp:Button ID="BtnOk" OnClick="BtnOk_Click" runat="server" CssClass="button" Text="提  交" />
                         </td>
             	</tr>
         	</table>
         </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".resource").bind("change", function () {
+                var c = $(this).attr("resource");
+               
+                var ritem = $("input[resource=" + c + "]");
+             
+                var f = false;
+                for(var i=0;i<ritem.length;i++)
+                {
+                    if(ritem[i].checked)
+                    {
+                        f = true;
+                        break;
+                    }
+                }
+                
+                $("." + c).attr("checked", f);
+            });
 
+            
+        });
+        function allchk(a)
+        {
+           
+           $("input[resource=" + $(a).attr("class") + "]").attr("checked", a.checked);
+            
+        }
+    </script>
 </asp:Content>

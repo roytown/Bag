@@ -66,15 +66,15 @@ namespace WebUI.Task
             }
             if (ds!=null && ds.HasValue)
             {
-                
                 PageStatus.Add("ds", ds.Value.ToString("yyyy-MM-dd"));
-                expression = expression.And(m => m.AddTime>=ds.Value);
+                DateTime t1 = new DateTime(ds.Value.Year, ds.Value.Month, ds.Value.Day);
+                expression = expression.And(m => m.AddTime>=t1);
             }
             if (de!=null && de.HasValue)
             {
                
                 PageStatus.Add("de", de.Value.ToString("yyyy-MM-dd"));
-                DateTime dt = de.Value.AddDays(1);
+                DateTime dt =new DateTime(de.Value.Year,de.Value.Month,de.Value.Day+1);
                 expression = expression.And(m => m.AddTime<=dt);
             }
 
@@ -143,6 +143,8 @@ namespace WebUI.Task
                 LinkButton lbconfirm = e.Item.FindControl("lbConfirm") as LinkButton;
                 LinkButtonEx lbAddOrder = e.Item.FindControl("lbAddOrder") as LinkButtonEx;
                 LinkButton lbOrderExpand = e.Item.FindControl("lbOrderExpand") as LinkButton;
+                LinkButton lbDetail = e.Item.FindControl("lbDetail") as LinkButton;
+                LinkButton lbStock = e.Item.FindControl("lbStock") as LinkButton;
 
                 Model.Task t = e.Item.DataItem as Model.Task;
 
@@ -154,11 +156,15 @@ namespace WebUI.Task
                 lbmodify.Visible = (t.Status == Model.TaskState.New) && HasModifyPurview;
                 lbdel.Visible = (t.Status == Model.TaskState.New) && HasDelPurview;
                 lbconfirm.Visible = (t.Status == Model.TaskState.New) && HasConfirmPurview;
+                lbStock.Visible = t.Status == Model.TaskState.Stocking;
+                lbOrderExpand.Visible = t.Status == Model.TaskState.Ordering || t.Status == Model.TaskState.Stocked;
 
                 lbmodify.OnClientClick = "javascript:OpenDialog('修改任务信息','/task/addtask.aspx?action=modify&id=" + t.Id.ToString() + "',700,500);return false;";
                 lbconfirm.OnClientClick = "javascript:OpenDialog('确认任务','/task/taskconfirm.aspx?id=" + t.Id.ToString() + "',500,400);return false;";
                 lbAddOrder.OnClientClick = "javascript:OpenDialog('客户确认结果','/task/customconfirmlog.aspx?id=" + t.Id.ToString() + "',800,500);return false;";
                 lbOrderExpand.OnClientClick = "javascript:OpenDialog('追加订单','/order/addorder.aspx?tid=" + t.Id.ToString() + "',800,500);return false;";
+                lbDetail.OnClientClick = "javascript:OpenDialog('任务明细','/task/taskdetail.aspx?tid=" + t.Id.ToString() + "',800,500);return false;";
+                lbStock.OnClientClick = "javascript:OpenDialog('入库记录','/stock/addstocklog.aspx?id=" + t.Id.ToString() + "',800,500);return false;";
             }
         }
     }

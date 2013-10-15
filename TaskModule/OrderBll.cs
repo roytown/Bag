@@ -22,10 +22,10 @@ namespace TaskModule
             return orderProvider.Update(order);
         }
 
-        public static Model.Order GetOrder(int id,bool includeTask=false)
+        public static Model.Order GetOrder(int id, bool includeTask = false, bool includeLog = false)
         {
             IOrder orderProvider = new OrderDal(EFContext.Instance);
-            return orderProvider.Get(id, includeTask);
+            return orderProvider.Get(id, includeTask, includeLog);
         }
 
         public static IList<Model.Order> GetOrdersForTask(int tid)
@@ -43,6 +43,12 @@ namespace TaskModule
         {
             IOrder orderProvider = new OrderDal(EFContext.Instance);
             return orderProvider.GetList(page,pageSize,includeTask,expresion,out count);
+        }
+
+        public static int Count(Expression<Func<Model.Order, bool>> expresion)
+        {
+            IOrder orderProvider = new OrderDal(EFContext.Instance);
+            return orderProvider.Count(expresion);
         }
 
         public static string GetOrderStatus(Model.OrderStatus status)

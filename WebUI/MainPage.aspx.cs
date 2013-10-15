@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Web;
 using System.Xml;
+using TaskModule;
 
 namespace WebUI
 {
@@ -33,8 +34,31 @@ namespace WebUI
                 RptShortCuts.DataSource = nodes;
                 RptShortCuts.DataBind();
             }
+            if (RequestContext.Current.User.HasPurview(task1.Attributes["purview"]))
+            {
+                task1.Visible = true;
+                HyperLink2.NavigateUrl = WebUtility.AppendSecurityCode("/task/taskmanage.aspx?status=0");
+                Literal2.Text = TaskBll.Count(m => m.Status == Model.TaskState.New).ToString();
+            }
+            if (RequestContext.Current.User.HasPurview(task2.Attributes["purview"]))
+            {
+                task2.Visible = true;
 
+                Literal3.Text = TaskBll.Count(m => m.Status == Model.TaskState.CanDevelop).ToString();
+            }
+            if (RequestContext.Current.User.HasPurview(task3.Attributes["purview"]))
+            {
+                task3.Visible = true;
 
+                Literal4.Text = OrderBll.Count(m => m.Status == Model.OrderStatus.New).ToString();
+            }
+            if (RequestContext.Current.User.HasPurview(task4.Attributes["purview"]))
+            {
+                task4.Visible = true;
+                HyperLink3.NavigateUrl = WebUtility.AppendSecurityCode("/task/taskmanage.aspx?status=13");
+                Literal5.Text = TaskBll.Count(m => m.Status == Model.TaskState.Stocking).ToString();
+            }
+            
         }
 
         protected void RptShortCuts_ItemDataBound(object sender, RepeaterItemEventArgs e)

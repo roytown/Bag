@@ -12,8 +12,6 @@ namespace WebUI.Tech
 {
     public partial class DeveManage : SecurityPage
     {
-       
-        private bool HasDevelopConfirmPurview;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -60,15 +58,15 @@ namespace WebUI.Tech
             }
             if (ds != null && ds.HasValue)
             {
-
                 PageStatus.Add("ds", ds.Value.ToString("yyyy-MM-dd"));
-                expression = expression.And(m => m.AddTime >= ds.Value);
+                DateTime t1 = new DateTime(ds.Value.Year, ds.Value.Month, ds.Value.Day);
+                expression = expression.And(m => m.AddTime >= t1);
             }
             if (de != null && de.HasValue)
             {
 
                 PageStatus.Add("de", de.Value.ToString("yyyy-MM-dd"));
-                DateTime dt = de.Value.AddDays(1);
+                DateTime dt = new DateTime(de.Value.Year, de.Value.Month, de.Value.Day + 1) ;
                 expression = expression.And(m => m.AddTime <= dt);
             }
 
@@ -101,8 +99,7 @@ namespace WebUI.Tech
                 expression = expression.And(m => m.DevelopUserName == RequestContext.Current.User.UserName);
             }
 
-            HasDevelopConfirmPurview = RequestContext.Current.User.HasPurview("tech_developconfirm");
-           
+         
             PageStatus.Add("page", pager1.CurrentIndex.ToString());
             Repeater1.DataSource = TaskBll.GetTaskList(pager1.CurrentIndex, pager1.PageSize, expression, out count);
             Repeater1.DataBind();
@@ -120,11 +117,13 @@ namespace WebUI.Tech
             {
                 LinkButton lbDevelopConfirm = e.Item.FindControl("lbDevelopConfirm") as LinkButton;
                 LinkButton lbAddlog = e.Item.FindControl("lbAddlog") as LinkButton;
+                LinkButton lbDetail = e.Item.FindControl("lbDetail") as LinkButton;
 
                 Model.Task t = e.Item.DataItem as Model.Task;
-                lbDevelopConfirm.Visible = (t.Status == Model.TaskState.CanDevelop) && HasDevelopConfirmPurview;
-                lbDevelopConfirm.OnClientClick = "javascript:OpenDialog('确认研发任务','/tech/deveconfirm.aspx?id=" + t.Id.ToString() + "',500,400);return false;";
+                lbDevelopConfirm.Visible = t.Status == Model.TaskState.CanDevelop;
+                lbDevelopConfirm.OnClientClick = "javascript:OpenDialog('确认研发任务','/tech/deveconfirm.aspx?id=" + t.Id.ToString() + "',800,500);return false;";
                 lbAddlog.OnClientClick = "javascript:OpenDialog('发布研发日志','/tech/adddevelog.aspx?id=" + t.Id.ToString() + "',800,500);return false;";
+                lbDetail.OnClientClick = "javascript:OpenDialog('发布研发日志','/tech/devedetail.aspx?id=" + t.Id.ToString() + "',800,500);return false;";
             }
         }
     }

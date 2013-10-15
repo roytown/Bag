@@ -13,13 +13,31 @@ namespace WebUI.Order {
     public partial class AddCheckLog {
         
         /// <summary>
-        /// btnResult control.
+        /// epctable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Controls.ButtonEx btnResult;
+        protected global::System.Web.UI.HtmlControls.HtmlTable epctable;
+        
+        /// <summary>
+        /// tbEpc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbEpc;
+        
+        /// <summary>
+        /// maindiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl maindiv;
         
         /// <summary>
         /// RblType control.
@@ -38,6 +56,15 @@ namespace WebUI.Order {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Controls.TextBoxEx tbDescription;
+        
+        /// <summary>
+        /// HiddenField1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenField1;
         
         /// <summary>
         /// BtnOk control.

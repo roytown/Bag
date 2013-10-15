@@ -13,6 +13,33 @@ namespace WebUI.Tech {
     public partial class AddDeveLog {
         
         /// <summary>
+        /// epctable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTable epctable;
+        
+        /// <summary>
+        /// tbEpc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbEpc;
+        
+        /// <summary>
+        /// maintable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl maintable;
+        
+        /// <summary>
         /// btnDesign control.
         /// </summary>
         /// <remarks>
@@ -49,6 +76,24 @@ namespace WebUI.Tech {
         protected global::Controls.ButtonEx btnPackage;
         
         /// <summary>
+        /// LtEpc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal LtEpc;
+        
+        /// <summary>
+        /// HiddenField1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenField1;
+        
+        /// <summary>
         /// LtCode control.
         /// </summary>
         /// <remarks>
@@ -74,15 +119,6 @@ namespace WebUI.Tech {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal LtSaleUserName;
-        
-        /// <summary>
-        /// LtDeveUserName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LtDeveUserName;
         
         /// <summary>
         /// LtDescription control.

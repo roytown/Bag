@@ -15,36 +15,61 @@ namespace WebUI.Order
         private Model.Task task;
         protected void Page_Load(object sender, EventArgs e)
         {
-            int tid = RequestInt32("tid");
-            if (tid > 0)
+            if (!IsPostBack)
             {
-                task = TaskBll.GetTask(tid,false,true);
-                if (task==null)
+                int orderid = RequestInt32("orderid");
+                if (orderid>0)
                 {
-                    WriteMessage("无法获取有效订单信息", false);
+                    epctable.Visible = false;
+                    maindiv.Visible = true;
+
+                    order = OrderBll.GetOrder(RequestInt32("orderid"));
+
+                    if (order == null)
+                    {
+                        WriteMessage("无法获取有效订单信息", false);
+                    }
+
+                    HiddenField1.Value = order.Id.ToString();
                 }
+            }
+        }
 
-                order = task.Orders.OrderByDescending(m=>m.Id).FirstOrDefault(m => m.Status == Model.OrderStatus.Running);
-            }
-            else
+        protected void tbEcp_TextChanged(object sender, EventArgs e)
+        {
+            string ecp = tbEpc.Text.Trim();
+            task = TaskBll.GetTaskByEpc(ecp,false,true);
+
+            if (task == null)
             {
-                order = OrderBll.GetOrder(RequestInt32("orderid"),true);
-                task = order.Task;
+                WriteMessage("无法获取有效的任务信息", false);
             }
 
-            if (order == null)
+            order = task.Orders.LastOrDefault(m => m.Status == Model.OrderStatus.Running);
+            if (order==null)
             {
-                WriteMessage("无法获取有效订单信息", false);
+                WriteMessage("无法获取有效的订单信息", false);
             }
+
+            HiddenField1.Value = order.Id.ToString();
+
+            maindiv.Visible = true;
+            epctable.Visible = false;
         }
 
         protected void BtnOk_Click(object sender, EventArgs e)
         {
-          
+            int orderid = Util.DataConverter.ToLng(HiddenField1.Value);
+
+            order = OrderBll.GetOrder(orderid,false,true);
+            if (order == null)
+            {
+                WriteMessage("无法获取有效的订单信息", false);
+            }
+
             Model.OrderCheckLog log = new Model.OrderCheckLog();
             log.AddTime = DateTime.Now;
             log.Description = tbDescription.Text;
-            log.Order=order;
             log.Type=(Model.CheckLogType)Util.DataConverter.ToLng(RblType.SelectedValue);
             log.UserName=RequestContext.Current.User.UserName;
 
@@ -58,7 +83,7 @@ namespace WebUI.Order
 
         protected void btnResult_Click(object sender, EventArgs e)
         {
-            Model.Log log = task.Logs.OrderBy(m => m.Id).FirstOrDefault(m => m.Action == Model.LogAction.Order && !m.RangeEnd.HasValue);
+            Model.Log log = task.Logs.OrderByDescending(m => m.Id).FirstOrDefault(m => m.Action == Model.LogAction.Order && !m.RangeEnd.HasValue);
             if (log == null)
             {
                 WriteMessage("当前无可用数据", false);

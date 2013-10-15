@@ -501,8 +501,9 @@
 .table3 i a {
 	color:#000;
 	font-size:12px;
-	margin-right:10px;
-	_margin-right:6px;
+    padding:5px;
+    white-space:nowrap;
+    display:inline-block;   
 	}
 .table3 a:hover {
 	text-decoration:underline;
@@ -727,5 +728,8 @@ text-align:center;
 font-size:12px;
 color:#000;
 line-height:30px;
+}
+#chart2 table td {
+    border:none;
 }
 /*--s--*/

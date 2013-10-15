@@ -30,14 +30,20 @@ namespace WebUI.Task
 
             if (!IsPostBack)
             {
+                if (!RequestContext.Current.User.HasPurview(codetr.Attributes["purivew"]))
+                {
+                    codetr.Visible = false;
+                }
                 LtTile.Text = t.Title;
                 LtDescription.Text = t.Description;
+                tbCode.Text = t.Code;
             }
         }
 
         protected void BtnOk_Click(object sender, EventArgs e)
         {
             t.SaleUserName = tbSaleUserName.Text;
+            t.Code = tbCode.Text;
             t.Status = Model.TaskState.CanDevelop;
             Model.Log l = new Model.Log();
             l.Task = t;
@@ -49,7 +55,7 @@ namespace WebUI.Task
             l.Action = Model.LogAction.NewTaskConfirm;
             t.Logs.Add(l);
 
-            bool flag = TaskBll.UpdateTask(t, new string[] { "SaleUserName", "Status" });
+            bool flag = TaskBll.UpdateTask(t, new string[] { "SaleUserName","Code", "Status" });
 
             WriteMessage(flag ? "操作成功" : "操作失败", flag);
         }

@@ -22,13 +22,11 @@
                         <td><%#((DateTime)Eval("AddTime")).ToString("yyyy-MM-dd") %></td>
                         <td><%#(bool)Eval("HasOrder") ?"有订单":"无订单" %></td>
                         <td><%#Eval("Task.SaleUserName") %></td>
-                        <td><%#Eval("UserName") %></td>
-                       
+                        <td><%#Eval("UserName") %></td>                     
                         <td><%#Eval("Description") %></td>
-                        
                         <td>
                             <i>
-                                <bag:LinkButtonEx ID="lbDetail" runat="server" Text="查看明细" Purview="task_manage" />
+                                <bag:LinkButtonEx ID="lbDetail" runat="server" Text="查看明细" Purview="stock_manage" />
                             </i> </td>
                     </tr>
                 </ItemTemplate>
