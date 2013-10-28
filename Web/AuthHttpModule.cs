@@ -29,7 +29,7 @@ namespace Web
             string filePath = (context.Request.AppRelativeCurrentExecutionFilePath).ToLower(CultureInfo.CurrentCulture);
             if (filePath=="~/")
             {
-                context.Response.Redirect("~/index.aspx");
+                context.Response.Redirect("~/login.aspx");
             }
         }
 
